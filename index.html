@@ -29,6 +29,19 @@ body {
   padding: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.05);
 }
+.section {
+  padding: 16px;
+  border-radius: 10px;
+  background: #fafafa;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 12px;
+}
 
 /* LAYOUT */
 .layout {
@@ -93,10 +106,21 @@ h1 {
   color: #333;
 }
 
-.points {
-  display: grid;
-  grid-template-columns: 1fr;
+.premium-points .point {
+  display: flex;
+  align-items: flex-start;
   gap: 10px;
+  background: #ffffff;
+  border: 1px solid #eee;
+}
+
+.icon {
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: #25D366; /* subtle premium accent */
+  flex-shrink: 0;
 }
 
 @media (min-width: 900px) {
@@ -130,12 +154,12 @@ h1 {
   color: #666;
 }
 
-.form-group-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  margin-top: 8px;
+.form-group {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f7f7f7;
 }
+  
 .whatsapp-btn {
   margin-top: 5px;
   padding: 10px;
@@ -229,43 +253,73 @@ h1 {
       <div class="right">
 
         <h1>Mini Cooper</h1>
-        <div class="price-block">
+    <div class="section">
+  <div class="section-title">Price</div>
+
   <div class="price">₹17,000 / day</div>
-  <div class="price-note">Fun, sporty convertible • Ideal for couples</div>
-</div>
-
-<div class="trust-section">
-  <div class="trust-title">Why book this car with us</div>
-
-  <div class="points">
-    <div class="point">Well-maintained premium vehicle</div>
-    <div class="point">No hidden charges</div>
-    <div class="point">Latest model (2023–24)</div>
-    <div class="point">Quality check before delivery</div>
-    <div class="point">Inside & outside car wash</div>
-    <div class="point">Instant replacement if required</div>
-    <div class="point">Immediate security deposit refund</div>
+  <div class="price-note">
+    Fun, sporty convertible • Ideal for couples & city drives
   </div>
 </div>
-        <div class="booking">
-          <h2>Check Availability</h2>
+
+<div class="section">
+  <div class="section-title">What’s included</div>
+
+  <div class="points premium-points">
+    <div class="point">
+      <span class="icon"></span>
+      Professionally maintained premium vehicle
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Transparent pricing, no hidden charges
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Latest model (2023–24)
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Quality inspection before every delivery
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Complete inside & outside car wash
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Instant replacement in case of any issue
+    </div>
+    <div class="point">
+      <span class="icon"></span>
+      Immediate security deposit refund
+    </div>
+  </div>
+</div>
+        <div class="section booking">
+<div class="section booking">
+  <div class="section-title">Availability & Booking</div>
+  ...
+</div>
           <p>Share your dates, time & location for car delivery and return.</p>
 
 <div class="form">
 
   <!-- DELIVERY -->
+<div class="form-group">
   <div class="form-group-title">Car Delivery Details</div>
-
-  <input type="date" id="dDate" placeholder="Delivery date">
-  <input type="time" id="dTime" placeholder="Delivery time">
-  <input type="text" id="dLoc" placeholder="Delivery location (Hotel / Airport)">
+  <input type="date" id="dDate">
+  <input type="time" id="dTime">
+  <input type="text" id="dLoc" placeholder="Hotel / Airport / Area">
+</div>
 
   <!-- RETURN -->
+<div class="form-group">
   <div class="form-group-title">Car Return Details</div>
-
-  <input type="date" id="rDate" placeholder="Return date">
-  <input type="time" id="rTime" placeholder="Return time">
+  <input type="date" id="rDate">
+  <input type="time" id="rTime">
   <input type="text" id="rLoc" placeholder="Return location">
+</div>
 
  <button class="whatsapp-btn" onclick="checkAvailability()">
   Check Availability
