@@ -136,7 +136,49 @@ h1 {
   color: #333;
   margin-top: 8px;
 }
-.note {
+.whatsapp-btn {
+  margin-top: 6px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: none;
+  background: #25D366; /* WhatsApp Green */
+  color: #ffffff;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.98);
+}
+
+.wa-icon {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wa-note {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: #666;
+  text-align: center;
+}
+
+  .note {
   margin-top: 10px;
   font-size: 13px;
   color: #777;
@@ -225,7 +267,13 @@ h1 {
   <input type="time" id="rTime" placeholder="Return time">
   <input type="text" id="rLoc" placeholder="Return location">
 
-  <button onclick="checkAvailability()">Check Availability on WhatsApp</button>
+ <button class="whatsapp-btn" onclick="checkAvailability()">
+  <span class="wa-icon">🟢</span>
+  Check Availability on WhatsApp
+</button>
+
+<div class="wa-note">
+  You will be redirected to WhatsApp with details pre-filled
 </div>
           <div class="note">
             We’ll confirm on WhatsApp.
