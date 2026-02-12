@@ -136,8 +136,31 @@ h1 {
   border-radius: 8px;
 }
 
+  .divider {
+  margin: 26px 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #ddd, transparent);
+}
+
 /* BOOKING */
-.booking {
+.booking-panel {
+  padding: 22px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 2px solid #eaeaea;
+}
+
+.booking-panel .section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.booking-panel p {
+  margin-bottom: 16px;
+}
+
+  .booking {
   padding-top: 18px;
   border-top: 1px solid #e6e6e6;
 }
@@ -159,7 +182,16 @@ h1 {
   border-radius: 8px;
   background: #f7f7f7;
 }
-  
+
+  .form-group {
+  margin-bottom: 14px;
+}
+  .cta-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
 .whatsapp-btn {
   margin-top: 5px;
   padding: 10px;
@@ -296,7 +328,9 @@ h1 {
     </div>
   </div>
 </div>
-    <div class="section booking">
+<div class="divider"></div>
+
+<div class="booking-panel">
   <div class="section-title">Availability & Booking</div>
 </div>
 <div class="form">
@@ -317,10 +351,14 @@ h1 {
   <input type="text" id="rLoc" placeholder="Return location">
 </div>
 
- <button class="whatsapp-btn" onclick="checkAvailability()">
-  Check Availability
-</button>
-
+<div class="cta-wrapper">
+  <button class="whatsapp-btn" onclick="checkAvailability()">
+    Check Availability on WhatsApp
+  </button>
+</div>
+<div class="wa-note">
+  You’ll continue on WhatsApp. No payment required now.
+</div>
           <div class="note">
             We’ll confirm on WhatsApp.
           </div>
