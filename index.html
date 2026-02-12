@@ -66,18 +66,43 @@ h1 {
   font-weight: 500;
 }
 
-.sub {
-  margin-top: 8px;
-  font-size: 14.5px;
-  color: #555;
-  line-height: 1.6;
+.price-block {
+  margin-top: 10px;
+  margin-bottom: 18px;
 }
 
-/* TRUST POINTS */
+.price {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.price-note {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.trust-section {
+  margin-top: 18px;
+}
+
+.trust-title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
 .points {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+}
+
+@media (min-width: 900px) {
+  .points {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .point {
@@ -105,33 +130,12 @@ h1 {
   color: #666;
 }
 
-.form {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-}
-
-.form input {
-  padding: 12px;
+.form-group-title {
   font-size: 14px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  font-weight: 500;
+  color: #333;
+  margin-top: 8px;
 }
-
-.form button {
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-.form button:hover {
-  opacity: 0.9;
-}
-
 .note {
   margin-top: 10px;
   font-size: 13px;
@@ -183,35 +187,46 @@ h1 {
       <div class="right">
 
         <h1>Mini Cooper</h1>
-        <div class="sub">
-          <b>₹17,000/day</b>
-          Fun and sporty convertible.
-        </div>
+        <div class="price-block">
+  <div class="price">₹17,000 / day</div>
+  <div class="price-note">Fun, sporty convertible • Ideal for couples</div>
+</div>
 
-        <div class="points">
-          <div class="point">Well maintained</div>
-          <div class="point">No Hidden Charges</div>
-          <div class="point">2023–24 model</div>
-          <div class="point">Quality check before Car delivery</div>
-          <div class="point">Inside & outside Car wash</div>
-          <div class="point">Instant replacement if required</div>
-          <div class="point">Immediate security deposit refund</div>
-        </div>
+<div class="trust-section">
+  <div class="trust-title">Why book this car with us</div>
 
+  <div class="points">
+    <div class="point">Well-maintained premium vehicle</div>
+    <div class="point">No hidden charges</div>
+    <div class="point">Latest model (2023–24)</div>
+    <div class="point">Quality check before delivery</div>
+    <div class="point">Inside & outside car wash</div>
+    <div class="point">Instant replacement if required</div>
+    <div class="point">Immediate security deposit refund</div>
+  </div>
+</div>
         <div class="booking">
           <h2>Check Availability</h2>
           <p>Share your dates, time & location for car delivery and return.</p>
 
-          <div class="form">
-            <input type="date" id="dDate" placeholder="Delivery Date"> <input type="time" id="dTime" placeholder="Delivery Time">
-            <input type="text" id="dLoc" placeholder="Delivery location">
+<div class="form">
 
-            <input type="date" id="rDate" placeholder="Return location"> <input type="time" id="rTime" placeholder="Return location">
-            <input type="text" id="rLoc" placeholder="Return location">
+  <!-- DELIVERY -->
+  <div class="form-group-title">Car Delivery Details</div>
 
-            <button onclick="checkAvailability()">Check Availability on WhatsApp</button>
-          </div>
+  <input type="date" id="dDate" placeholder="Delivery date">
+  <input type="time" id="dTime" placeholder="Delivery time">
+  <input type="text" id="dLoc" placeholder="Delivery location (Hotel / Airport)">
 
+  <!-- RETURN -->
+  <div class="form-group-title">Car Return Details</div>
+
+  <input type="date" id="rDate" placeholder="Return date">
+  <input type="time" id="rTime" placeholder="Return time">
+  <input type="text" id="rLoc" placeholder="Return location">
+
+  <button onclick="checkAvailability()">Check Availability on WhatsApp</button>
+</div>
           <div class="note">
             We’ll confirm on WhatsApp.
           </div>
