@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Cars – Goa Car Rental</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+  background: #f5f6f8;
+  color: #1f1f1f;
+}
+
+.why-story {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 26px;
+  background: #ffffff;
+  border-radius: 22px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+.why-story h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 36px;
+}
+
+.story-line {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.story-item {
+  display: flex;
+  gap: 16px;
+}
+
+.story-item span {
+  font-size: 22px;
+}
+
+.story-item strong {
+  font-size: 15px;
+}
+
+.story-item p {
+  font-size: 13.5px;
+  color: #666;
+  margin-top: 4px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="why-story">
+
+  <h2>Why Thousands Trust Us in Goa</h2>
+
+  <div class="story-line">
+    <div class="story-item">
+      <span>🚗</span>
+      <div>
+        <strong>Premium & New Cars</strong>
+        <p>Latest models, clean inside-out, fully serviced.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <span>📦</span>
+      <div>
+        <strong>Doorstep Delivery Anywhere</strong>
+        <p>Hotel, airport, or anywhere in Goa.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <span>⏰</span>
+      <div>
+        <strong>Timely & Hassle-Free</strong>
+        <p>On-time delivery and smooth returns.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <span>🛞</span>
+      <div>
+        <strong>Safety First</strong>
+        <p>Quality tyres, parking sensors, strong AC.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <span>💬</span>
+      <div>
+        <strong>Easy WhatsApp Booking</strong>
+        <p>Fast communication, instant confirmation.</p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <span>⭐</span>
+      <div>
+        <strong>5000+ Happy Tourists</strong>
+        <p>Trusted service with real reviews.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-action">
+    <button class="browse-btn" onclick="window.location.href='index.html'">
+      See Available Cars
+    </button>
+  </div>
+
+</div>
+</body>
+</html>
