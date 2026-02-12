@@ -15,86 +15,70 @@ body {
   color: #1f1f1f;
 }
 
-.why-card {
-  max-width: 950px;
-  margin: 50px auto;
-  padding: 30px 24px;
+.why-wall {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 40px 26px;
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border-radius: 22px;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.1);
 }
 
-.why-title {
+.why-head {
   text-align: center;
-  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.why-head h2 {
+  margin: 0;
+  font-size: 26px;
   font-weight: 600;
-  margin-bottom: 6px;
 }
 
-.why-sub {
-  text-align: center;
-  font-size: 14.5px;
+.why-head p {
+  margin-top: 8px;
+  font-size: 15px;
   color: #666;
-  margin-bottom: 28px;
 }
 
-.why-points {
+.feature-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
-.why-point {
-  display: flex;
-  gap: 14px;
-  font-size: 14.5px;
-  line-height: 1.5;
-  color: #333;
+.feature {
+  padding: 20px;
+  border-radius: 14px;
+  background: #f9fafb;
+  text-align: center;
 }
 
-.why-point span {
-  font-size: 18px;
-  margin-top: 2px;
+.feature span {
+  font-size: 26px;
 }
 
-.why-point strong {
-  font-weight: 500;
+.feature strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
-.why-point.full {
-  grid-column: 1 / -1;
+.feature p {
+  font-size: 13.5px;
+  color: #666;
+  margin-top: 6px;
 }
 
-.why-cta {
-  margin-top: 34px;
+.why-action {
+  margin-top: 40px;
   display: flex;
   justify-content: center;
 }
 
-.browse-btn {
-  padding: 16px 30px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  background: #25D366; /* WhatsApp green – DO NOT CHANGE */
-  color: #ffffff;
-  transition: background 0.2s ease, transform 0.1s ease;
-}
-
-.browse-btn:hover {
-  background: #1ebe5d;
-}
-
-.browse-btn:active {
-  transform: scale(0.97);
-}
-
-/* DESKTOP */
 @media (min-width: 900px) {
-  .why-points {
-    grid-template-columns: 1fr 1fr;
+  .feature-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 </style>
@@ -102,40 +86,66 @@ body {
 
 <body>
 
-<div class="why-card">
+<div class="why-wall">
 
-  <div class="why-title">Why Choose Us</div>
-  <div class="why-sub">
-    Trusted by thousands of travellers for a smooth, transparent, and stress-free Goa car rental experience.
+  <div class="why-head">
+    <h2>Why Choose Us</h2>
+    <p>Everything you need for a smooth, stress-free self-drive experience in Goa.</p>
   </div>
 
-  <div class="why-points">
+  <div class="feature-grid">
 
-    <div class="why-point"><span>🚘</span><div><strong>Instant Car Replacement</strong><br>If any issue arises, you’re never stranded.</div></div>
-    <div class="why-point"><span>☎️</span><div><strong>24×7 Support</strong><br>Always available throughout your trip.</div></div>
-    <div class="why-point"><span>🔍</span><div><strong>100% Transparency</strong><br>Clear pricing with no hidden charges.</div></div>
-    <div class="why-point"><span>💰</span><div><strong>Instant Deposit Refund</strong><br>Fast, fair, and guaranteed.</div></div>
+    <div class="feature">
+      <span>🚘</span>
+      <strong>Instant Replacement</strong>
+      <p>You’re never stranded if an issue arises.</p>
+    </div>
 
-    <div class="why-point"><span>🧼</span><div><strong>Highly Maintained Cars</strong><br>Quality checked and serviced regularly.</div></div>
-    <div class="why-point"><span>🧽</span><div><strong>Clean Inside & Out</strong><br>Hygiene and comfort prioritized.</div></div>
-    <div class="why-point"><span>🚗</span><div><strong>All New Models</strong><br>Modern cars for a smooth experience.</div></div>
-    <div class="why-point"><span>🚙</span><div><strong>40+ Car Options</strong><br>Choose what suits your style and budget.</div></div>
+    <div class="feature">
+      <span>☎️</span>
+      <strong>24×7 Support</strong>
+      <p>Assistance throughout your trip.</p>
+    </div>
 
-    <div class="why-point"><span>📦</span><div><strong>Anywhere Delivery in Goa</strong><br>Pickup & return at your convenience.</div></div>
-    <div class="why-point"><span>⏰</span><div><strong>Timely Delivery & Return</strong><br>We respect your time.</div></div>
-    <div class="why-point"><span>❄️</span><div><strong>Strong AC Performance</strong><br>Stay cool in Goa’s heat.</div></div>
-    <div class="why-point"><span>🎵</span><div><strong>Bluetooth Music System</strong><br>Enjoy your drive your way.</div></div>
+    <div class="feature">
+      <span>🔍</span>
+      <strong>100% Transparency</strong>
+      <p>No hidden charges, ever.</p>
+    </div>
 
-    <div class="why-point"><span>🅿️</span><div><strong>Parking Sensors</strong><br>Easy and safe parking.</div></div>
-    <div class="why-point"><span>🛞</span><div><strong>Quality Tyres</strong><br>Better grip for safer journeys.</div></div>
-    <div class="why-point"><span>💬</span><div><strong>Easy WhatsApp Booking</strong><br>Quick, simple, and reliable.</div></div>
-    <div class="why-point"><span>🌴</span><div><strong>Local Goa Insights</strong><br>Personalized trip suggestions.</div></div>
+    <div class="feature">
+      <span>💰</span>
+      <strong>Instant Refund</strong>
+      <p>Deposit returned immediately.</p>
+    </div>
 
-    <div class="why-point full"><span>⭐</span><div><strong>Trusted by 5000+ Tourists</strong><br>A proven service you can rely on.</div></div>
+    <div class="feature">
+      <span>🧼</span>
+      <strong>Well Maintained Cars</strong>
+      <p>Regular servicing & inspections.</p>
+    </div>
+
+    <div class="feature">
+      <span>🚗</span>
+      <strong>Latest Models</strong>
+      <p>Modern, comfortable vehicles.</p>
+    </div>
+
+    <div class="feature">
+      <span>🚙</span>
+      <strong>40+ Car Options</strong>
+      <p>From hatchbacks to premium cars.</p>
+    </div>
+
+    <div class="feature">
+      <span>🌴</span>
+      <strong>Local Goa Support</strong>
+      <p>Personal trip suggestions included.</p>
+    </div>
 
   </div>
 
-  <div class="why-cta">
+  <div class="why-action">
     <button class="browse-btn" onclick="window.location.href='index.html'">
       Explore Our Car Collection
     </button>
@@ -145,3 +155,4 @@ body {
 
 </body>
 </html>
+
