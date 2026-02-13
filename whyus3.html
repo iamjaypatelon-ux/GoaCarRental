@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Cars – Goa Car Rental</title>
+
+<style>
+.why-wrapper {
+  position: relative;
+  max-width: 1000px;
+  margin: 80px auto;
+  padding: 40px 16px;
+}
+
+/* TOP BADGE */
+.why-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+/* MAIN BOX */
+.why-box {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 50px 26px 70px; /* extra bottom for CTA overlap */
+  box-shadow: 0 16px 45px rgba(0,0,0,0.08);
+}
+
+/* GRID */
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.why-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  color: #333;
+}
+
+.why-item span {
+  font-size: 18px;
+}
+
+.why-item.full {
+  grid-column: 1 / -1;
+  font-weight: 500;
+}
+
+/* CTA OVERLAP */
+.why-cta {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 2;
+}
+
+/* BUTTON (KEEP WHATSAPP GREEN) */
+.browse-btn {
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  background: #25D366;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.browse-btn:hover {
+  background: #1ebe5d;
+}
+
+.browse-btn:active {
+  transform: scale(0.97);
+}
+
+/* DESKTOP */
+@media (min-width: 900px) {
+  .why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="why-wrapper">
+
+  <!-- OVERLAPPING TITLE -->
+  <div class="why-badge">
+    Why Choose Us
+  </div>
+
+  <!-- MAIN SQUARE -->
+  <div class="why-box">
+
+    <div class="why-grid">
+
+      <div class="why-item"><span>🚘</span>Instant Car Replacement</div>
+      <div class="why-item"><span>☎️</span>24×7 Support</div>
+      <div class="why-item"><span>🔍</span>100% Transparent Pricing</div>
+      <div class="why-item"><span>💰</span>Instant Deposit Refund</div>
+
+      <div class="why-item"><span>🧼</span>Highly Maintained Cars</div>
+      <div class="why-item"><span>🧽</span>Clean Inside & Outside</div>
+      <div class="why-item"><span>🚗</span>All New Models</div>
+      <div class="why-item"><span>🚙</span>40+ Car Options</div>
+
+      <div class="why-item"><span>📦</span>Delivery Anywhere in Goa</div>
+      <div class="why-item"><span>⏰</span>Timely Delivery & Return</div>
+      <div class="why-item"><span>❄️</span>Strong AC Performance</div>
+      <div class="why-item"><span>🎵</span>Bluetooth Music System</div>
+
+      <div class="why-item"><span>🅿️</span>Rear Parking Sensors</div>
+      <div class="why-item"><span>🛞</span>Quality Tyres</div>
+      <div class="why-item"><span>💬</span>Easy WhatsApp Booking</div>
+      <div class="why-item"><span>🌴</span>Personalized Goa Tips</div>
+
+      <div class="why-item full"><span>⭐</span>Trusted by 5000+ Tourists</div>
+
+    </div>
+
+  </div>
+
+  <!-- OVERLAPPING CTA -->
+  <div class="why-cta">
+    <button class="browse-btn" onclick="window.location.href='index.html'">
+      Explore Our Car Collection
+    </button>
+  </div>
+
+</div>
+</body>
+</html>
