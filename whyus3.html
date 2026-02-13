@@ -6,37 +6,42 @@
 <title>Browse Cars – Goa Car Rental</title>
 
 <style>
+/* PAGE BACKGROUND */
+body {
+  background: #ffffff;
+}
+
 /* WRAPPER */
 .wa-why-wrapper {
   position: relative;
   max-width: 1000px;
   margin: 80px auto;
   padding: 60px 16px;
-  background: #ECE5DD; /* WhatsApp background */
 }
 
-/* TOP BADGE */
+/* TOP BADGE — SINGLE LINE, DIFFERENT FROM CTA */
 .wa-why-badge {
   position: absolute;
   top: 60px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #25D366;
-  color: #ffffff;
-  padding: 10px 26px;
+  background: #ffffff;
+  color: #075E54; /* WhatsApp dark green */
+  padding: 8px 22px;
   border-radius: 999px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
-  box-shadow: 0 6px 18px rgba(37,211,102,0.4);
+  border: 2px solid #25D366;
+  white-space: nowrap;
   z-index: 2;
 }
 
-/* MAIN BOX */
+/* MAIN BOX — WHATSAPP SENT MESSAGE COLOR */
 .wa-why-box {
-  background: #ffffff;
+  background: #DCF8C6; /* WhatsApp sent message */
   border-radius: 26px;
   padding: 50px 26px 70px;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
 }
 
 /* FEATURES */
@@ -51,7 +56,7 @@
   align-items: center;
   gap: 12px;
   font-size: 14.5px;
-  color: #2f2f2f;
+  color: #1f1f1f;
 }
 
 .wa-feature span {
@@ -63,7 +68,7 @@
   font-weight: 500;
 }
 
-/* CTA */
+/* CTA — DISTINCT, STRONG, WHATSAPP GREEN */
 .wa-why-cta {
   position: absolute;
   bottom: 60px;
@@ -72,7 +77,6 @@
   z-index: 2;
 }
 
-/* BUTTON */
 .wa-btn {
   padding: 16px 34px;
   font-size: 16px;
