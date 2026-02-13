@@ -6,94 +6,97 @@
 <title>Browse Cars – Goa Car Rental</title>
 
 <style>
-.why-wrapper {
+/* WRAPPER */
+.wa-why-wrapper {
   position: relative;
   max-width: 1000px;
   margin: 80px auto;
-  padding: 40px 16px;
+  padding: 60px 16px;
+  background: #ECE5DD; /* WhatsApp background */
 }
 
 /* TOP BADGE */
-.why-badge {
+.wa-why-badge {
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
-  padding: 10px 22px;
-  border-radius: 30px;
+  background: #25D366;
+  color: #ffffff;
+  padding: 10px 26px;
+  border-radius: 999px;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(37,211,102,0.4);
   z-index: 2;
 }
 
 /* MAIN BOX */
-.why-box {
+.wa-why-box {
   background: #ffffff;
-  border-radius: 22px;
-  padding: 50px 26px 70px; /* extra bottom for CTA overlap */
-  box-shadow: 0 16px 45px rgba(0,0,0,0.08);
+  border-radius: 26px;
+  padding: 50px 26px 70px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
 }
 
-/* GRID */
-.why-grid {
+/* FEATURES */
+.wa-features {
   display: grid;
   grid-template-columns: 1fr;
   gap: 16px;
 }
 
-.why-item {
+.wa-feature {
   display: flex;
   align-items: center;
   gap: 12px;
   font-size: 14.5px;
-  color: #333;
+  color: #2f2f2f;
 }
 
-.why-item span {
+.wa-feature span {
   font-size: 18px;
 }
 
-.why-item.full {
+.wa-full {
   grid-column: 1 / -1;
   font-weight: 500;
 }
 
-/* CTA OVERLAP */
-.why-cta {
+/* CTA */
+.wa-why-cta {
   position: absolute;
-  bottom: 0;
+  bottom: 60px;
   left: 50%;
   transform: translate(-50%, 50%);
   z-index: 2;
 }
 
-/* BUTTON (KEEP WHATSAPP GREEN) */
-.browse-btn {
-  padding: 16px 32px;
+/* BUTTON */
+.wa-btn {
+  padding: 16px 34px;
   font-size: 16px;
   font-weight: 500;
-  border-radius: 12px;
+  border-radius: 999px;
   border: none;
   cursor: pointer;
   background: #25D366;
   color: #ffffff;
-  box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  box-shadow: 0 10px 28px rgba(37,211,102,0.45);
   transition: transform 0.1s ease, background 0.2s ease;
 }
 
-.browse-btn:hover {
+.wa-btn:hover {
   background: #1ebe5d;
 }
 
-.browse-btn:active {
+.wa-btn:active {
   transform: scale(0.97);
 }
 
 /* DESKTOP */
 @media (min-width: 900px) {
-  .why-grid {
+  .wa-features {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -102,47 +105,47 @@
 
 <body>
 
-<div class="why-wrapper">
+<div class="wa-why-wrapper">
 
-  <!-- OVERLAPPING TITLE -->
-  <div class="why-badge">
+  <!-- TOP BADGE -->
+  <div class="wa-why-badge">
     Why Choose Us
   </div>
 
-  <!-- MAIN SQUARE -->
-  <div class="why-box">
+  <!-- MAIN BOX -->
+  <div class="wa-why-box">
 
-    <div class="why-grid">
+    <div class="wa-features">
 
-      <div class="why-item"><span>🚘</span>Instant Car Replacement</div>
-      <div class="why-item"><span>☎️</span>24×7 Support</div>
-      <div class="why-item"><span>🔍</span>100% Transparent Pricing</div>
-      <div class="why-item"><span>💰</span>Instant Deposit Refund</div>
+      <div class="wa-feature"><span>🚘</span> Instant Car Replacement</div>
+      <div class="wa-feature"><span>☎️</span> 24×7 Support</div>
+      <div class="wa-feature"><span>🔍</span> 100% Transparent Pricing</div>
+      <div class="wa-feature"><span>💰</span> Instant Deposit Refund</div>
 
-      <div class="why-item"><span>🧼</span>Highly Maintained Cars</div>
-      <div class="why-item"><span>🧽</span>Clean Inside & Outside</div>
-      <div class="why-item"><span>🚗</span>All New Models</div>
-      <div class="why-item"><span>🚙</span>40+ Car Options</div>
+      <div class="wa-feature"><span>🧼</span> Highly Maintained Cars</div>
+      <div class="wa-feature"><span>🧽</span> Clean Inside & Outside</div>
+      <div class="wa-feature"><span>🚗</span> All New Models</div>
+      <div class="wa-feature"><span>🚙</span> 40+ Car Options</div>
 
-      <div class="why-item"><span>📦</span>Delivery Anywhere in Goa</div>
-      <div class="why-item"><span>⏰</span>Timely Delivery & Return</div>
-      <div class="why-item"><span>❄️</span>Strong AC Performance</div>
-      <div class="why-item"><span>🎵</span>Bluetooth Music System</div>
+      <div class="wa-feature"><span>📦</span> Delivery & Return Anywhere in Goa</div>
+      <div class="wa-feature"><span>⏰</span> Timely Delivery & Return</div>
+      <div class="wa-feature"><span>❄️</span> Strong AC Performance</div>
+      <div class="wa-feature"><span>🎵</span> Bluetooth Music System</div>
 
-      <div class="why-item"><span>🅿️</span>Rear Parking Sensors</div>
-      <div class="why-item"><span>🛞</span>Quality Tyres</div>
-      <div class="why-item"><span>💬</span>Easy WhatsApp Booking</div>
-      <div class="why-item"><span>🌴</span>Personalized Goa Tips</div>
+      <div class="wa-feature"><span>🅿️</span> Rear Parking Sensors</div>
+      <div class="wa-feature"><span>🛞</span> Quality Tyres</div>
+      <div class="wa-feature"><span>💬</span> Easy WhatsApp Booking</div>
+      <div class="wa-feature"><span>🌴</span> Personalized Goa Trip Suggestions</div>
 
-      <div class="why-item full"><span>⭐</span>Trusted by 5000+ Tourists</div>
+      <div class="wa-feature wa-full"><span>⭐</span> Trusted by 5000+ Tourists</div>
 
     </div>
 
   </div>
 
-  <!-- OVERLAPPING CTA -->
-  <div class="why-cta">
-    <button class="browse-btn" onclick="window.location.href='index.html'">
+  <!-- BOTTOM CTA -->
+  <div class="wa-why-cta">
+    <button class="wa-btn" onclick="window.location.href='index.html'">
       Explore Our Car Collection
     </button>
   </div>
