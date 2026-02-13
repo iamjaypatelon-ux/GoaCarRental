@@ -15,32 +15,37 @@ body {
 .wa-why-wrapper {
   position: relative;
   max-width: 1000px;
-  margin: 80px auto;
-  padding: 60px 16px;
+  margin: 30px auto;   /* ↓ reduced */
+  padding: 30px 16px;  /* ↓ reduced */
 }
 
 /* TOP BADGE — SINGLE LINE, DIFFERENT FROM CTA */
 .wa-why-badge {
   position: absolute;
-  top: 60px;
+  top: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
-  color: #075E54; /* WhatsApp dark green */
-  padding: 8px 22px;
+
+  background: #25D366;          /* WhatsApp green */
+  color: #ffffff;
+
+  padding: 16px 36px;           /* same visual weight as CTA */
   border-radius: 999px;
-  font-size: 15px;
-  font-weight: 600;
-  border: 2px solid #25D366;
+
+  font-size: 22px;              /* BIG + STRONG */
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  box-shadow: 0 12px 30px rgba(37,211,102,0.45);
   white-space: nowrap;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* MAIN BOX — WHATSAPP SENT MESSAGE COLOR */
 .wa-why-box {
-  background: #DCF8C6; /* WhatsApp sent message */
+  background: #DCF8C6;
   border-radius: 26px;
-  padding: 50px 26px 70px;
+  padding: 60px 26px 70px; /* top increased for badge */
   box-shadow: 0 12px 35px rgba(0,0,0,0.08);
 }
 
