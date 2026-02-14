@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Our Car Collection – Self Drive Goa</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #111;
+  text-decoration: none;
+}
+
+/* MAIN TITLE */
+.main-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 30px 0 10px;
+}
+
+/* SECTION */
+.car-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* CAR LIST */
+.car-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 800px) {
+  .car-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.car-item {
+  border: 1px solid #eeeeee;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.car-item:hover {
+  background: #fafafa;
+}
+
+.car-info {
+  max-width: 70%;
+}
+
+.car-name {
+  font-weight: 600;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.car-desc {
+  font-size: 13px;
+  color: #555;
+}
+
+.car-price {
+  font-weight: 700;
+  color: #25D366;
+  font-size: 15px;
+}
+
+/* FOOT SPACE */
+.footer-space {
+  height: 80px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand-name">SELF DRIVE</a>
+</header>
+
+<div class="main-title">
+  Explore Our Car Collection
+</div>
+
+<!-- SECTION 1 -->
+<div class="car-section">
+  <div class="section-title">Compact & Mid-Size Cars (5-Seaters)</div>
+  <div class="car-list">
+    <div class="car-item"><div class="car-info"><div class="car-name">Hyundai Xcent (Manual)</div><div class="car-desc">Affordable and reliable for small trips.</div></div><div class="car-price">₹1,000/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Ignis (Manual)</div><div class="car-desc">Compact and easy for city driving.</div></div><div class="car-price">₹1,200/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Swift (Manual)</div><div class="car-desc">Perfect for everyday driving.</div></div><div class="car-price">₹1,200/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Swift (Automatic)</div><div class="car-desc">Convenient automatic option.</div></div><div class="car-price">₹1,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Baleno (Manual)</div><div class="car-desc">Stylish and economical.</div></div><div class="car-price">₹1,300/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Baleno (Automatic)</div><div class="car-desc">Comfort with automatic ease.</div></div><div class="car-price">₹1,700/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Hyundai Venue (Manual)</div><div class="car-desc">Modern and spacious.</div></div><div class="car-price">₹1,800/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">i20 (Manual)</div><div class="car-desc">Smooth drive and comfort.</div></div><div class="car-price">₹1,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">i20 (Automatic)</div><div class="car-desc">Easy gearless drive.</div></div><div class="car-price">₹2,000/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Fronx (Automatic)</div><div class="car-desc">Latest model with features.</div></div><div class="car-price">₹2,000/day</div></div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="car-section">
+  <div class="section-title">Premium 5-Seaters</div>
+  <div class="car-list">
+    <div class="car-item"><div class="car-info"><div class="car-name">Creta (Manual)</div><div class="car-desc">Comfortable and reliable SUV.</div></div><div class="car-price">₹2,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Creta (Old Shape Automatic)</div><div class="car-desc">Powerful and smooth.</div></div><div class="car-price">₹2,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Kia Sonet (Auto + Moonroof)</div><div class="car-desc">Luxury touch with convenience.</div></div><div class="car-price">₹2,800/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Creta (Auto + Panoramic Sunroof)</div><div class="car-desc">Premium driving experience.</div></div><div class="car-price">₹3,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Kia Seltos (Auto + Sunroof)</div><div class="car-desc">Stylish and feature-rich.</div></div><div class="car-price">₹3,600/day</div></div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="car-section">
+  <div class="section-title">Adventure Rides – Thar Collection</div>
+  <div class="car-list">
+    <div class="car-item"><div class="car-info"><div class="car-name">Thar 4x4 (Manual)</div><div class="car-desc">Built for off-road adventure.</div></div><div class="car-price">₹3,000/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Convertible Thar (Manual)</div><div class="car-desc">Open-top experience.</div></div><div class="car-price">₹3,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Convertible New Thar (Automatic)</div><div class="car-desc">Stylish and powerful.</div></div><div class="car-price">₹3,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Hardtop Thar (Automatic)</div><div class="car-desc">Hassle-free adventure.</div></div><div class="car-price">₹3,500/day</div></div>
+    <div class="car-item"><div class="car-info"><div class="car-name">Thar ROXX (Automatic)</div><div class="car-desc">Premium off-road beast.</div></div><div class="car-price">₹5,000/day</div></div>
+  </div>
+</div>
+
+<!-- You can repeat same structure for Family, Luxury SUVs, Exclusive Luxury -->
+
+<div class="footer-space"></div>
+
+</body>
+</html>
