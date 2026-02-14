@@ -26,6 +26,7 @@ body {
   max-width: 1000px;
   margin: 0 auto 120px;
   padding: 0 16px;
+  position: relative; /* IMPORTANT */
 }
 
 .wa-why-badge {
@@ -72,9 +73,13 @@ body {
   color: #075E54;
 }
 .wa-why-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
 }
 
 
