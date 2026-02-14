@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browse Cars – Goa Car Rental</title>
+
+<style>
+body {
+  background: #ffffff;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+}
+
+/* WRAPPER */
+.wa-why-wrapper {
+  max-width: 1000px;
+  margin: 40px auto 120px;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* FULL WIDTH HEADER STRIP */
+.wa-why-badge {
+  width: 100%;
+  background: #075E54; /* Dark WhatsApp green */
+  color: #ffffff;
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 26px;
+  font-weight: 700;
+  border-radius: 26px 26px 0 0;
+  letter-spacing: 0.4px;
+}
+
+/* MAIN BOX */
+.wa-why-box {
+  background: #F4FBF6; /* Soft trust green tint */
+  border: 1px solid #e3efe6;
+  border-top: none;
+  border-radius: 0 0 26px 26px;
+  padding: 40px 28px 80px;
+}
+
+/* FEATURES */
+.wa-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.wa-feature {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: #1f1f1f;
+}
+
+.wa-feature span {
+  font-size: 18px;
+}
+
+.wa-full {
+  grid-column: 1 / -1;
+  font-weight: 600;
+  color: #075E54;
+}
+
+/* CTA (UNCHANGED STYLE – NO SHADOW) */
+.wa-why-cta {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.wa-btn {
+  padding: 16px 34px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #25D366;
+  color: #ffffff;
+  transition: transform 0.1s ease, background 0.2s ease;
+}
+
+.wa-btn:hover {
+  background: #1ebe5d;
+}
+
+.wa-btn:active {
+  transform: scale(0.97);
+}
+
+/* DESKTOP */
+@media (min-width: 900px) {
+  .wa-features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<<div class="wa-why-wrapper">
+
+  <div class="wa-why-badge">
+    Why Choose Us
+  </div>
+
+  <div class="wa-why-box">
+
+    <div class="wa-features">
+      <!-- your features here -->
+    </div>
+
+  </div>
+
+  <div class="wa-why-cta">
+    <button class="wa-btn" onclick="window.location.href='index.html'">
+      Explore Our Car Collection
+    </button>
+  </div>
+
+</div>
+
+</body>
+</html>
