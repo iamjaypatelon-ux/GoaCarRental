@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self Drive – Browse Cars</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand-name {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #111111;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.brand-name:visited,
+.brand-name:hover,
+.brand-name:active {
+  text-decoration: none;
+  color: #111111;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* PAGE TITLE */
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 20px 0 10px;
+}
+
+/* CAR GRID */
+.car-grid {
+  max-width: 1100px;
+  margin: auto;
+  padding: 10px 16px 60px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 700px) {
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .car-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* CAR CARD */
+.car-card {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-4px);
+}
+
+.car-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-content {
+  padding: 14px;
+}
+
+.car-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.car-price {
+  font-size: 16px;
+  font-weight: 600;
+  color: #075E54;
+  margin-bottom: 6px;
+}
+
+.car-tag {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.view-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #25D366;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #1ebe5d;
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand-name">SELF DRIVE</a>
+
+  <div class="header-actions">
+    <a href="https://wa.me/917861015148" class="icon-btn">
+      <img src="call.png" alt="WhatsApp">
+    </a>
+    <button class="icon-btn" onclick="sharePage()">
+      <img src="share.png" alt="Share">
+    </button>
+  </div>
+</header>
+
+<div class="page-title">
+  Explore Our Car Collection
+</div>
+
+<div class="car-grid">
+
+  <!-- MINI COOPER -->
+  <div class="car-card">
+    <img src="Mini Cooper_1.png" alt="Mini Cooper">
+    <div class="car-content">
+      <div class="car-name">Mini Cooper</div>
+      <div class="car-price">₹17,000 / day</div>
+      <div class="car-tag">Sporty convertible • Premium experience</div>
+      <button class="view-btn" onclick="window.location.href='mini.html'">
+        View Details
+      </button>
+    </div>
+  </div>
+
+  <!-- THAR -->
+  <div class="car-card">
+    <img src="thar.jpg" alt="Thar">
+    <div class="car-content">
+      <div class="car-name">Mahindra Thar</div>
+      <div class="car-price">₹5,000 / day</div>
+      <div class="car-tag">Goa adventure ready • Rugged & bold</div>
+      <button class="view-btn">
+        View Details
+      </button>
+    </div>
+  </div>
+
+  <!-- ERITGA -->
+  <div class="car-card">
+    <img src="ertiga.jpg" alt="Ertiga">
+    <div class="car-content">
+      <div class="car-name">Ertiga</div>
+      <div class="car-price">₹2,200 / day</div>
+      <div class="car-tag">Family trips • Spacious & comfortable</div>
+      <button class="view-btn">
+        View Details
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Self Drive Goa',
+      text: 'Premium self drive cars in Goa',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied.");
+  }
+}
+</script>
+
+</body>
+</html>
