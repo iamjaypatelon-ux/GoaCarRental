@@ -461,6 +461,20 @@ Please share price & availability.`;
   );
 }
 </script>
+<script>
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Self Drive Goa',
+      text: 'Check out this premium self drive car rental in Goa.',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard.");
+  }
+}
+</script>
 
 </body>
 </html>
