@@ -233,6 +233,19 @@ body {
   </div>
 
 </div>
+<script>
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Self Drive Goa',
+      text: 'Check out this premium self drive car rental in Goa.',
+      url: window.location.href
+    });
+  } else {
+    alert("Sharing not supported on this device.");
+  }
+}
+</script>
 
 </body>
 </html>
