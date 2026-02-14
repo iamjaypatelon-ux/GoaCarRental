@@ -6,10 +6,6 @@
 <title>Browse Cars – Goa Car Rental</title>
 
 <style>
-/* PAGE BACKGROUND */
-body {
-  background: #ffffff;
-}
 * {
   box-sizing: border-box;
 }
@@ -17,57 +13,53 @@ body {
 body {
   margin: 0;
 }
-
-  /* WRAPPER */
-.wa-why-wrapper {
-  position: relative;
-  max-width: 1000px;
-  margin: 30px auto;   /* ↓ reduced */
-  padding: 30px 16px;  /* ↓ reduced */
+body {
+  background: #ffffff;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
 }
-
-/* TOP BADGE — SINGLE LINE, DIFFERENT FROM CTA */
 .wa-why-badge {
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  background: #DCF8C6;          /* WhatsApp green */
-  color: #000000;
+.wa-why-wrapper {
+  max-width: 1000px;
+  margin: 0 auto 120px;
+  padding: 0 16px;
+  position: relative; /* IMPORTANT */
+}
 
-  padding: 16px 36px;           /* same visual weight as CTA */
-  border-radius: 999px;
-
-  font-size: 22px;              /* BIG + STRONG */
+.wa-why-badge {
+  width: 100%;
+  background: #075E54;
+  color: #ffffff;
+  text-align: center;
+  padding: 22px;
+  font-size: 26px;
   font-weight: 700;
-  letter-spacing: 0.3px;
-
-  box-shadow: 0 12px 30px rgba(37,211,102,0.45);
-  white-space: nowrap;
-  z-index: 3;
+  border-radius: 26px 26px 0 0;
 }
 
-/* MAIN BOX — WHATSAPP SENT MESSAGE COLOR */
 .wa-why-box {
-  background: #F5F5F5;
-  border-radius: 26px;
-  padding: 60px 26px 70px; /* top increased for badge */
-  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  width: 100%;
+  background: #F4FBF6;
+  border: 1px solid #e3efe6;
+  border-top: none;
+  border-radius: 0 0 26px 26px;
+  padding: 40px 32px 50px;
 }
-
 /* FEATURES */
 .wa-features {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 18px;
 }
 
 .wa-feature {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14.5px;
+  gap: 14px;
+  font-size: 15px;
   color: #1f1f1f;
 }
 
@@ -77,29 +69,27 @@ body {
 
 .wa-full {
   grid-column: 1 / -1;
-  font-weight: 500;
+  font-weight: 600;
+  color: #075E54;
 }
-
-/* CTA — DISTINCT, STRONG, WHATSAPP GREEN */
 .wa-why-cta {
-  position: absolute;
-  bottom: 60px;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  z-index: 2;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -26px; /* pulls button upward */
 }
 
-.wa-btn {
-  padding: 16px 34px;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 999px;
+  .wa-btn {
+  width: 60%;
+  max-width: 420px;
+  padding: 18px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 26px;
   border: none;
   cursor: pointer;
   background: #25D366;
   color: #ffffff;
-  box-shadow: 0 10px 28px rgba(37,211,102,0.45);
-  transition: transform 0.1s ease, background 0.2s ease;
 }
 
 .wa-btn:hover {
@@ -123,17 +113,14 @@ body {
 
 <div class="wa-why-wrapper">
 
-  <!-- TOP BADGE -->
   <div class="wa-why-badge">
     Why Choose Us
   </div>
 
-  <!-- MAIN BOX -->
   <div class="wa-why-box">
 
     <div class="wa-features">
-
-      <div class="wa-feature"><span>🚘</span> Instant Car Replacement</div>
+       <div class="wa-feature"><span>🚘</span> Instant Car Replacement</div>
       <div class="wa-feature"><span>☎️</span> 24×7 Support</div>
       <div class="wa-feature"><span>🔍</span> 100% Transparent Pricing</div>
       <div class="wa-feature"><span>💰</span> Instant Deposit Refund</div>
@@ -154,12 +141,10 @@ body {
       <div class="wa-feature"><span>🌴</span> Personalized Goa Trip Suggestions</div>
 
       <div class="wa-feature wa-full"><span>⭐</span> Trusted by 5000+ Tourists</div>
-
     </div>
 
   </div>
 
-  <!-- BOTTOM CTA -->
   <div class="wa-why-cta">
     <button class="wa-btn" onclick="window.location.href='index.html'">
       Explore Our Car Collection
@@ -167,5 +152,6 @@ body {
   </div>
 
 </div>
+
 </body>
 </html>
