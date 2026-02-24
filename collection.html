@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Our Car Collection – Self Drive Goa</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Arial, sans-serif;
+  background: #ffffff;
+}
+
+/* HEADER */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: #ffffff;
+}
+
+.brand-name {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #111;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.icon-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* TITLE */
+.main-title {
+  background: #075E54;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  padding: 22px;
+  margin: 20px auto 40px;
+  max-width: 1200px;
+}
+
+/* COLLAPSIBLE SECTION */
+
+.car-section details {
+  border: 1px solid #e3efe6;
+  margin-bottom: 20px;
+}
+
+.car-section summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 18px;
+  font-size: 15px;
+  font-weight: 700;
+  background: #ffffff;
+  border-left: 8px solid #075E54;
+  position: relative;
+}
+
+.car-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Arrow icon */
+.car-section summary::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.car-section details[open] summary::after {
+  content: "−";
+}
+
+
+.car-section details .car-grid {
+  padding: 20px;
+  background: #ffffff;
+}
+
+.section-title {
+  background: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px;
+  border-left: 8px solid #075E54;
+  margin-bottom: 20px;
+}
+
+/* GRID */
+.car-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+@media (min-width: 700px) {
+  .car-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1200px) {
+  .car-grid { 
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* CARD */
+.car-card {
+  background: #F4FBF6;
+  border: 1px solid #e3efe6;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  padding-bottom: 18px;   /* ADD THIS */
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+  .car-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.car-content {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.car-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.car-price {
+  font-weight: 700;
+  font-size: 14px;
+  color: #25D366;
+}
+
+.car-tag {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 0px;
+}
+
+.view-btn {
+  padding: 8px;
+  font-size: 13px;
+  border: none;
+  background: #25D366;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.view-btn:hover {
+  background: #1ebe5d;
+}
+</style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand-name">SELF DRIVE</a>
+  <div class="header-actions">
+    <a href="tel:+917861015148" class="icon-btn" title="Call">
+      <img src="call.png" alt="Call">
+    </a>  
+    <button class="icon-btn" onclick="sharePage()">
+      <img src="share.png">
+    </button>
+  </div>
+</header>
+
+<div class="main-title">
+  Explore Our Car Collection
+</div>
+
+<!-- ========== COMPACT & MID SIZE ========== -->
+<div class="car-section">
+
+  <details>
+    <summary>Compact & Mid-Size Cars(5-Seaters) </summary>
+
+    <div class="car-grid">
+    <!-- Repeat block pattern below -->
+      <div class="car-card">
+  <img src="Hyundai Xcent (Manual).png">
+  <div class="car-content">
+    <div class="car-name">Hyundai Xcent (Manual)</div>
+    <div class="car-price">₹1,000 / day</div>
+    <div class="car-tag">Affordable and reliable for small trips</div>
+
+    <a 
+      class="view-btn"
+      href="https://wa.me/917861015148?text=Hi,%20I%20want%20to%20book%20Hyundai%20Xcent%20(Manual)."
+      target="_blank"
+    >
+      Check Availability
+    </a>
+
+  </div>
+</div>
+    
+    <a href="ignis.html" div class="car-card"><img src="Ignis (Manual).png"><div class="car-content"><div class="car-name">Ignis (Manual)</div><div class="car-price">₹1,200 / day</div><div class="car-tag">Compact and easy city driving</div></div></a>
+
+    <a href="swift.html" class="car-card">
+  <img src="Swift (Manual).png">
+  <div class="car-content">
+    <div class="car-name">Swift (Manual)</div>
+    <div class="car-price">₹1,200 / day</div>
+    <div class="car-tag">Perfect for everyday driving</div>
+  </div>
+</a>
+
+    <div class="car-card"><img src="Swift (Auto).png"><div class="car-content"><div class="car-name">Swift (Automatic)</div><div class="car-price">₹1,500 / day</div><div class="car-tag">Convenient automatic option</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Baleno (Manual).png"><div class="car-content"><div class="car-name">Baleno (Manual)</div><div class="car-price">₹1,300 / day</div><div class="car-tag">Stylish and economical</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Baleno (Automatic).png"><div class="car-content"><div class="car-name">Baleno (Automatic)</div><div class="car-price">₹1,700 / day</div><div class="car-tag">Comfort with automatic ease</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Hyundai Venue (Manual).png"><div class="car-content"><div class="car-name">Hyundai Venue (Manual)</div><div class="car-price">₹1,800 / day</div><div class="car-tag">Spacious and modern design</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="i20 (Manual).png"><div class="car-content"><div class="car-name">i20 (Manual)</div><div class="car-price">₹1,500 / day</div><div class="car-tag">Smooth and comfortable ride</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="i20 (Automatic).png"><div class="car-content"><div class="car-name">i20 (Automatic)</div><div class="car-price">₹2,000 / day</div><div class="car-tag">Enjoy the ease of automatic</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Fronx (Automatic).png"><div class="car-content"><div class="car-name">Fronx (Automatic)</div><div class="car-price">₹2,000 / day</div><div class="car-tag">Latest model with great features</div><button class="view-btn">View Details</button></div></div>
+
+  </div> 
+  </details>
+</div>
+
+<!-- ========== PREMIUM 5 SEATERS ========== -->
+<div class="car-section">
+
+  <details>
+    <summary>Premium (5-Seaters) </summary>
+
+    <div class="car-grid">
+
+    <div class="car-card"><img src="Creta (Manual).png"><div class="car-content"><div class="car-name">Creta (Manual)</div><div class="car-price">₹2,500 / day</div><div class="car-tag">Solid comfort choice</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Creta (Old Shape Automatic).png"><div class="car-content"><div class="car-name">Creta (Old Shape Automatic)</div><div class="car-price">₹2,500 / day</div><div class="car-tag">Reliable and powerful</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Kia Sonet (Auto + Moonroof).png"><div class="car-content"><div class="car-name">Kia Sonet (Auto + Moonroof)</div><div class="car-price">₹2,800 / day</div><div class="car-tag">Luxury touch driving</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Creta (Auto + Panoramic Sunroof).png"><div class="car-content"><div class="car-name">Creta (Auto + Panoramic Sunroof)</div><div class="car-price">₹3,500 / day</div><div class="car-tag">Premium driving experience</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Kia Seltos (Auto + Sunroof).png"><div class="car-content"><div class="car-name">Kia Seltos (Auto + Sunroof)</div><div class="car-price">₹3,600 / day</div><div class="car-tag">Stylish and feature rich</div><button class="view-btn">View Details</button></div></div>
+
+  </div>
+  </details>
+</div>
+<!-- ========== ADVENTURE RIDES – THAR COLLECTION ========== -->
+<div class="car-section">
+
+  <details>
+    <summary>Adventure Rides – Thar Collection </summary>
+
+    <div class="car-grid">
+
+    <div class="car-card">
+      <img src="Thar 4x4 (Manual).png">
+      <div class="car-content">
+        <div class="car-name">Thar 4x4 (Manual)</div>
+        <div class="car-price">₹3,000 / day</div>
+        <div class="car-tag">Rugged for off-road adventures</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <img src="Convertible New Thar (Automatic).png">
+      <div class="car-content">
+        <div class="car-name">Convertible New Thar (Automatic)</div>
+        <div class="car-price">₹3,500 / day</div>
+        <div class="car-tag">Stylish and powerful</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <img src="Hardtop Thar (Automatic).png">
+      <div class="car-content">
+        <div class="car-name">Hardtop Thar (Automatic)</div>
+        <div class="car-price">₹3,500 / day</div>
+        <div class="car-tag">Hassle-free adventure</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="car-card">
+      <img src="Thar ROXX (Automatic).png">
+      <div class="car-content">
+        <div class="car-name">Thar ROXX (Automatic)</div>
+        <div class="car-price">₹5,000 / day</div>
+        <div class="car-tag">Premium off-road beast</div>
+        <button class="view-btn">View Details</button>
+      </div>
+    </div>
+
+  </div>
+      </details>
+</div>
+<!-- ========== FAMILY & GROUP RIDES ========== -->
+<div class="car-section">
+
+  <details>
+    <summary>Family & Group Rides (7-Seaters & SUVs) </summary>
+
+    <div class="car-grid">
+
+    <div class="car-card"><img src="Old Ertiga (Manual).png"><div class="car-content"><div class="car-name">Old Ertiga (Manual)</div><div class="car-price">₹2,000 / day</div><div class="car-tag">Practical and spacious</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Ertiga (Manual).png"><div class="car-content"><div class="car-name">New Ertiga (Manual)</div><div class="car-price">₹2,200 / day</div><div class="car-tag">Modern family trips</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Ertiga (Automatic).png"><div class="car-content"><div class="car-name">Ertiga (Automatic)</div><div class="car-price">₹2,700 / day</div><div class="car-tag">Easy and comfortable</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Kia Carens (Manual).png"><div class="car-content"><div class="car-name">Kia Carens (Manual)</div><div class="car-price">₹2,500 / day</div><div class="car-tag">Versatile and spacious</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Kia Carens (Automatic).png"><div class="car-content"><div class="car-name">Kia Carens (Automatic)</div><div class="car-price">₹3,000 / day</div><div class="car-tag">Smooth gearless comfort</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Hyundai Alcazar.png"><div class="car-content"><div class="car-name">Alcazar (Automatic)</div><div class="car-price">₹3,600 / day</div><div class="car-tag">Top pick for comfort & space</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Toyota Innova Crysta Manual.png"><div class="car-content"><div class="car-name">Innova Crysta (Manual)</div><div class="car-price">₹3,000 / day</div><div class="car-tag">Comfortable long journeys</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Toyota Innova Crysta Auto.png"><div class="car-content"><div class="car-name">Innova Crysta (Automatic)</div><div class="car-price">₹3,500 / day</div><div class="car-tag">More comfort automatic</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Toyota Innova Hycross.png"><div class="car-content"><div class="car-name">Innova Hycross (Automatic)</div><div class="car-price">₹3,500 / day</div><div class="car-tag">Hybrid efficiency & comfort</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Fortuner (Old Shape Automatic).png"><div class="car-content"><div class="car-name">Fortuner (Old Shape Automatic)</div><div class="car-price">₹4,400 / day</div><div class="car-tag">Classic and reliable</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Fortuner (New Shape Automatic).png"><div class="car-content"><div class="car-name">Fortuner (New Shape Automatic)</div><div class="car-price">₹6,600 / day</div><div class="car-tag">Modern luxury performance</div><button class="view-btn">View Details</button></div></div>
+
+    <div class="car-card"><img src="Toyota Fortuner Legender_1.png"><div class="car-content"><div class="car-name">Fortuner Legender (Automatic)</div><div class="car-price">₹8,800 / day</div><div class="car-tag">Premium SUV experience</div><button class="view-btn">View Details</button></div></div>
+
+
+  </div>
+    </details>
+</div>
+<div class="car-section">
+
+  <details>
+    <summary>Exclusive Luxury Cars </summary>
+
+    <div class="car-grid">
+    <div class="car-card"><img src="BMW5_1.png"><div class="car-content"><div class="car-name">BMW M5 (Automatic)</div><div class="car-price">₹17,000 / day</div><div class="car-tag">Luxury & performance combined</div></div></div>
+
+    <a href="mini.html" class="car-card"><img src="Mini Cooper_1.png"><div class="car-content"><div class="car-name">Convertible Mini Cooper (Automatic)</div><div class="car-price">₹17,000 / day</div><div class="car-tag">Fun sporty convertible</div></div></a>
+
+    <div class="car-card"><img src="Audi Q3_1.png"><div class="car-content"><div class="car-name">Audi Q3 (Automatic)</div><div class="car-price">₹17,000 / day</div><div class="car-tag">Stylish and comfortable</div></div></div>
+
+    <div class="car-card"><img src="Audi A3 Cabriolet_1.png"><div class="car-content"><div class="car-name">Convertible Audi A3 (Automatic)</div><div class="car-price">₹22,000 / day</div><div class="car-tag">Premium open-top ride</div></div></div>
+
+    <div class="car-card"><img src="MUSTANG_1.png"><div class="car-content"><div class="car-name">Mustang (Automatic)</div><div class="car-price">₹40,000 / day</div><div class="car-tag">Iconic muscle power</div></div></div>
+   </div>
+    </details>
+</div>  <script>
+function sharePage() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Self Drive Goa',
+      text: 'Explore premium self drive cars in Goa',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied.");
+  }
+}
+</script>
+</body>
+</html>
