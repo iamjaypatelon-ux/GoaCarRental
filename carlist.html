@@ -9,11 +9,75 @@
   <input type="datetime-local" id="drop">
 
   <label>Delivery Location</label>
-  <input type="text" id="pickupLocation">
+<select id="pickupLocation">
+  <option>Anjuna</option>
+  <option>Arpora</option>
+  <option>Assagao</option>
+  <option>Baga</option>
+  <option>Calangute</option>
+  <option>Candolim</option>
+  <option>Dabolim</option>
+  <option>Dabolim Airport</option>
+  <option>Karmali Station</option>
+  <option>Madgaon</option>
+  <option>Madgaon Railway Station</option>
+  <option>Madgaon Bus Stand</option>
+  <option>Mapusa</option>
+  <option>Mapusa Bus Stop</option>
+  <option>Majorda</option>
+  <option>Mopa Airport</option>
+  <option>Morjim</option>
+  <option>Panjim</option>
+  <option>Panjim Bus Stand</option>
+  <option>Parra</option>
+  <option>Porvorim</option>
+  <option>Saligao</option>
+  <option>Sancoale</option>
+  <option>Siolim</option>
+  <option>Thivim</option>
+  <option>Thivim Railway Station</option>
+  <option>Vagator</option>
+  <option>Vasco</option>
+  <option>Vasco Railway Station</option>
+  <option>Vasco Busstand</option>
+  <option>Other</option>
+</select>
 
-  <label>Return Location</label>
-  <input type="text" id="dropLocation">
+<label>Return Location</label>
+<select id="dropLocation">
 
+  <option>Anjuna</option>
+  <option>Arpora</option>
+  <option>Assagao</option>
+  <option>Baga</option>
+  <option>Calangute</option>
+  <option>Candolim</option>
+  <option>Dabolim</option>
+  <option>Dabolim Airport</option>
+  <option>Karmali Station</option>
+  <option>Madgaon</option>
+  <option>Madgaon Railway Station</option>
+  <option>Madgaon Bus Stand</option>
+  <option>Mapusa</option>
+  <option>Mapusa Bus Stop</option>
+  <option>Majorda</option>
+  <option>Mopa Airport</option>
+  <option>Morjim</option>
+  <option>Panjim</option>
+  <option>Panjim Bus Stand</option>
+  <option>Parra</option>
+  <option>Porvorim</option>
+  <option>Saligao</option>
+  <option>Sancoale</option>
+  <option>Siolim</option>
+  <option>Thivim</option>
+  <option>Thivim Railway Station</option>
+  <option>Vagator</option>
+  <option>Vasco</option>
+  <option>Vasco Railway Station</option>
+  <option>Vasco Busstand</option>
+  <option>Other</option>
+</select>
   <button onclick="bookNow()">Book Now</button>
 
 </div>
@@ -38,47 +102,102 @@ function bookNow() {
     return;
   }
 
-  // ---- DAY CALCULATION (9AM to 9AM rule) ----
-  let diffTime = drop - pickup;
+  // -------------------------
+  // SMART DAY COUNT (9AM BASE)
+  // -------------------------
+
+  let adjustedPickup = new Date(pickup);
+  let adjustedDrop = new Date(drop);
+
+  // If pickup between 4AM–9AM → treat as 9AM
+  if (pickup.getHours() >= 4 && pickup.getHours() < 9) {
+    adjustedPickup.setHours(9,0,0,0);
+  }
+
+  // If drop between 9AM–9:30AM → treat as 9AM
+  if (drop.getHours() == 9 && drop.getMinutes() <= 30) {
+    adjustedDrop.setHours(9,0,0,0);
+  }
+
+  // If pickup before 4AM → count previous day
+  if (pickup.getHours() < 4) {
+    adjustedPickup.setDate(adjustedPickup.getDate() - 1);
+  }
+
+  // If drop after 9:30AM → count extra day
+  if (drop.getHours() > 9 || 
+     (drop.getHours() == 9 && drop.getMinutes() > 30)) {
+    adjustedDrop.setDate(adjustedDrop.getDate() + 1);
+  }
+
+  let diffTime = adjustedDrop - adjustedPickup;
   let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  // ---- RENT ----
+  // -------------------------
+  // RENT
+  // -------------------------
+
   let rent = 3000 * days;
 
-  // ---- DELIVERY CHARGE CHECK ----
+  // -------------------------
+  // DELIVERY CHARGE BY LOCATION
+  // -------------------------
+
   function isNight(hour) {
     return (hour < 9 || hour >= 21);
   }
 
-  let pickupHour = pickup.getHours();
-  let dropHour = drop.getHours();
+  function getLocationCharge(location, hour) {
 
-  let deliveryCharge = 500;
+    let specialLocations = [
+      "Karmali Station",
+      "Madgaon",
+      "Madgaon Railway Station",
+      "Madgaon Bus Stand",
+      "Majorda",
+      "Morjim"
+    ];
 
-  if (isNight(pickupHour) || isNight(dropHour)) {
-    deliveryCharge = 800;
+    let night = isNight(hour);
+
+    if (specialLocations.includes(location)) {
+      return night ? 1000 : 800;
+    } else {
+      return night ? 800 : 500;
+    }
   }
 
-  // ---- FIXED CHARGE ----
-  let fixedCharge = 2000;
+  let pickupCharge = getLocationCharge(pickupLocation, pickup.getHours());
+  let dropCharge = getLocationCharge(dropLocation, drop.getHours());
 
+  let deliveryCharge = pickupCharge + dropCharge;
+
+  // -------------------------
+  // FIXED + DEPOSIT
+  // -------------------------
+
+  let fixedCharge = 2000;
   let totalRent = rent + deliveryCharge + fixedCharge;
 
-  // ---- DEPOSIT ----
   let deposit = 5000;
-
-  // ---- FINAL ----
   let payable = totalRent + deposit;
+
   let advance = 2000;
   let balance = payable - advance;
 
-  // ---- FORMAT DATE ----
+  // -------------------------
+  // FORMAT DATE
+  // -------------------------
+
   let options = { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' };
 
   let pickupFormatted = pickup.toLocaleString('en-IN', options);
   let dropFormatted = drop.toLocaleString('en-IN', options);
 
-  // ---- WHATSAPP MESSAGE ----
+  // -------------------------
+  // WHATSAPP MESSAGE
+  // -------------------------
+
   let message =
 `Delivery - ${pickupFormatted} at ${pickupLocation}
 Return - ${dropFormatted} at ${dropLocation}
