@@ -84,19 +84,37 @@
 <input type="text" id="dropOther" placeholder="Enter location" style="display:none;">
   <button onclick="calculatePrice()">Check Price</button>
 </div>
-<div id="pricePreview" style="display:none; border:1px solid #ddd; padding:15px; margin-top:20px;">
-  <h3>Booking Summary</h3>
-  <p>Days: <span id="previewDays"></span></p>
-  <p>Total Rent: ₹<span id="previewRent"></span></p>
-  <p>Refundable Deposit: ₹5000</p>
-  <hr>
-  <p><strong>Total Payable: ₹<span id="previewPayable"></span></strong></p>
-  <p>Advance: ₹2000</p>
-  <p>Balance at Delivery: ₹<span id="previewBalance"></span></p>
+<div id="pricePreview" style="display:none; margin-top:20px;">
 
-  <button onclick="sendToWhatsApp()">Book Now</button>
-</div>
-<script>
+  <!-- Hycross -->
+  <div style="border:1px solid #ddd; padding:15px; margin-bottom:20px;">
+    <h3>Hycross Automatic</h3>
+    <p>Days: <span id="hycrossDays"></span></p>
+    <p>Total Rent: ₹<span id="hycrossRent"></span></p>
+    <p>Refundable Deposit: ₹5000</p>
+    <hr>
+    <p><strong>Total Payable: ₹<span id="hycrossPayable"></span></strong></p>
+    <p>Advance: ₹2000</p>
+    <p>Balance at Delivery: ₹<span id="hycrossBalance"></span></p>
+
+    <button onclick="sendToWhatsApp('hycross')">Book Hycross</button>
+  </div>
+
+  <!-- Thar -->
+  <div style="border:1px solid #ddd; padding:15px;">
+    <h3>Thar Manual</h3>
+    <p>Days: <span id="tharDays"></span></p>
+    <p>Total Rent: ₹<span id="tharRent"></span></p>
+    <p>Refundable Deposit: ₹5000</p>
+    <hr>
+    <p><strong>Total Payable: ₹<span id="tharPayable"></span></strong></p>
+    <p>Advance: ₹2000</p>
+    <p>Balance at Delivery: ₹<span id="tharBalance"></span></p>
+
+    <button onclick="sendToWhatsApp('thar')">Book Thar</button>
+  </div>
+
+</div><script>
 let bookingData = {};
 
 function calculatePrice(){
@@ -170,45 +188,85 @@ if(days < 1) days = 1;
 
   // -------- RENT --------
 
-  let rent = 3000 * days;
+// Base rates
+let hycrossRate = 3000;
+let tharRate = 2500;
 
-  function isNight(hour){
-    return (hour < 9 || hour >= 21);
+// ---- DELIVERY CHARGE (same for both) ----
+
+function isNight(hour){
+  return (hour < 9 || hour >= 21);
+}
+
+let nightCondition = 
+  isNight(pickup.getHours()) || isNight(drop.getHours());
+
+let specialLocations = [
+  "Karmali Station",
+  "Madgaon",
+  "Madgaon Railway Station",
+  "Madgaon Bus Stand",
+  "Majorda",
+  "Morjim"
+];
+
+let isSpecial = 
+  specialLocations.includes(pickupLocation) ||
+  specialLocations.includes(dropLocation);
+
+let deliveryCharge;
+
+if(isSpecial){
+  deliveryCharge = nightCondition ? 1000 : 800;
+}else{
+  deliveryCharge = nightCondition ? 800 : 500;
+}
+
+let fixedCharge = 2000;
+let deposit = 5000;
+let advance = 2000;
+
+// ---- HYCR0SS ----
+let hycrossRent = (hycrossRate * days) + deliveryCharge + fixedCharge;
+let hycrossPayable = hycrossRent + deposit;
+let hycrossBalance = hycrossPayable - advance;
+
+// ---- THAR ----
+let tharRent = (tharRate * days) + deliveryCharge + fixedCharge;
+let tharPayable = tharRent + deposit;
+let tharBalance = tharPayable - advance;
+
+// Store for WhatsApp
+bookingData = {
+  pickup,
+  drop,
+  pickupLocation,
+  dropLocation,
+  days,
+  hycross: {
+    rent: hycrossRent,
+    payable: hycrossPayable,
+    balance: hycrossBalance
+  },
+  thar: {
+    rent: tharRent,
+    payable: tharPayable,
+    balance: tharBalance
   }
+};
 
-  let nightCondition = 
-    isNight(pickup.getHours()) || isNight(drop.getHours());
+// Update UI
+document.getElementById("hycrossDays").innerText = days;
+document.getElementById("hycrossRent").innerText = hycrossRent;
+document.getElementById("hycrossPayable").innerText = hycrossPayable;
+document.getElementById("hycrossBalance").innerText = hycrossBalance;
 
-  let specialLocations = [
-    "Karmali Station",
-    "Madgaon",
-    "Madgaon Railway Station",
-    "Madgaon Bus Stand",
-    "Majorda",
-    "Morjim"
-  ];
+document.getElementById("tharDays").innerText = days;
+document.getElementById("tharRent").innerText = tharRent;
+document.getElementById("tharPayable").innerText = tharPayable;
+document.getElementById("tharBalance").innerText = tharBalance;
 
-  let isSpecial = 
-    specialLocations.includes(pickupLocation) ||
-    specialLocations.includes(dropLocation);
-
-  let deliveryCharge;
-
-  if(isSpecial){
-    deliveryCharge = nightCondition ? 1000 : 800;
-  } else {
-    deliveryCharge = nightCondition ? 800 : 500;
-  }
-
-  let fixedCharge = 2000;
-  let totalRent = rent + deliveryCharge + fixedCharge;
-
-  let deposit = 5000;
-  let payable = totalRent + deposit;
-
-  let advance = 2000;
-  let balance = payable - advance;
-
+document.getElementById("pricePreview").style.display = "block";
   // ---- SAVE DATA FOR WHATSAPP ----
   bookingData = {
     pickup,
@@ -233,7 +291,24 @@ if(days < 1) days = 1;
 }
 
 
-function sendToWhatsApp(){
+function sendToWhatsApp(car){
+
+  let carName;
+  let rent;
+  let payable;
+  let balance;
+
+  if(car === "hycross"){
+    carName = "(1) Hycross Automatic";
+    rent = bookingData.hycross.rent;
+    payable = bookingData.hycross.payable;
+    balance = bookingData.hycross.balance;
+  }else{
+    carName = "(1) Thar Manual";
+    rent = bookingData.thar.rent;
+    payable = bookingData.thar.payable;
+    balance = bookingData.thar.balance;
+  }
 
   let options = {
     day:'numeric',
@@ -249,21 +324,20 @@ function sendToWhatsApp(){
   let message =
 `Delivery - ${pickupFormatted} at ${bookingData.pickupLocation}
 Return - ${dropFormatted} at ${bookingData.dropLocation}
-Car Model - (1) Hycross Automatic
+Car Model - ${carName}
 ________
-Total rent - ₹${bookingData.totalRent}
-Refundable deposit - ₹${bookingData.deposit}
+Total rent - ₹${rent}
+Refundable deposit - ₹5000
 ________
-Total - ₹${bookingData.payable}
-Pre Booking - ₹${bookingData.advance}
-To Pay During Car Delivery - ₹${bookingData.balance}
+Total - ₹${payable}
+Pre Booking - ₹2000
+To Pay During Car Delivery - ₹${balance}
 ________
-I want to book (1) Hycross Automatic.
+I want to book ${carName}.
 Please share your QR for advance payment.`;
 
   let whatsappURL =
   "https://wa.me/917984509196?text=" + encodeURIComponent(message);
 
   window.open(whatsappURL, "_blank");
-}
-</script>
+}</script>
