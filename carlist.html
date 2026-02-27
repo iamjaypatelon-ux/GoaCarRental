@@ -82,23 +82,24 @@
 </select>
 
 <input type="text" id="dropOther" placeholder="Enter location" style="display:none;">
-  <button onclick="bookNow()">Book Now</button>
+  <button onclick="calculatePrice()">Check Price</button>
+</div>
+<div id="pricePreview" style="display:none; border:1px solid #ddd; padding:15px; margin-top:20px;">
+  <h3>Booking Summary</h3>
+  <p>Days: <span id="previewDays"></span></p>
+  <p>Total Rent: ₹<span id="previewRent"></span></p>
+  <p>Refundable Deposit: ₹5000</p>
+  <hr>
+  <p><strong>Total Payable: ₹<span id="previewPayable"></span></strong></p>
+  <p>Advance: ₹2000</p>
+  <p>Balance at Delivery: ₹<span id="previewBalance"></span></p>
 
+  <button onclick="sendToWhatsApp()">Book Now</button>
 </div>
 <script>
-function toggleOther(type){
-  if(type === 'pickup'){
-    let val = document.getElementById("pickupLocation").value;
-    document.getElementById("pickupOther").style.display = 
-      (val === "Other") ? "block" : "none";
-  } else {
-    let val = document.getElementById("dropLocation").value;
-    document.getElementById("dropOther").style.display = 
-      (val === "Other") ? "block" : "none";
-  }
-}
+let bookingData = {};
 
-function bookNow(){
+function calculatePrice(){
 
   let pickupInput = document.getElementById("pickup").value;
   let dropInput = document.getElementById("drop").value;
@@ -126,29 +127,23 @@ function bookNow(){
     dropLocation = document.getElementById("dropOther").value;
   }
 
-  // ---------------------------
-  // SMART 9AM–9AM DAY LOGIC
-  // ---------------------------
+  // -------- SMART DAY LOGIC --------
 
   let adjustedPickup = new Date(pickup);
   let adjustedDrop = new Date(drop);
 
-  // 4AM–9AM pickup = treat as 9AM
   if(pickup.getHours() >= 4 && pickup.getHours() < 9){
     adjustedPickup.setHours(9,0,0,0);
   }
 
-  // Before 4AM pickup = previous day
   if(pickup.getHours() < 4){
     adjustedPickup.setDate(adjustedPickup.getDate() - 1);
   }
 
-  // 9AM–9:30AM return = treat as 9AM
   if(drop.getHours() === 9 && drop.getMinutes() <= 30){
     adjustedDrop.setHours(9,0,0,0);
   }
 
-  // After 9:30AM return = next day
   if(drop.getHours() > 9 || 
     (drop.getHours() === 9 && drop.getMinutes() > 30)){
     adjustedDrop.setDate(adjustedDrop.getDate() + 1);
@@ -157,15 +152,9 @@ function bookNow(){
   let diffTime = adjustedDrop - adjustedPickup;
   let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  // ---------------------------
-  // RENT
-  // ---------------------------
+  // -------- RENT --------
 
   let rent = 3000 * days;
-
-  // ---------------------------
-  // DELIVERY CHARGE (FINAL LOGIC)
-  // ---------------------------
 
   function isNight(hour){
     return (hour < 9 || hour >= 21);
@@ -195,10 +184,6 @@ function bookNow(){
     deliveryCharge = nightCondition ? 800 : 500;
   }
 
-  // ---------------------------
-  // FINAL CALCULATION
-  // ---------------------------
-
   let fixedCharge = 2000;
   let totalRent = rent + deliveryCharge + fixedCharge;
 
@@ -208,9 +193,31 @@ function bookNow(){
   let advance = 2000;
   let balance = payable - advance;
 
-  // ---------------------------
-  // FORMAT DATE
-  // ---------------------------
+  // ---- SAVE DATA FOR WHATSAPP ----
+  bookingData = {
+    pickup,
+    drop,
+    pickupLocation,
+    dropLocation,
+    totalRent,
+    deposit,
+    payable,
+    advance,
+    balance,
+    days
+  };
+
+  // ---- SHOW PREVIEW ----
+  document.getElementById("previewDays").innerText = days;
+  document.getElementById("previewRent").innerText = totalRent;
+  document.getElementById("previewPayable").innerText = payable;
+  document.getElementById("previewBalance").innerText = balance;
+
+  document.getElementById("pricePreview").style.display = "block";
+}
+
+
+function sendToWhatsApp(){
 
   let options = {
     day:'numeric',
@@ -220,29 +227,25 @@ function bookNow(){
     minute:'numeric'
   };
 
-  let pickupFormatted = pickup.toLocaleString('en-IN', options);
-  let dropFormatted = drop.toLocaleString('en-IN', options);
-
-  // ---------------------------
-  // WHATSAPP MESSAGE
-  // ---------------------------
+  let pickupFormatted = bookingData.pickup.toLocaleString('en-IN', options);
+  let dropFormatted = bookingData.drop.toLocaleString('en-IN', options);
 
   let message =
-`Delivery - ${pickupFormatted} at ${pickupLocation}
-Return - ${dropFormatted} at ${dropLocation}
+`Delivery - ${pickupFormatted} at ${bookingData.pickupLocation}
+Return - ${dropFormatted} at ${bookingData.dropLocation}
 Car Model - (1) Hycross Automatic
 ________
-Total rent - ₹${totalRent}
-Refundable deposit - ₹${deposit}
+Total rent - ₹${bookingData.totalRent}
+Refundable deposit - ₹${bookingData.deposit}
 ________
-Total - ₹${payable}
-Pre Booking - ₹${advance}
-To Pay During Car Delivery - ₹${balance}
+Total - ₹${bookingData.payable}
+Pre Booking - ₹${bookingData.advance}
+To Pay During Car Delivery - ₹${bookingData.balance}
 ________
 I want to book (1) Hycross Automatic.
 Please share your QR for advance payment.`;
 
-  let whatsappURL = 
+  let whatsappURL =
   "https://wa.me/917984509196?text=" + encodeURIComponent(message);
 
   window.open(whatsappURL, "_blank");
