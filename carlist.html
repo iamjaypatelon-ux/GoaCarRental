@@ -9,7 +9,7 @@
   <input type="datetime-local" id="drop">
 
   <label>Delivery Location</label>
-<select id="pickupLocation">
+<select id="pickupLocation" onchange="toggleOther('pickup')">
   <option>Anjuna</option>
   <option>Arpora</option>
   <option>Assagao</option>
@@ -42,10 +42,11 @@
   <option>Vasco Busstand</option>
   <option>Other</option>
 </select>
+
+<input type="text" id="pickupOther" placeholder="Enter location" style="display:none;">
 
 <label>Return Location</label>
-<select id="dropLocation">
-
+<select id="dropLocation" onchange="toggleOther('drop')">
   <option>Anjuna</option>
   <option>Arpora</option>
   <option>Assagao</option>
@@ -77,104 +78,126 @@
   <option>Vasco Railway Station</option>
   <option>Vasco Busstand</option>
   <option>Other</option>
+
 </select>
+
+<input type="text" id="dropOther" placeholder="Enter location" style="display:none;">
   <button onclick="bookNow()">Book Now</button>
 
 </div>
 <script>
-function bookNow() {
+function toggleOther(type){
+  if(type === 'pickup'){
+    let val = document.getElementById("pickupLocation").value;
+    document.getElementById("pickupOther").style.display = 
+      (val === "Other") ? "block" : "none";
+  } else {
+    let val = document.getElementById("dropLocation").value;
+    document.getElementById("dropOther").style.display = 
+      (val === "Other") ? "block" : "none";
+  }
+}
+
+function bookNow(){
 
   let pickupInput = document.getElementById("pickup").value;
   let dropInput = document.getElementById("drop").value;
-  let pickupLocation = document.getElementById("pickupLocation").value;
-  let dropLocation = document.getElementById("dropLocation").value;
 
-  if (!pickupInput || !dropInput) {
-    alert("Please select dates");
+  if(!pickupInput || !dropInput){
+    alert("Select dates");
     return;
   }
 
   let pickup = new Date(pickupInput);
   let drop = new Date(dropInput);
 
-  if (drop <= pickup) {
+  if(drop <= pickup){
     alert("Return must be after delivery");
     return;
   }
 
-  // -------------------------
-  // SMART DAY COUNT (9AM BASE)
-  // -------------------------
+  let pickupLocation = document.getElementById("pickupLocation").value;
+  let dropLocation = document.getElementById("dropLocation").value;
+
+  if(pickupLocation === "Other"){
+    pickupLocation = document.getElementById("pickupOther").value;
+  }
+  if(dropLocation === "Other"){
+    dropLocation = document.getElementById("dropOther").value;
+  }
+
+  // ---------------------------
+  // SMART 9AM–9AM DAY LOGIC
+  // ---------------------------
 
   let adjustedPickup = new Date(pickup);
   let adjustedDrop = new Date(drop);
 
-  // If pickup between 4AM–9AM → treat as 9AM
-  if (pickup.getHours() >= 4 && pickup.getHours() < 9) {
+  // 4AM–9AM pickup = treat as 9AM
+  if(pickup.getHours() >= 4 && pickup.getHours() < 9){
     adjustedPickup.setHours(9,0,0,0);
   }
 
-  // If drop between 9AM–9:30AM → treat as 9AM
-  if (drop.getHours() == 9 && drop.getMinutes() <= 30) {
-    adjustedDrop.setHours(9,0,0,0);
-  }
-
-  // If pickup before 4AM → count previous day
-  if (pickup.getHours() < 4) {
+  // Before 4AM pickup = previous day
+  if(pickup.getHours() < 4){
     adjustedPickup.setDate(adjustedPickup.getDate() - 1);
   }
 
-  // If drop after 9:30AM → count extra day
-  if (drop.getHours() > 9 || 
-     (drop.getHours() == 9 && drop.getMinutes() > 30)) {
+  // 9AM–9:30AM return = treat as 9AM
+  if(drop.getHours() === 9 && drop.getMinutes() <= 30){
+    adjustedDrop.setHours(9,0,0,0);
+  }
+
+  // After 9:30AM return = next day
+  if(drop.getHours() > 9 || 
+    (drop.getHours() === 9 && drop.getMinutes() > 30)){
     adjustedDrop.setDate(adjustedDrop.getDate() + 1);
   }
 
   let diffTime = adjustedDrop - adjustedPickup;
   let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-  // -------------------------
+  // ---------------------------
   // RENT
-  // -------------------------
+  // ---------------------------
 
   let rent = 3000 * days;
 
-  // -------------------------
-  // DELIVERY CHARGE BY LOCATION
-  // -------------------------
+  // ---------------------------
+  // DELIVERY CHARGE (FINAL LOGIC)
+  // ---------------------------
 
-  function isNight(hour) {
+  function isNight(hour){
     return (hour < 9 || hour >= 21);
   }
 
-  function getLocationCharge(location, hour) {
+  let nightCondition = 
+    isNight(pickup.getHours()) || isNight(drop.getHours());
 
-    let specialLocations = [
-      "Karmali Station",
-      "Madgaon",
-      "Madgaon Railway Station",
-      "Madgaon Bus Stand",
-      "Majorda",
-      "Morjim"
-    ];
+  let specialLocations = [
+    "Karmali Station",
+    "Madgaon",
+    "Madgaon Railway Station",
+    "Madgaon Bus Stand",
+    "Majorda",
+    "Morjim"
+  ];
 
-    let night = isNight(hour);
+  let isSpecial = 
+    specialLocations.includes(pickupLocation) ||
+    specialLocations.includes(dropLocation);
 
-    if (specialLocations.includes(location)) {
-      return night ? 1000 : 800;
-    } else {
-      return night ? 800 : 500;
-    }
+  let deliveryCharge;
+
+  if(isSpecial){
+    deliveryCharge = nightCondition ? 1000 : 800;
+  } else {
+    deliveryCharge = nightCondition ? 800 : 500;
   }
 
-  let pickupCharge = getLocationCharge(pickupLocation, pickup.getHours());
-  let dropCharge = getLocationCharge(dropLocation, drop.getHours());
-
-  let deliveryCharge = pickupCharge + dropCharge;
-
-  // -------------------------
-  // FIXED + DEPOSIT
-  // -------------------------
+  // ---------------------------
+  // FINAL CALCULATION
+  // ---------------------------
 
   let fixedCharge = 2000;
   let totalRent = rent + deliveryCharge + fixedCharge;
@@ -185,18 +208,24 @@ function bookNow() {
   let advance = 2000;
   let balance = payable - advance;
 
-  // -------------------------
+  // ---------------------------
   // FORMAT DATE
-  // -------------------------
+  // ---------------------------
 
-  let options = { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+  let options = {
+    day:'numeric',
+    month:'long',
+    year:'numeric',
+    hour:'numeric',
+    minute:'numeric'
+  };
 
   let pickupFormatted = pickup.toLocaleString('en-IN', options);
   let dropFormatted = drop.toLocaleString('en-IN', options);
 
-  // -------------------------
+  // ---------------------------
   // WHATSAPP MESSAGE
-  // -------------------------
+  // ---------------------------
 
   let message =
 `Delivery - ${pickupFormatted} at ${pickupLocation}
@@ -213,7 +242,8 @@ ________
 I want to book (1) Hycross Automatic.
 Please share your QR for advance payment.`;
 
-  let whatsappURL = "https://wa.me/917984509196?text=" + encodeURIComponent(message);
+  let whatsappURL = 
+  "https://wa.me/917984509196?text=" + encodeURIComponent(message);
 
   window.open(whatsappURL, "_blank");
 }
