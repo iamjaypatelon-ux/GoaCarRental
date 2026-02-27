@@ -1,48 +1,34 @@
-<style>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RentalCarGoa Compare</title>
 
-/* Page Background */
+<style>
 body{
   background:#f5f7f6;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:Segoe UI, sans-serif;
   margin:0;
-  padding:20px;
+  padding:15px;
 }
 
-/* Main Container */
 .booking-container{
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
-  background:#ffffff;
-  padding:30px;
+  background:#fff;
+  padding:20px;
   border-radius:14px;
   box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
-/* Headings */
-.booking-container h2{
-  color:#075E54;
-  margin-bottom:20px;
-}
-
-/* Inputs & Select */
-.booking-container input,
-.booking-container select{
+input, select{
   width:100%;
   padding:12px;
   margin-bottom:15px;
   border-radius:8px;
   border:1px solid #ddd;
-  font-size:14px;
-  transition:0.2s;
 }
 
-.booking-container input:focus,
-.booking-container select:focus{
-  border-color:#25D366;
-  outline:none;
-}
-
-/* Check Price Button */
 .primary-btn{
   width:100%;
   padding:14px;
@@ -52,69 +38,39 @@ body{
   border-radius:10px;
   font-size:16px;
   cursor:pointer;
-  transition:0.2s;
 }
 
-.primary-btn:hover{
-  background:#064c43;
-}
-
-/* Quote Cards */
-.car-img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:15px;
-  box-shadow:0 6px 15px rgba(0,0,0,0.05);
-}
-.quote-card{
-  transition:0.3s;
-}
-
-.quote-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 15px 30px rgba(0,0,0,0.08);
-}
-  .quote-wrapper{
-  display:flex;
+.quote-wrapper{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap:20px;
   margin-top:25px;
-  flex-wrap:wrap;
 }
 
 .quote-card{
-  flex:1;
-  min-width:280px;
-  background:#ffffff;
+  background:#fff;
   border-radius:14px;
-  padding:20px;
+  padding:18px;
+  border:1px solid #eee;
   box-shadow:0 8px 20px rgba(0,0,0,0.05);
-  border:1px solid #e8e8e8;
-  position:relative;
 }
 
-.quote-card h3{
-  color:#075E54;
-  margin-top:0;
-}
-
-.quote-card hr{
-  border:none;
-  border-top:1px solid #eee;
-  margin:15px 0;
+.car-img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:12px;
 }
 
 .highlight{
   background:#e6f7f1;
   padding:8px;
   border-radius:8px;
-  margin:8px 0;
   font-weight:600;
-  color:#075E54;
+  margin:8px 0;
 }
 
-/* WhatsApp Button */
 .whatsapp-btn{
   width:100%;
   padding:12px;
@@ -122,167 +78,70 @@ body{
   border:none;
   border-radius:8px;
   color:white;
-  font-size:15px;
   cursor:pointer;
-  margin-top:10px;
-  transition:0.2s;
 }
-
-.whatsapp-btn:hover{
-  background:#1ebe5d;
-}
-
-/* Best Value Badge */
-.badge{
-  position:absolute;
-  top:-10px;
-  right:15px;
-  background:#25D366;
-  color:white;
-  padding:5px 10px;
-  font-size:12px;
-  border-radius:20px;
-}
-
 </style>
+</head>
+
+<body>
 
 <div class="booking-container">
 
-  <h2>Compare & Book Your Car</h2>
+<h2>Compare & Book</h2>
 
-  <label>Delivery Date & Time</label>
-  <input type="datetime-local" id="pickup">
+<label>Delivery Date & Time</label>
+<input type="datetime-local" id="pickup">
 
-  <label>Return Date & Time</label>
-  <input type="datetime-local" id="drop">
+<label>Return Date & Time</label>
+<input type="datetime-local" id="drop">
 
-  <label>Delivery Location</label>
-  <select id="pickupLocation" onchange="toggleOther('pickup')">
+<label>Location</label>
+<select id="location">
   <option>Anjuna</option>
-  <option>Arpora</option>
-  <option>Assagao</option>
-  <option>Baga</option>
-  <option>Calangute</option>
-  <option>Candolim</option>
-  <option>Dabolim</option>
-  <option>Dabolim Airport</option>
-  <option>Karmali Station</option>
-  <option>Madgaon</option>
-  <option>Madgaon Railway Station</option>
-  <option>Madgaon Bus Stand</option>
-  <option>Mapusa</option>
-  <option>Mapusa Bus Stop</option>
-  <option>Majorda</option>
-  <option>Mopa Airport</option>
   <option>Morjim</option>
-  <option>Panjim</option>
-  <option>Panjim Bus Stand</option>
-  <option>Parra</option>
-  <option>Porvorim</option>
-  <option>Saligao</option>
-  <option>Sancoale</option>
-  <option>Siolim</option>
-  <option>Thivim</option>
-  <option>Thivim Railway Station</option>
-  <option>Vagator</option>
+  <option>Madgaon</option>
   <option>Vasco</option>
-  <option>Vasco Railway Station</option>
-  <option>Vasco Busstand</option>
-  <option>Other</option>
 </select>
 
-<input type="text" id="pickupOther" placeholder="Enter location" style="display:none;">
+<button class="primary-btn" onclick="calculatePrice()">Check Price</button>
 
-<label>Return Location</label>
-  <select id="dropLocation" onchange="toggleOther('drop')">
-  <option>Anjuna</option>
-  <option>Arpora</option>
-  <option>Assagao</option>
-  <option>Baga</option>
-  <option>Calangute</option>
-  <option>Candolim</option>
-  <option>Dabolim</option>
-  <option>Dabolim Airport</option>
-  <option>Karmali Station</option>
-  <option>Madgaon</option>
-  <option>Madgaon Railway Station</option>
-  <option>Madgaon Bus Stand</option>
-  <option>Mapusa</option>
-  <option>Mapusa Bus Stop</option>
-  <option>Majorda</option>
-  <option>Mopa Airport</option>
-  <option>Morjim</option>
-  <option>Panjim</option>
-  <option>Panjim Bus Stand</option>
-  <option>Parra</option>
-  <option>Porvorim</option>
-  <option>Saligao</option>
-  <option>Sancoale</option>
-  <option>Siolim</option>
-  <option>Thivim</option>
-  <option>Thivim Railway Station</option>
-  <option>Vagator</option>
-  <option>Vasco</option>
-  <option>Vasco Railway Station</option>
-  <option>Vasco Busstand</option>
-  <option>Other</option>
+<div id="pricePreview" style="display:none;">
+  <div class="quote-wrapper" id="quoteWrapper"></div>
+</div>
 
-</select>
+</div>
 
-<input type="text" id="dropOther" placeholder="Enter location" style="display:none;">
-  <button class="primary-btn" onclick="calculatePrice()">
-    Check Price
-  </button>
+<script>
 
-  <div id="pricePreview" style="display:none;">
+const cars = [
+  { name:"Hycross Automatic", rate:3000, image:"https://via.placeholder.com/400x200" },
+  { name:"Thar Manual", rate:2500, image:"https://via.placeholder.com/400x200" }
+];
 
-    <div class="quote-wrapper">
-
-      <!-- Hycross -->
-      <div class="quote-card">
-        <span class="badge">Premium</span>
-        <img src="Toyota Innova Hycross.png" class="car-img">
-        <h3>Hycross Automatic</h3>
-        <p>Days: <span id="hycrossDays"></span></p>
-        <p>Total Rent: ₹<span id="hycrossRent"></span></p>
-        <div class="highlight">
-          Total Payable: ₹<span id="hycrossPayable"></span>
-        </div>
-        <p>Refundable Deposit: ₹5000</p>
-        <p>Advance: ₹2000</p>
-        <p>Balance: ₹<span id="hycrossBalance"></span></p>
-
-        <button class="whatsapp-btn"
-          onclick="sendToWhatsApp('hycross')">
-          Book on WhatsApp
-        </button>
-      </div>
-
-      <!-- Thar -->
-      <div class="quote-card">
-<img src="Thar 4x4 (Manual).png" class="car-img">
-        <h3>Thar Manual</h3>
-        <p>Days: <span id="tharDays"></span></p>
-        <p>Total Rent: ₹<span id="tharRent"></span></p>
-        <div class="highlight">
-          Total Payable: ₹<span id="tharPayable"></span>
-        </div>
-        <p>Refundable Deposit: ₹5000</p>
-        <p>Advance: ₹2000</p>
-        <p>Balance: ₹<span id="tharBalance"></span></p>
-
-        <button class="whatsapp-btn"
-          onclick="sendToWhatsApp('thar')">
-          Book on WhatsApp
-        </button>
-      </div>
-
-    </div>
-
-  </div>
-
-</div><script>
 let bookingData = {};
+
+function getBillingPickup(date){
+  let d = new Date(date);
+
+  if(d.getHours() < 4){
+    d.setDate(d.getDate() - 1);
+  }
+
+  d.setHours(9,0,0,0);
+  return d;
+}
+
+function getBillingDrop(date){
+  let d = new Date(date);
+
+  if(d.getHours() > 9 || 
+    (d.getHours() === 9 && d.getMinutes() > 30)){
+    d.setDate(d.getDate() + 1);
+  }
+
+  d.setHours(9,0,0,0);
+  return d;
+}
 
 function calculatePrice(){
 
@@ -298,213 +157,68 @@ function calculatePrice(){
   let drop = new Date(dropInput);
 
   if(drop <= pickup){
-    alert("Return must be after delivery");
+    alert("Invalid dates");
     return;
   }
 
-  let pickupLocation = document.getElementById("pickupLocation").value;
-  let dropLocation = document.getElementById("dropLocation").value;
+  let billingPickup = getBillingPickup(pickup);
+  let billingDrop = getBillingDrop(drop);
 
-  if(pickupLocation === "Other"){
-    pickupLocation = document.getElementById("pickupOther").value;
-  }
-  if(dropLocation === "Other"){
-    dropLocation = document.getElementById("dropOther").value;
-  }
+  let diff = billingDrop - billingPickup;
+  let days = Math.ceil(diff / (1000*60*60*24));
+  if(days < 1) days = 1;
 
+  bookingData = { pickup, drop };
 
-// --- CONVERT TO BILLING 9AM ANCHOR ---
+  let wrapper = document.getElementById("quoteWrapper");
+  wrapper.innerHTML = "";
 
-function getBillingAnchorPickup(date){
-  let anchor = new Date(date);
+  cars.forEach(car => {
 
-  if(date.getHours() < 4){
-    // before 4AM → previous day 9AM
-    anchor.setDate(anchor.getDate() - 1);
-  }
+    let rent = (car.rate * days) + 2000 + 500;
+    let payable = rent + 5000;
+    let balance = payable - 2000;
 
-  // 4AM–9AM → same day 9AM
-  anchor.setHours(9,0,0,0);
-  return anchor;
-}
+    let card = `
+      <div class="quote-card">
+        <img src="${car.image}" class="car-img">
+        <h3>${car.name}</h3>
+        <p>Days: ${days}</p>
+        <p>Total Rent: ₹${rent}</p>
+        <div class="highlight">
+          Total Payable: ₹${payable}
+        </div>
+        <p>Refundable Deposit: ₹5000</p>
+        <p>Advance: ₹2000</p>
+        <p>Balance: ₹${balance}</p>
+        <button class="whatsapp-btn"
+        onclick="sendWhatsApp('${car.name}', ${rent}, ${payable}, ${balance})">
+        Book on WhatsApp
+        </button>
+      </div>
+    `;
 
-function getBillingAnchorDrop(date){
-  let anchor = new Date(date);
-
-  if(date.getHours() > 9 || 
-    (date.getHours() === 9 && date.getMinutes() > 30)){
-    // after 9:30AM → next day
-    anchor.setDate(anchor.getDate() + 1);
-  }
-
-  // up to 9:30AM → same day 9AM
-  anchor.setHours(9,0,0,0);
-  return anchor;
-}
-
-// --- CALCULATE DAYS PROPERLY ---
-
-let billingPickup = getBillingAnchorPickup(pickup);
-let billingDrop = getBillingAnchorDrop(drop);
-
-let diffTime = billingDrop - billingPickup;
-let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-if(days < 1) days = 1;
-
-
-  // -------- RENT --------
-
-// Base rates
-let hycrossRate = 3000;
-let tharRate = 2500;
-
-// ---- DELIVERY CHARGE (same for both) ----
-
-function isNight(hour){
-  return (hour < 9 || hour >= 21);
-}
-
-let nightCondition = 
-  isNight(pickup.getHours()) || isNight(drop.getHours());
-
-let specialLocations = [
-  "Karmali Station",
-  "Madgaon",
-  "Madgaon Railway Station",
-  "Madgaon Bus Stand",
-  "Majorda",
-  "Morjim"
-];
-
-let isSpecial = 
-  specialLocations.includes(pickupLocation) ||
-  specialLocations.includes(dropLocation);
-
-let deliveryCharge;
-
-if(isSpecial){
-  deliveryCharge = nightCondition ? 1000 : 800;
-}else{
-  deliveryCharge = nightCondition ? 800 : 500;
-}
-
-let fixedCharge = 2000;
-let deposit = 5000;
-let advance = 2000;
-
-// ---- HYCR0SS ----
-let hycrossRent = (hycrossRate * days) + deliveryCharge + fixedCharge;
-let hycrossPayable = hycrossRent + deposit;
-let hycrossBalance = hycrossPayable - advance;
-
-// ---- THAR ----
-let tharRent = (tharRate * days) + deliveryCharge + fixedCharge;
-let tharPayable = tharRent + deposit;
-let tharBalance = tharPayable - advance;
-
-// Store for WhatsApp
-bookingData = {
-  pickup,
-  drop,
-  pickupLocation,
-  dropLocation,
-  days,
-  hycross: {
-    rent: hycrossRent,
-    payable: hycrossPayable,
-    balance: hycrossBalance
-  },
-  thar: {
-    rent: tharRent,
-    payable: tharPayable,
-    balance: tharBalance
-  }
-};
-
-// Update UI
-document.getElementById("hycrossDays").innerText = days;
-document.getElementById("hycrossRent").innerText = hycrossRent;
-document.getElementById("hycrossPayable").innerText = hycrossPayable;
-document.getElementById("hycrossBalance").innerText = hycrossBalance;
-
-document.getElementById("tharDays").innerText = days;
-document.getElementById("tharRent").innerText = tharRent;
-document.getElementById("tharPayable").innerText = tharPayable;
-document.getElementById("tharBalance").innerText = tharBalance;
-
-document.getElementById("pricePreview").style.display = "block";
-  // ---- SAVE DATA FOR WHATSAPP ----
-  bookingData = {
-    pickup,
-    drop,
-    pickupLocation,
-    dropLocation,
-    totalRent,
-    deposit,
-    payable,
-    advance,
-    balance,
-    days
-  };
-
-  // ---- SHOW PREVIEW ----
-  document.getElementById("previewDays").innerText = days;
-  document.getElementById("previewRent").innerText = totalRent;
-  document.getElementById("previewPayable").innerText = payable;
-  document.getElementById("previewBalance").innerText = balance;
+    wrapper.innerHTML += card;
+  });
 
   document.getElementById("pricePreview").style.display = "block";
 }
 
-
-function sendToWhatsApp(car){
-
-  let carName;
-  let rent;
-  let payable;
-  let balance;
-
-  if(car === "hycross"){
-    carName = "(1) Hycross Automatic";
-    rent = bookingData.hycross.rent;
-    payable = bookingData.hycross.payable;
-    balance = bookingData.hycross.balance;
-  }else{
-    carName = "(1) Thar Manual";
-    rent = bookingData.thar.rent;
-    payable = bookingData.thar.payable;
-    balance = bookingData.thar.balance;
-  }
-
-  let options = {
-    day:'numeric',
-    month:'long',
-    year:'numeric',
-    hour:'numeric',
-    minute:'numeric'
-  };
-
-  let pickupFormatted = bookingData.pickup.toLocaleString('en-IN', options);
-  let dropFormatted = bookingData.drop.toLocaleString('en-IN', options);
+function sendWhatsApp(carName, rent, payable, balance){
 
   let message =
-`Delivery - ${pickupFormatted} at ${bookingData.pickupLocation}
-Return - ${dropFormatted} at ${bookingData.dropLocation}
-Car Model - ${carName}
-________
+`Car Model - ${carName}
 Total rent - ₹${rent}
-Refundable deposit - ₹5000
-________
 Total - ₹${payable}
-Pre Booking - ₹2000
-To Pay During Car Delivery - ₹${balance}
-________
-I want to book ${carName}.
-Please share your QR for advance payment.`;
+To Pay During Delivery - ₹${balance}
 
-  let whatsappURL =
-  "https://wa.me/917984509196?text=" + encodeURIComponent(message);
+I want to book ${carName}.`;
 
-  window.open(whatsappURL, "_blank");
-}</script>
+  let url = "https://wa.me/917984509196?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
