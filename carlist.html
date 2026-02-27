@@ -127,30 +127,46 @@ function calculatePrice(){
     dropLocation = document.getElementById("dropOther").value;
   }
 
-  // -------- SMART DAY LOGIC --------
 
-  let adjustedPickup = new Date(pickup);
-  let adjustedDrop = new Date(drop);
+// --- CONVERT TO BILLING 9AM ANCHOR ---
 
-  if(pickup.getHours() >= 4 && pickup.getHours() < 9){
-    adjustedPickup.setHours(9,0,0,0);
+function getBillingAnchorPickup(date){
+  let anchor = new Date(date);
+
+  if(date.getHours() < 4){
+    // before 4AM → previous day 9AM
+    anchor.setDate(anchor.getDate() - 1);
   }
 
-  if(pickup.getHours() < 4){
-    adjustedPickup.setDate(adjustedPickup.getDate() - 1);
+  // 4AM–9AM → same day 9AM
+  anchor.setHours(9,0,0,0);
+  return anchor;
+}
+
+function getBillingAnchorDrop(date){
+  let anchor = new Date(date);
+
+  if(date.getHours() > 9 || 
+    (date.getHours() === 9 && date.getMinutes() > 30)){
+    // after 9:30AM → next day
+    anchor.setDate(anchor.getDate() + 1);
   }
 
-  if(drop.getHours() === 9 && drop.getMinutes() <= 30){
-    adjustedDrop.setHours(9,0,0,0);
-  }
+  // up to 9:30AM → same day 9AM
+  anchor.setHours(9,0,0,0);
+  return anchor;
+}
 
-  if(drop.getHours() > 9 || 
-    (drop.getHours() === 9 && drop.getMinutes() > 30)){
-    adjustedDrop.setDate(adjustedDrop.getDate() + 1);
-  }
+// --- CALCULATE DAYS PROPERLY ---
 
-  let diffTime = adjustedDrop - adjustedPickup;
-  let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+let billingPickup = getBillingAnchorPickup(pickup);
+let billingDrop = getBillingAnchorDrop(drop);
+
+let diffTime = billingDrop - billingPickup;
+let days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+if(days < 1) days = 1;
+
 
   // -------- RENT --------
 
