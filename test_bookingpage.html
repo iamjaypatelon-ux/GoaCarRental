@@ -1,0 +1,40 @@
+<form onsubmit="goToCars(event)">
+
+<input type="datetime-local" id="pickup" required>
+<input type="datetime-local" id="drop" required>
+
+<select id="pickupLocation" required>
+  <option value="">Select Pickup Location</option>
+  <option>Anjuna</option>
+  <option>Morjim</option>
+  <option>Madgaon</option>
+</select>
+
+<select id="dropLocation" required>
+  <option value="">Select Return Location</option>
+  <option>Anjuna</option>
+  <option>Morjim</option>
+  <option>Madgaon</option>
+</select>
+
+<button type="submit">See Available Cars</button>
+
+</form>
+
+<script>
+function goToCars(e){
+  e.preventDefault();
+
+  let pickup = document.getElementById("pickup").value;
+  let drop = document.getElementById("drop").value;
+  let pickupLoc = document.getElementById("pickupLocation").value;
+  let dropLoc = document.getElementById("dropLocation").value;
+
+  let url = `cars.html?pickup=${encodeURIComponent(pickup)}
+  &drop=${encodeURIComponent(drop)}
+  &pickupLoc=${encodeURIComponent(pickupLoc)}
+  &dropLoc=${encodeURIComponent(dropLoc)}`;
+
+  window.location.href = url;
+}
+</script>
