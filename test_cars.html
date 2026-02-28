@@ -145,7 +145,71 @@ let fixed = 2000;
 
 let grid = document.getElementById("carGrid");
 
-Object.keysfunction book(name,rent,deposit,payable,advance,balance){
+Object.keys(categories).forEach(catKey => {
+
+  let filteredCars = cars.filter(car => car.category === catKey);
+  if(filteredCars.length === 0) return;
+
+  // Section Header
+  let header = document.createElement("div");
+  header.className = "section-header";
+  header.innerHTML = `
+    ${categories[catKey]}
+    <span>+</span>
+  `;
+  grid.appendChild(header);
+
+  // Section Grid
+  let sectionGrid = document.createElement("div");
+  sectionGrid.className = "section-grid";
+  grid.appendChild(sectionGrid);
+
+  filteredCars.forEach(car => {
+
+    let rent = (car.rate * days) + deliveryCharge + fixed;
+    let payable = rent + car.deposit;
+    let balance = payable - car.advance;
+
+    let card = `
+    <div class="card">
+      <img src="${car.image}">
+      <h4>${car.name}</h4>
+      <p>Total Rent: ₹${rent}</p>
+      <p>Refundable Deposit: ₹${car.deposit}</p>
+      <div class="highlight">
+        Total Payable: ₹${payable}
+      </div>
+      <p>Advance: ₹${car.advance}</p>
+      <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
+      <button class="btn"
+        onclick="book('${car.name}',${rent},${car.deposit},${payable},${car.advance},${balance})">
+        Book Now
+      </button>
+    </div>
+    `;
+
+    sectionGrid.innerHTML += card;
+  });
+
+  // Toggle open / close
+  header.addEventListener("click", function(){
+
+    sectionGrid.classList.toggle("active");
+
+    let icon = header.querySelector("span");
+
+    if(sectionGrid.classList.contains("active")){
+      icon.innerText = "−";
+    }else{
+      icon.innerText = "+";
+    }
+
+  });
+
+});
+
+// WhatsApp function
+function book(name,rent,deposit,payable,advance,balance){
 
 let message =
 `Delivery - ${pickup.toLocaleString()} at ${pickupLoc}
@@ -164,8 +228,7 @@ Please share your QR for advance payment.`;
 
 let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
 window.open(url,"_blank");
-}
-</script>
+}</script>
 
 </body>
 </html>
