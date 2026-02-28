@@ -39,20 +39,24 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
   margin:6px 0;
   font-weight:600;
 }
+h3{
+  margin-top:40px;
+  color:#075E54;
+}
 </style>
 </head>
 
 <body>
 
 <h2>Available Cars</h2>
+<div id="carGrid"></div>
 
 <script>
 
-// 30+ cars here
+// Correct cars array
 const cars = [
-  const cars = [
 
-  // Compact & Mid-Size
+  // Compact
   {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, image:"Swift (Manual).png", category:"compact"},
   {name:"Baleno", rate:1000, deposit:3000, advance:1000, image:"Baleno (Manual).png", category:"compact"},
 
@@ -69,15 +73,29 @@ const cars = [
   {name:"Fortuner", rate:4500, deposit:15000, advance:5000, image:"fortuner.png", category:"luxury"}
 
 ];
-// Get URL data
+
+const categories = {
+  compact: "Compact & Mid-Size Cars (5-Seaters)",
+  premium: "Premium (5-Seaters)",
+  adventure: "Adventure Rides – Thar Collection",
+  family: "Family & Group Rides (7-Seaters & SUVs)",
+  luxury: "Exclusive Luxury Cars"
+};
+
+// URL params
 const params = new URLSearchParams(window.location.search);
+
+if(!params.get("pickup")){
+  document.getElementById("carGrid").innerHTML = "<h3>Please go back and select dates.</h3>";
+  throw new Error("Missing booking details");
+}
 
 const pickup = new Date(params.get("pickup"));
 const drop = new Date(params.get("drop"));
 const pickupLoc = params.get("pickupLoc");
 const dropLoc = params.get("dropLoc");
 
-// ---- 9AM Billing Logic ----
+// Billing logic
 function billingPickup(d){
   let x = new Date(d);
   if(x.getHours()<4) x.setDate(x.getDate()-1);
@@ -98,64 +116,43 @@ let days = Math.ceil(
 );
 if(days<1) days=1;
 
-// Delivery charge logic simplified
 let deliveryCharge = 500;
 let fixed = 2000;
-let deposit = 5000;
 
 let grid = document.getElementById("carGrid");
 
-  const categories = {
-  compact: "Compact & Mid-Size Cars (5-Seaters)",
-  premium: "Premium (5-Seaters)",
-  adventure: "Adventure Rides – Thar Collection",
-  family: "Family & Group Rides (7-Seaters & SUVs)",
-  luxury: "Exclusive Luxury Cars"
-};
-  
 Object.keys(categories).forEach(catKey => {
 
-  // Filter cars of this category
   let filteredCars = cars.filter(car => car.category === catKey);
-
   if(filteredCars.length === 0) return;
 
-  // Create section title
   let sectionTitle = document.createElement("h3");
   sectionTitle.innerText = categories[catKey];
-  sectionTitle.style.marginTop = "40px";
-  sectionTitle.style.color = "#075E54";
-
   grid.appendChild(sectionTitle);
 
-  // Create section grid
   let sectionGrid = document.createElement("div");
   sectionGrid.className = "grid";
   grid.appendChild(sectionGrid);
 
   filteredCars.forEach(car => {
 
-    let deposit = car.deposit;
-    let advance = car.advance;
-
     let rent = (car.rate * days) + deliveryCharge + fixed;
-    let payable = rent + deposit;
-    let balance = payable - advance;
+    let payable = rent + car.deposit;
+    let balance = payable - car.advance;
 
     let card = `
     <div class="card">
       <img src="${car.image}">
-      <h3>${car.name}</h3>
-      <hr>
+      <h4>${car.name}</h4>
       <p>Total Rent: ₹${rent}</p>
-      <p>Refundable Deposit: ₹${deposit}</p>
+      <p>Refundable Deposit: ₹${car.deposit}</p>
       <div class="highlight">
         Total Payable: ₹${payable}
       </div>
-      <p>Advance: ₹${advance}</p>
+      <p>Advance: ₹${car.advance}</p>
       <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
       <button class="btn"
-        onclick="book('${car.name}',${rent},${deposit},${payable},${advance},${balance})">
+        onclick="book('${car.name}',${rent},${car.deposit},${payable},${car.advance},${balance})">
         Book Now
       </button>
     </div>
@@ -165,7 +162,7 @@ Object.keys(categories).forEach(catKey => {
   });
 
 });
-  
+
 function book(name,rent,deposit,payable,advance,balance){
 
 let message =
@@ -185,7 +182,8 @@ Please share your QR for advance payment.`;
 
 let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
 window.open(url,"_blank");
-}</script>
+}
+</script>
 
 </body>
 </html>
