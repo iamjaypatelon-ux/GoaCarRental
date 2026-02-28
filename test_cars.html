@@ -45,16 +45,29 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 <body>
 
 <h2>Available Cars</h2>
-<div class="grid" id="carGrid"></div>
 
 <script>
 
 // 30+ cars here
 const cars = [
-  {name:"Hycross Automatic", rate:3000, deposit:5000, advance:2000, image:"Toyota Innova Hycross.png"},
-  {name:"Thar Manual", rate:2500, deposit:5000, advance:2000, image:"Thar 4x4 (Manual).png"},
-  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, image:"Swift (Manual).png"},
-  {name:"Baleno", rate:1000, deposit:3000, advance:1000, image:"Baleno (Manual).png"}
+  const cars = [
+
+  // Compact & Mid-Size
+  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, image:"Swift (Manual).png", category:"compact"},
+  {name:"Baleno", rate:1000, deposit:3000, advance:1000, image:"Baleno (Manual).png", category:"compact"},
+
+  // Premium
+  {name:"Hycross Automatic", rate:3000, deposit:5000, advance:2000, image:"Toyota Innova Hycross.png", category:"premium"},
+
+  // Adventure
+  {name:"Thar Manual", rate:2500, deposit:5000, advance:2000, image:"Thar 4x4 (Manual).png", category:"adventure"},
+
+  // Family
+  {name:"Innova Crysta", rate:2800, deposit:6000, advance:2000, image:"crysta.png", category:"family"},
+
+  // Luxury
+  {name:"Fortuner", rate:4500, deposit:15000, advance:5000, image:"fortuner.png", category:"luxury"}
+
 ];
 // Get URL data
 const params = new URLSearchParams(window.location.search);
@@ -92,47 +105,67 @@ let deposit = 5000;
 
 let grid = document.getElementById("carGrid");
 
-cars.forEach(car=>{
-
-  let deposit = car.deposit;
-  let advance = car.advance;
-
-  let rent = (car.rate * days) + deliveryCharge + fixed;
-  let payable = rent + deposit;
-  let balance = payable - advance;
+  const categories = {
+  compact: "Compact & Mid-Size Cars (5-Seaters)",
+  premium: "Premium (5-Seaters)",
+  adventure: "Adventure Rides – Thar Collection",
+  family: "Family & Group Rides (7-Seaters & SUVs)",
+  luxury: "Exclusive Luxury Cars"
+};
   
- let card = `
-<div class="card">
+Object.keys(categories).forEach(catKey => {
 
-  <img src="${car.image}">
+  // Filter cars of this category
+  let filteredCars = cars.filter(car => car.category === catKey);
 
-  <h3>${car.name}</h3>
+  if(filteredCars.length === 0) return;
 
-  <hr>
+  // Create section title
+  let sectionTitle = document.createElement("h3");
+  sectionTitle.innerText = categories[catKey];
+  sectionTitle.style.marginTop = "40px";
+  sectionTitle.style.color = "#075E54";
 
-  <p>Total Rent: ₹${rent}</p>
-  <p>Refundable Deposit: ₹${deposit}</p>
+  grid.appendChild(sectionTitle);
 
-  <div class="highlight">
-    Total Payable: ₹${payable}
-  </div>
+  // Create section grid
+  let sectionGrid = document.createElement("div");
+  sectionGrid.className = "grid";
+  grid.appendChild(sectionGrid);
 
-  <p>Advance: ₹${advance}</p>
-<p><strong>To Pay During Delivery: ₹${balance}</strong></p>
+  filteredCars.forEach(car => {
 
-  <button class="btn"
-    onclick="book('${car.name}',${rent},${deposit},${payable},${advance},${balance})">
-    Book Now
-  </button>
+    let deposit = car.deposit;
+    let advance = car.advance;
 
-</div>
-`;
+    let rent = (car.rate * days) + deliveryCharge + fixed;
+    let payable = rent + deposit;
+    let balance = payable - advance;
 
-  
-  grid.innerHTML += card;
+    let card = `
+    <div class="card">
+      <img src="${car.image}">
+      <h3>${car.name}</h3>
+      <hr>
+      <p>Total Rent: ₹${rent}</p>
+      <p>Refundable Deposit: ₹${deposit}</p>
+      <div class="highlight">
+        Total Payable: ₹${payable}
+      </div>
+      <p>Advance: ₹${advance}</p>
+      <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
+      <button class="btn"
+        onclick="book('${car.name}',${rent},${deposit},${payable},${advance},${balance})">
+        Book Now
+      </button>
+    </div>
+    `;
+
+    sectionGrid.innerHTML += card;
+  });
 
 });
-
+  
 function book(name,rent,deposit,payable,advance,balance){
 
 let message =
