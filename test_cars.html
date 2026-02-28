@@ -140,11 +140,12 @@ function formatDateTime(date){
     month:'long',
     year:'numeric',
     hour:'numeric',
-    minute:'2-digit'
+    minute:'2-digit',
+    hour12:true
   };
 
   return date.toLocaleString('en-IN', options);
-}
+}  
   
 // Billing logic
 function billingPickup(d){
@@ -243,17 +244,17 @@ Object.keys(categories).forEach(catKey => {
 function book(name,rent,deposit,payable,advance,balance){
 
 let message =
-`Delivery - ${pickup.toLocaleString()} at ${pickupLoc}
-Return - ${drop.toLocaleString()} at ${dropLoc}
-Car Model - ${name}
-________
-Total rent - ₹${rent}
-Refundable deposit - ₹${deposit}
-________
-Total - ₹${payable}
-Pre Booking - ₹${advance}
-To Pay During Car Delivery - ₹${balance}
-________
+`*Delivery* - ${formatDateTime(pickup)}, ${pickupLoc}
+*Return* - ${formatDateTime(drop)}, ${dropLoc}
+*Car Model* - ${name}
+_________________________
+*Total Rent* - ₹${rent}
+*Refundable Deposit* - ₹${deposit}
+_________________________
+*Total Amount* - ₹${payable}
+*Advance* - ₹${advance}
+*Payable at Delivery* - ₹${balance}
+_________________________
 I want to book ${name}.
 Please share your QR for advance payment.`;
 
