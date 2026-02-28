@@ -39,11 +39,35 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
   margin:6px 0;
   font-weight:600;
 }
-h3{
-  margin-top:40px;
+.section-header{
+  background:#ffffff;
+  padding:14px;
+  border-radius:10px;
+  margin-top:20px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  font-weight:600;
   color:#075E54;
 }
-</style>
+
+.section-header span{
+  font-size:18px;
+  transition:0.3s;
+}
+
+.section-grid{
+  margin-top:15px;
+  display:none;
+}
+
+.section-grid.active{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+}</style>
 </head>
 
 <body>
@@ -121,49 +145,7 @@ let fixed = 2000;
 
 let grid = document.getElementById("carGrid");
 
-Object.keys(categories).forEach(catKey => {
-
-  let filteredCars = cars.filter(car => car.category === catKey);
-  if(filteredCars.length === 0) return;
-
-  let sectionTitle = document.createElement("h3");
-  sectionTitle.innerText = categories[catKey];
-  grid.appendChild(sectionTitle);
-
-  let sectionGrid = document.createElement("div");
-  sectionGrid.className = "grid";
-  grid.appendChild(sectionGrid);
-
-  filteredCars.forEach(car => {
-
-    let rent = (car.rate * days) + deliveryCharge + fixed;
-    let payable = rent + car.deposit;
-    let balance = payable - car.advance;
-
-    let card = `
-    <div class="card">
-      <img src="${car.image}">
-      <h4>${car.name}</h4>
-      <p>Total Rent: ₹${rent}</p>
-      <p>Refundable Deposit: ₹${car.deposit}</p>
-      <div class="highlight">
-        Total Payable: ₹${payable}
-      </div>
-      <p>Advance: ₹${car.advance}</p>
-      <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
-      <button class="btn"
-        onclick="book('${car.name}',${rent},${car.deposit},${payable},${car.advance},${balance})">
-        Book Now
-      </button>
-    </div>
-    `;
-
-    sectionGrid.innerHTML += card;
-  });
-
-});
-
-function book(name,rent,deposit,payable,advance,balance){
+Object.keysfunction book(name,rent,deposit,payable,advance,balance){
 
 let message =
 `Delivery - ${pickup.toLocaleString()} at ${pickupLoc}
