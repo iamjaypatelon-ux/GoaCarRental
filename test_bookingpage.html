@@ -144,6 +144,16 @@ function goToCars(e){
 
   window.location.href = url;
 }
+
+  const params = new URLSearchParams(window.location.search);
+
+if(params.get("pickup")){
+  document.getElementById("pickup").value = params.get("pickup");
+  document.getElementById("drop").value = params.get("drop");
+  document.getElementById("pickupLocation").value = params.get("pickupLoc");
+  document.getElementById("dropLocation").value = params.get("dropLoc");
+}
+
 </script>
 
 </body>
