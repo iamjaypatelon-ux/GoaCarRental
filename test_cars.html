@@ -174,8 +174,8 @@ let fixed = 2000;
 let grid = document.getElementById("carGrid");
 // Show booking summary
 document.getElementById("bookingSummary").innerHTML = `
-  <p><strong>Car Delivery :</strong> ${formatDateTime(pickup)} at ${pickupLoc}</p>
-  <p><strong>Car Return :</strong> ${formatDateTime(drop)} at ${dropLoc}</p>
+  <p><strong>Car Delivery :</strong> ${formatDateTime(pickup)}, ${pickupLoc}</p>
+  <p><strong>Car Return :</strong> ${formatDateTime(drop)}, ${dropLoc}</p>
 `;
 Object.keys(categories).forEach(catKey => {
 
