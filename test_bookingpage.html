@@ -1,8 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Your Car | RentalCarGoa</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background:#f5f7f6;
+}
+
+/* Header */
+.header{
+  background:#075E54;
+  color:white;
+  padding:18px;
+  text-align:center;
+  font-size:18px;
+  font-weight:600;
+}
+
+/* Main Container */
+.container{
+  max-width:500px;
+  margin:20px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* Labels */
+label{
+  font-size:14px;
+  color:#333;
+  font-weight:500;
+  display:block;
+  margin-bottom:6px;
+}
+
+/* Inputs */
+input, select{
+  width:100%;
+  padding:12px;
+  margin-bottom:16px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  font-size:14px;
+  box-sizing:border-box;
+  transition:0.2s;
+}
+
+input:focus, select:focus{
+  border-color:#25D366;
+  outline:none;
+}
+
+/* Button */
+button{
+  width:100%;
+  padding:14px;
+  background:#075E54;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+button:hover{
+  background:#064c43;
+}
+
+/* Mobile spacing */
+@media(max-width:480px){
+  .container{
+    margin:10px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  Compare & Book Your Car
+</div>
+
+<div class="container">
+
 <form onsubmit="goToCars(event)">
 
+<label>Delivery Date & Time</label>
 <input type="datetime-local" id="pickup" required>
+
+<label>Return Date & Time</label>
 <input type="datetime-local" id="drop" required>
 
+<label>Pickup Location</label>
 <select id="pickupLocation" required>
   <option value="">Select Pickup Location</option>
   <option>Anjuna</option>
@@ -10,6 +109,7 @@
   <option>Madgaon</option>
 </select>
 
+<label>Return Location</label>
 <select id="dropLocation" required>
   <option value="">Select Return Location</option>
   <option>Anjuna</option>
@@ -21,6 +121,8 @@
 
 </form>
 
+</div>
+
 <script>
 function goToCars(e){
   e.preventDefault();
@@ -30,6 +132,11 @@ function goToCars(e){
   let pickupLoc = document.getElementById("pickupLocation").value;
   let dropLoc = document.getElementById("dropLocation").value;
 
+  if(!pickup || !drop){
+    alert("Please select dates");
+    return;
+  }
+
   let url = "test_cars.html?pickup=" + encodeURIComponent(pickup) +
             "&drop=" + encodeURIComponent(drop) +
             "&pickupLoc=" + encodeURIComponent(pickupLoc) +
@@ -38,3 +145,6 @@ function goToCars(e){
   window.location.href = url;
 }
 </script>
+
+</body>
+</html>
