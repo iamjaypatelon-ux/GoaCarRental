@@ -18,6 +18,20 @@
   margin:6px 0;
   font-size:14px;
 }
+
+  .edit-btn{
+  margin-top:10px;
+  background:#075E54;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:6px;
+  font-size:13px;
+  cursor:pointer;
+}
+.edit-btn:hover{
+  background:#064c43;
+}
   
 body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 .grid{
@@ -176,8 +190,10 @@ let grid = document.getElementById("carGrid");
 document.getElementById("bookingSummary").innerHTML = `
   <p><strong>Car Delivery :</strong> ${formatDateTime(pickup)}, ${pickupLoc}</p>
   <p><strong>Car Return :</strong> ${formatDateTime(drop)}, ${dropLoc}</p>
+  <button class="edit-btn" onclick="goBackToEdit()">Edit Details</button>
 `;
-Object.keys(categories).forEach(catKey => {
+  
+  Object.keys(categories).forEach(catKey => {
 
   let filteredCars = cars.filter(car => car.category === catKey);
   if(filteredCars.length === 0) return;
@@ -240,6 +256,16 @@ Object.keys(categories).forEach(catKey => {
 
 });
 
+function goBackToEdit(){
+
+  let url = "booking.html?pickup=" + encodeURIComponent(params.get("pickup")) +
+            "&drop=" + encodeURIComponent(params.get("drop")) +
+            "&pickupLoc=" + encodeURIComponent(pickupLoc) +
+            "&dropLoc=" + encodeURIComponent(dropLoc);
+
+  window.location.href = url;
+}
+  
 // WhatsApp function
 function book(name,rent,deposit,payable,advance,balance){
 
