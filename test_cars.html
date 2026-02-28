@@ -19,9 +19,9 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 }
 .card img{
   width:100%;
-  height:150px;
+  aspect-ratio:1/1;
   object-fit:cover;
-  border-radius:8px;
+  border-radius:10px;
 }
 .btn{
   background:#25D366;
@@ -51,13 +51,11 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 
 // 30+ cars here
 const cars = [
-  {name:"Hycross Automatic", rate:3000, image:"Toyota Innova Hycross.png"},
-  {name:"Thar Manual", rate:2500, image:"Thar 4x4 (Manual).png"},
-  {name:"Swift Manual", rate:1800, image:"swift.png"},
-  {name:"Baleno", rate:1900, image:"baleno.png"}
-  // add all 30+ here
+  {name:"Hycross Automatic", rate:3000, deposit:5000, image:"Toyota Innova Hycross.png"},
+  {name:"Thar Manual", rate:2500, deposit:7000, image:"Thar 4x4 (Manual).png"},
+  {name:"Swift Manual", rate:1800, deposit:3000, image:"swift.png"},
+  {name:"Baleno", rate:1900, deposit:4000, image:"baleno.png"}
 ];
-
 // Get URL data
 const params = new URLSearchParams(window.location.search);
 
@@ -97,30 +95,48 @@ let grid = document.getElementById("carGrid");
 
 cars.forEach(car=>{
 
-  let rent = (car.rate*days)+deliveryCharge+fixed;
-  let payable = rent+deposit;
-  let balance = payable-advance;
+  let deposit = car.deposit;
 
-  let card = `
-  <div class="card">
-    <img src="${car.image}">
-    <h3>${car.name}</h3>
-    <p>Days: ${days}</p>
-    <p>Total Rent: ₹${rent}</p>
-    <div class="highlight">Total: ₹${payable}</div>
-    <p>Balance at Delivery: ₹${balance}</p>
-    <button class="btn"
-      onclick="book('${car.name}',${rent},${payable},${balance})">
-      Book Now
-    </button>
+  let rent = (car.rate * days) + deliveryCharge + fixed;
+  let payable = rent + deposit;
+  let balance = payable - advance;
+
+  
+ let card = `
+<div class="card">
+
+  <img src="${car.image}">
+
+  <h3>${car.name}</h3>
+
+  <p>Days: ${days}</p>
+
+  <hr>
+
+  <p>Total Rent: ₹${rent}</p>
+  <p>Refundable Security Deposit: ₹${deposit}</p>
+
+  <div class="highlight">
+    Total Payable: ₹${payable}
   </div>
-  `;
 
+  <p>Advance: ₹${advance}</p>
+  <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
+
+  <button class="btn"
+    onclick="book('${car.name}',${rent},${deposit},${payable},${balance})">
+    Book Now
+  </button>
+
+</div>
+`;
+
+  
   grid.innerHTML += card;
 
 });
 
-function book(name,rent,payable,balance){
+function book(name,rent,deposit,payable,balance){
 
 let message =
 `Delivery - ${pickup.toLocaleString()} at ${pickupLoc}
@@ -128,10 +144,10 @@ Return - ${drop.toLocaleString()} at ${dropLoc}
 Car Model - ${name}
 ________
 Total rent - ₹${rent}
-Refundable deposit - ₹5000
+Refundable deposit - ₹${deposit}
 ________
 Total - ₹${payable}
-Pre Booking - ₹2000
+Pre Booking - ₹${advance}
 To Pay During Car Delivery - ₹${balance}
 ________
 I want to book ${name}.
@@ -140,7 +156,6 @@ Please share your QR for advance payment.`;
 let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
 window.open(url,"_blank");
 }
-
 </script>
 
 </body>
