@@ -5,6 +5,20 @@
 <title>Available Cars</title>
 
 <style>
+  .summary-box{
+  background:#ffffff;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom:20px;
+  border-left:4px solid #25D366;
+}
+
+.summary-box p{
+  margin:6px 0;
+  font-size:14px;
+}
+  
 body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 .grid{
   display:grid;
@@ -73,8 +87,8 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 <body>
 
 <h2>Available Cars</h2>
+<div id="bookingSummary" class="summary-box"></div>
 <div id="carGrid"></div>
-
 <script>
 
 // Correct cars array
@@ -119,6 +133,19 @@ const drop = new Date(params.get("drop"));
 const pickupLoc = params.get("pickupLoc");
 const dropLoc = params.get("dropLoc");
 
+function formatDateTime(date){
+
+  const options = {
+    day:'numeric',
+    month:'long',
+    year:'numeric',
+    hour:'numeric',
+    minute:'2-digit'
+  };
+
+  return date.toLocaleString('en-IN', options);
+}
+  
 // Billing logic
 function billingPickup(d){
   let x = new Date(d);
@@ -144,7 +171,11 @@ let deliveryCharge = 500;
 let fixed = 2000;
 
 let grid = document.getElementById("carGrid");
-
+// Show booking summary
+document.getElementById("bookingSummary").innerHTML = `
+  <p><strong>Car Delivery :</strong> ${formatDateTime(pickup)} at ${pickupLoc}</p>
+  <p><strong>Car Return :</strong> ${formatDateTime(drop)} at ${dropLoc}</p>
+`;
 Object.keys(categories).forEach(catKey => {
 
   let filteredCars = cars.filter(car => car.category === catKey);
