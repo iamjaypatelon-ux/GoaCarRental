@@ -164,19 +164,31 @@ function formatDateTime(date){
 // Billing logic
 function billingPickup(d){
   let x = new Date(d);
-  if(x.getHours()<4) x.setDate(x.getDate()-1);
+
+  // Before 4AM → previous day
+  if(x.getHours() < 4){
+    x.setDate(x.getDate() - 1);
+  }
+
   x.setHours(9,0,0,0);
   return x;
 }
 
 function billingDrop(d){
   let x = new Date(d);
-  if(x.getHours()>9 || (x.getHours()==9 && x.getMinutes()>30))
-    x.setDate(x.getDate()+1);
+
+  // After 9:30AM → next day
+  if(
+    x.getHours() > 9 ||
+    (x.getHours() === 9 && x.getMinutes() > 30)
+  ){
+    x.setDate(x.getDate() + 1);
+  }
+
   x.setHours(9,0,0,0);
   return x;
 }
-
+  
 let days = Math.ceil(
   (billingDrop(drop)-billingPickup(pickup))/(1000*60*60*24)
 );
@@ -209,8 +221,39 @@ if(days <= 2){
   throw new Error("Minimum booking rule triggered");
 }
   
-let deliveryCharge = 500;
-let fixed = 2000;
+function isNight(hour){
+  return (hour < 9 || hour >= 21);
+}
+
+let pickupHour = pickup.getHours();
+let dropHour = drop.getHours();
+
+let nightCondition =
+  isNight(pickupHour) || isNight(dropHour);
+
+let specialLocations = [
+  "Karmali Station",
+  "Madgaon",
+  "Madgaon Railway Station",
+  "Madgaon Bus Stand",
+  "Majorda",
+  "Morjim"
+];
+
+let isSpecial =
+  specialLocations.includes(pickupLoc) ||
+  specialLocations.includes(dropLoc);
+
+let deliveryCharge;
+
+if(isSpecial){
+  // Special locations pricing
+  deliveryCharge = nightCondition ? 1000 : 800;
+}else{
+  // Normal locations pricing
+  deliveryCharge = nightCondition ? 800 : 500;
+}
+  let fixed = 2000;
 
 let grid = document.getElementById("carGrid");
 // Show booking summary
