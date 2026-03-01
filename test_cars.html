@@ -109,23 +109,24 @@ body{font-family:sans-serif;background:#f5f7f6;margin:0;padding:15px;}
 const cars = [
 
   // Compact
-  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, image:"Swift (Manual).png", category:"compact"},
-  {name:"Baleno", rate:1000, deposit:3000, advance:1000, image:"Baleno (Manual).png", category:"compact"},
+  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Swift (Manual).png", category:"compact"},
+  {name:"Baleno", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Baleno (Manual).png", category:"compact"},
 
   // Premium
-  {name:"Hycross Automatic", rate:3000, deposit:5000, advance:2000, image:"Toyota Innova Hycross.png", category:"premium"},
+  {name:"Hycross Automatic", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Toyota Innova Hycross.png", category:"premium"},
 
   // Adventure
-  {name:"Thar Manual", rate:2500, deposit:5000, advance:2000, image:"Thar 4x4 (Manual).png", category:"adventure"},
+  {name:"Thar Manual", rate:2500, deposit:5000, advance:2000, fixed:2000, image:"Thar 4x4 (Manual).png", category:"adventure"},
 
   // Family
-  {name:"Innova Crysta", rate:2800, deposit:6000, advance:2000, image:"crysta.png", category:"family"},
+  {name:"Innova Crysta", rate:2800, deposit:6000, advance:2000, fixed:2500, image:"crysta.png", category:"family"},
 
   // Luxury
-  {name:"Fortuner", rate:4500, deposit:15000, advance:5000, image:"fortuner.png", category:"luxury"}
+  {name:"Fortuner", rate:4500, deposit:15000, advance:5000, fixed:3000, image:"fortuner.png", category:"luxury"}
 
 ];
 
+  
 const categories = {
   compact: "Compact & Mid-Size Cars (5-Seaters)",
   premium: "Premium (5-Seaters)",
@@ -253,7 +254,6 @@ if(isSpecial){
   // Normal locations pricing
   deliveryCharge = nightCondition ? 800 : 500;
 }
-  let fixed = 2000;
 
 let grid = document.getElementById("carGrid");
 // Show booking summary
@@ -284,7 +284,7 @@ document.getElementById("bookingSummary").innerHTML = `
 
   filteredCars.forEach(car => {
 
-    let rent = (car.rate * days) + deliveryCharge + fixed;
+    let rent = (car.rate * days) + deliveryCharge + car.fixed;
     let payable = rent + car.deposit;
     let balance = payable - car.advance;
 
