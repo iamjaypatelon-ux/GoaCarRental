@@ -182,6 +182,33 @@ let days = Math.ceil(
 );
 if(days<1) days=1;
 
+  // Minimum 3 days rule
+if(days <= 2){
+  document.getElementById("carGrid").innerHTML = `
+    <div style="
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+      text-align:center;
+      margin-top:20px;
+    ">
+      <h3 style="color:#075E54;">No Cars Available</h3>
+      <p>Minimum booking duration is 3 days.</p>
+      <button onclick="goBackToEdit()" style="
+        margin-top:15px;
+        padding:10px 15px;
+        background:#075E54;
+        color:#fff;
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+      ">Modify Dates</button>
+    </div>
+  `;
+  throw new Error("Minimum booking rule triggered");
+}
+  
 let deliveryCharge = 500;
 let fixed = 2000;
 
