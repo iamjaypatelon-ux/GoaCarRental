@@ -184,16 +184,31 @@ button:hover{
 </div>
 
 <script>
+
 function goToCars(e){
   e.preventDefault();
 
   let pickup = document.getElementById("pickup").value;
   let drop = document.getElementById("drop").value;
-  let pickupLoc = document.getElementById("pickupLocation").value;
-  let dropLoc = document.getElementById("dropLocation").value;
+
+  let pickupSelect = document.getElementById("pickupLocation");
+  let dropSelect = document.getElementById("dropLocation");
+
+  let pickupLoc = pickupSelect.value === "Other"
+      ? document.getElementById("pickupOther").value
+      : pickupSelect.value;
+
+  let dropLoc = dropSelect.value === "Other"
+      ? document.getElementById("dropOther").value
+      : dropSelect.value;
 
   if(!pickup || !drop){
     alert("Please select dates");
+    return;
+  }
+
+  if(!pickupLoc || !dropLoc){
+    alert("Please enter location");
     return;
   }
 
@@ -205,7 +220,27 @@ function goToCars(e){
   window.location.href = url;
 }
 
-  const params = new URLSearchParams(window.location.search);
+/* ✅ THIS IS WHAT WAS MISSING */
+function toggleOther(type){
+
+  if(type === "pickup"){
+    let select = document.getElementById("pickupLocation");
+    let otherInput = document.getElementById("pickupOther");
+
+    otherInput.style.display =
+      select.value === "Other" ? "block" : "none";
+  }
+
+  if(type === "drop"){
+    let select = document.getElementById("dropLocation");
+    let otherInput = document.getElementById("dropOther");
+
+    otherInput.style.display =
+      select.value === "Other" ? "block" : "none";
+  }
+}
+
+const params = new URLSearchParams(window.location.search);
 
 if(params.get("pickup")){
   document.getElementById("pickup").value = params.get("pickup");
@@ -215,6 +250,5 @@ if(params.get("pickup")){
 }
 
 </script>
-
 </body>
 </html>
