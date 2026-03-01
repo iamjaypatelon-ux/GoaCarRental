@@ -36,17 +36,16 @@
 }
 </script>
   <style>
-    .site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  background: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.site-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 14px;
+  background:#ffffff;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
-
 .brand-name {
   font-size: 26px;
   font-weight: 700;
@@ -55,7 +54,14 @@
   text-transform: none;
   text-decoration: none;
 }
-
+    
+@media(max-width:480px){
+  .brand-name{
+    font-size:20px;
+    letter-spacing:1px;
+  }
+}
+    
 .brand-name:visited,
 .brand-name:hover,
 .brand-name:active {
