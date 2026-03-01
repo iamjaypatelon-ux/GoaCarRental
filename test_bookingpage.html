@@ -101,21 +101,81 @@ button:hover{
 <label>Return Date & Time</label>
 <input type="datetime-local" id="drop" required>
 
-<label>Delivery Location</label>
-<select id="pickupLocation" required>
-  <option value="">Select Pickup Location</option>
+ <label>Delivery Location</label>
+  <select id="pickupLocation" onchange="toggleOther('pickup')">
   <option>Anjuna</option>
-  <option>Morjim</option>
+  <option>Arpora</option>
+  <option>Assagao</option>
+  <option>Baga</option>
+  <option>Calangute</option>
+  <option>Candolim</option>
+  <option>Dabolim</option>
+  <option>Dabolim Airport</option>
+  <option>Karmali Station</option>
   <option>Madgaon</option>
+  <option>Madgaon Railway Station</option>
+  <option>Madgaon Bus Stand</option>
+  <option>Mapusa</option>
+  <option>Mapusa Bus Stop</option>
+  <option>Majorda</option>
+  <option>Mopa Airport</option>
+  <option>Morjim</option>
+  <option>Panjim</option>
+  <option>Panjim Bus Stand</option>
+  <option>Parra</option>
+  <option>Porvorim</option>
+  <option>Saligao</option>
+  <option>Sancoale</option>
+  <option>Siolim</option>
+  <option>Thivim</option>
+  <option>Thivim Railway Station</option>
+  <option>Vagator</option>
+  <option>Vasco</option>
+  <option>Vasco Railway Station</option>
+  <option>Vasco Busstand</option>
+  <option>Other</option>
 </select>
 
+<input type="text" id="pickupOther" placeholder="Enter location" style="display:none;">
+
 <label>Return Location</label>
-<select id="dropLocation" required>
-  <option value="">Select Return Location</option>
+  <select id="dropLocation" onchange="toggleOther('drop')">
   <option>Anjuna</option>
-  <option>Morjim</option>
+  <option>Arpora</option>
+  <option>Assagao</option>
+  <option>Baga</option>
+  <option>Calangute</option>
+  <option>Candolim</option>
+  <option>Dabolim</option>
+  <option>Dabolim Airport</option>
+  <option>Karmali Station</option>
   <option>Madgaon</option>
+  <option>Madgaon Railway Station</option>
+  <option>Madgaon Bus Stand</option>
+  <option>Mapusa</option>
+  <option>Mapusa Bus Stop</option>
+  <option>Majorda</option>
+  <option>Mopa Airport</option>
+  <option>Morjim</option>
+  <option>Panjim</option>
+  <option>Panjim Bus Stand</option>
+  <option>Parra</option>
+  <option>Porvorim</option>
+  <option>Saligao</option>
+  <option>Sancoale</option>
+  <option>Siolim</option>
+  <option>Thivim</option>
+  <option>Thivim Railway Station</option>
+  <option>Vagator</option>
+  <option>Vasco</option>
+  <option>Vasco Railway Station</option>
+  <option>Vasco Busstand</option>
+  <option>Other</option>
+
 </select>
+
+<input type="text" id="dropOther" placeholder="Enter location" style="display:none;">
+
 
 <button type="submit">See Available Cars</button>
 
