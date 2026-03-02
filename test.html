@@ -9,37 +9,31 @@
         <div class="trust-card">
           <div class="trust-number" data-target="5000">0</div>
           <div class="trust-label">Verified Bookings Completed</div>
-          <img src="favicon.png" class="trust-icon" alt="">
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="4.6" data-decimal="true">0</div>
           <div class="trust-label">Average Customer Rating</div>
-          <img src="share.png" class="trust-icon" alt="">
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="97.6" data-decimal="true">0</div>
           <div class="trust-label">Security Deposits Refunded Without Issue (%)</div>
-          <img src="call.png" class="trust-icon" alt="">
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="35.56" data-decimal="true">0</div>
           <div class="trust-label">Bookings From Direct Referrals (%)</div>
-          <img src="Thar ROXX (Automatic).png" class="trust-icon" alt="">
         </div>
 
         <div class="trust-card">
           <div class="trust-number">2/10</div>
           <div class="trust-label">Customers Return for Future Trips</div>
-          <img src="favicon.png" class="trust-icon" alt="">
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="32">0</div>
           <div class="trust-label">Bookings Made by Women Travelers (%)</div>
-          <img src="icons/women.png" class="trust-icon" alt="">
         </div>
 
       </div>
@@ -98,13 +92,13 @@
 }
 
 .trust-card{
-  position:relative;
   min-width:85%;
   padding:40px 25px;
   border-radius:20px;
   flex-shrink:0;
 
-  background:rgba(255,255,255,0.6);
+  /* Glassmorphism */
+  background:rgba(255,255,255,0.55);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
   border:1px solid rgba(255,255,255,0.7);
@@ -123,17 +117,6 @@
   font-weight:500;
   color:#222;
   line-height:1.4;
-}
-
-/* Clipart bottom-right */
-.trust-icon{
-  position:absolute;
-  right:15px;
-  bottom:15px;
-  width:60px;
-  height:auto;
-  opacity:0.15;
-  pointer-events:none;
 }
 
 /* Tablet */
@@ -155,6 +138,7 @@
 const track = document.querySelector(".trust-track");
 const cards = Array.from(document.querySelectorAll(".trust-card"));
 
+// Clone cards for seamless infinite loop
 cards.forEach(card=>{
   track.appendChild(card.cloneNode(true));
 });
@@ -172,7 +156,7 @@ function autoScroll(){
 }
 autoScroll();
 
-/* Counter */
+/* Animated Counter */
 const counters = document.querySelectorAll(".trust-number[data-target]");
 let counted = false;
 
@@ -208,3 +192,4 @@ const observer = new IntersectionObserver(entries=>{
 
 observer.observe(document.querySelector(".trust-section"));
 </script>
+<!-- ===== END TRUST SECTION ===== -->
