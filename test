@@ -1,0 +1,128 @@
+<!-- ===== Insights That Drive Us ===== -->
+<section class="insights-section">
+  <h2>Trusted by Thousands. Proven by Numbers.</h2>
+
+  <div class="insights-slider">
+    <div class="insights-track">
+
+      <div class="insight-card">
+        <div class="big-number">5000+</div>
+        <div class="title">Happy Travelers</div>
+        <p>Across airport, beaches & all of Goa</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="big-number">⭐ 4.6 / 5</div>
+        <div class="title">Star Rating</div>
+        <p>Consistently rated for smooth experience</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="big-number">97.60%</div>
+        <div class="title">Deposit Refunded Smoothly</div>
+        <p>Fast refunds. No drama.</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="big-number">35.56%</div>
+        <div class="title">Bookings from Referrals</div>
+        <p>Strong word-of-mouth trust</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="big-number">2 in 10</div>
+        <div class="title">Guests Return</div>
+        <p>Long-term customer loyalty</p>
+      </div>
+
+      <div class="insight-card">
+        <div class="big-number">32%</div>
+        <div class="title">Women Travelers</div>
+        <p>Trusted by solo & group women guests</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.insights-section {
+  padding: 50px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.insights-section h2 {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.insights-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.insights-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.insight-card {
+  min-width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
+  margin: 0 10px;
+  padding: 35px 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+}
+
+.big-number {
+  font-size: 42px;
+  font-weight: 700;
+  color: #25D366;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.insight-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .insight-card {
+    min-width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .insight-card {
+    min-width: 33.33%;
+  }
+}
+</style>
+
+<script>
+const track = document.querySelector('.insights-track');
+const cards = document.querySelectorAll('.insight-card');
+let index = 0;
+
+function slideCarousel() {
+  index++;
+  if (index >= cards.length) {
+    index = 0;
+  }
+  track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+setInterval(slideCarousel, 4000);
+</script>
+<!-- ===== End Insights Section ===== -->
