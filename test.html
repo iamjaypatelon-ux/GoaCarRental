@@ -1,7 +1,6 @@
-
 <!-- ===== TRUST INSIGHTS SECTION ===== -->
 <section class="trust-section">
-  <h2>Trusted by Thousands in Goa</h2>
+  <h2>Real Numbers. Real Customers.</h2>
 
   <div class="trust-wrapper">
     <div class="trust-slider">
@@ -9,68 +8,64 @@
 
         <div class="trust-card">
           <div class="trust-number" data-target="5000">0</div>
-          <div class="trust-label">Tourists Served</div>
+          <div class="trust-label">Verified Bookings Completed</div>
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="4.6" data-decimal="true">0</div>
-          <div class="trust-label">Average Rating</div>
+          <div class="trust-label">Average Customer Rating</div>
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="97.6" data-decimal="true">0</div>
-          <div class="trust-label">Deposit Refunded Smoothly (%)</div>
+          <div class="trust-label">Security Deposits Refunded Without Issue (%)</div>
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="35.56" data-decimal="true">0</div>
-          <div class="trust-label">Bookings from Referrals (%)</div>
+          <div class="trust-label">Bookings From Direct Referrals (%)</div>
         </div>
 
         <div class="trust-card">
           <div class="trust-number">2/10</div>
-          <div class="trust-label">Guests Return</div>
+          <div class="trust-label">Customers Return for Future Trips</div>
         </div>
 
         <div class="trust-card">
           <div class="trust-number" data-target="32">0</div>
-          <div class="trust-label">Women Travelers (%)</div>
+          <div class="trust-label">Bookings Made by Women Travelers (%)</div>
         </div>
 
       </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="trust-progress">
-      <div class="trust-progress-bar"></div>
     </div>
   </div>
 </section>
 
 <style>
 .trust-section{
-  background:#ffffff;
-  padding:60px 15px;
+  background:linear-gradient(180deg,#f5f7f6,#ffffff);
+  padding:70px 15px;
   text-align:center;
 }
 
 .trust-section h2{
-  font-size:20px;
-  margin-bottom:35px;
+  font-size:22px;
+  margin-bottom:40px;
   color:#075E54;
+  font-weight:600;
 }
 
 .trust-wrapper{
   position:relative;
 }
 
-/* Fade mask */
+/* Fade edges */
 .trust-wrapper::before,
 .trust-wrapper::after{
   content:"";
   position:absolute;
   top:0;
-  width:40px;
+  width:50px;
   height:100%;
   z-index:2;
   pointer-events:none;
@@ -92,46 +87,36 @@
 
 .trust-track{
   display:flex;
-  gap:18px;
+  gap:20px;
   will-change:transform;
 }
 
 .trust-card{
-  min-width:80%;
-  background:#f5f7f6;
-  padding:35px 20px;
-  border-radius:18px;
-  box-shadow:0 8px 20px rgba(7,94,84,0.08);
-  border:1px solid rgba(37,211,102,0.15);
+  min-width:85%;
+  padding:40px 25px;
+  border-radius:20px;
   flex-shrink:0;
+
+  /* Glassmorphism */
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.7);
+  box-shadow:0 10px 30px rgba(7,94,84,0.08);
 }
 
 .trust-number{
-  font-size:38px;
+  font-size:40px;
   font-weight:700;
   color:#25D366;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 .trust-label{
   font-size:14px;
   font-weight:500;
-  color:#333;
-}
-
-/* Progress bar */
-.trust-progress{
-  margin-top:25px;
-  height:4px;
-  background:#e6e6e6;
-  border-radius:4px;
-  overflow:hidden;
-}
-
-.trust-progress-bar{
-  height:100%;
-  width:0%;
-  background:#25D366;
+  color:#222;
+  line-height:1.4;
 }
 
 /* Tablet */
@@ -152,15 +137,14 @@
 <script>
 const track = document.querySelector(".trust-track");
 const cards = Array.from(document.querySelectorAll(".trust-card"));
-const progressBar = document.querySelector(".trust-progress-bar");
 
-// Clone cards for smooth infinite loop
+// Clone cards for seamless infinite loop
 cards.forEach(card=>{
   track.appendChild(card.cloneNode(true));
 });
 
 let position = 0;
-let speed = 0.6;
+let speed = 0.5;
 
 function autoScroll(){
   position -= speed;
@@ -171,20 +155,6 @@ function autoScroll(){
   requestAnimationFrame(autoScroll);
 }
 autoScroll();
-
-/* Progress Bar Animation */
-function animateProgress(){
-  progressBar.style.transition = "none";
-  progressBar.style.width = "0%";
-
-  setTimeout(()=>{
-    progressBar.style.transition = "width 4s linear";
-    progressBar.style.width = "100%";
-  },50);
-}
-
-setInterval(animateProgress,4000);
-animateProgress();
 
 /* Animated Counter */
 const counters = document.querySelectorAll(".trust-number[data-target]");
