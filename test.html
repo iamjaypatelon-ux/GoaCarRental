@@ -1,44 +1,44 @@
-<!-- ===== Insights That Drive Us ===== -->
-<section class="insights-section">
-  <h2>Trusted by Thousands. Proven by Numbers.</h2>
+<!-- ===== Insights Section - WhatsApp Theme ===== -->
+<section class="wa-insights">
+  <h2>Why Travelers Trust RentalCarGoa</h2>
 
-  <div class="insights-slider">
-    <div class="insights-track">
+  <div class="wa-slider">
+    <div class="wa-track">
 
-      <div class="insight-card">
-        <div class="big-number">5000+</div>
-        <div class="title">Happy Travelers</div>
-        <p>Across airport, beaches & all of Goa</p>
+      <div class="wa-card">
+        <div class="wa-number">5000+</div>
+        <div class="wa-title">Tourists Served</div>
+        <p>Across all major locations in Goa</p>
       </div>
 
-      <div class="insight-card">
-        <div class="big-number">⭐ 4.6 / 5</div>
-        <div class="title">Star Rating</div>
-        <p>Consistently rated for smooth experience</p>
+      <div class="wa-card">
+        <div class="wa-number">⭐ 4.6 / 5</div>
+        <div class="wa-title">Average Rating</div>
+        <p>Consistently rated for smooth bookings</p>
       </div>
 
-      <div class="insight-card">
-        <div class="big-number">97.60%</div>
-        <div class="title">Deposit Refunded Smoothly</div>
-        <p>Fast refunds. No drama.</p>
+      <div class="wa-card">
+        <div class="wa-number">97.60%</div>
+        <div class="wa-title">Deposit Refunded Smoothly</div>
+        <p>Fast refunds without follow-ups</p>
       </div>
 
-      <div class="insight-card">
-        <div class="big-number">35.56%</div>
-        <div class="title">Bookings from Referrals</div>
+      <div class="wa-card">
+        <div class="wa-number">35.56%</div>
+        <div class="wa-title">From Referrals</div>
         <p>Strong word-of-mouth trust</p>
       </div>
 
-      <div class="insight-card">
-        <div class="big-number">2 in 10</div>
-        <div class="title">Guests Return</div>
-        <p>Long-term customer loyalty</p>
+      <div class="wa-card">
+        <div class="wa-number">2 in 10</div>
+        <div class="wa-title">Guests Return</div>
+        <p>High repeat booking rate</p>
       </div>
 
-      <div class="insight-card">
-        <div class="big-number">32%</div>
-        <div class="title">Women Travelers</div>
-        <p>Trusted by solo & group women guests</p>
+      <div class="wa-card">
+        <div class="wa-number">32%</div>
+        <div class="wa-title">Women Travelers</div>
+        <p>Trusted by solo & group guests</p>
       </div>
 
     </div>
@@ -46,83 +46,107 @@
 </section>
 
 <style>
-.insights-section {
-  padding: 50px 20px;
-  background: #f9fafb;
+.wa-insights {
+  padding: 40px 15px;
+  background: #f0fdf4;
   text-align: center;
 }
 
-.insights-section h2 {
-  font-size: 24px;
-  margin-bottom: 30px;
+.wa-insights h2 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #111;
 }
 
-.insights-slider {
+.wa-slider {
   overflow: hidden;
   position: relative;
 }
 
-.insights-track {
+.wa-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
 
-.insight-card {
+.wa-card {
   min-width: 100%;
-  box-sizing: border-box;
   background: #ffffff;
-  margin: 0 10px;
-  padding: 35px 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  padding: 30px 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(37,211,102,0.15);
+  border: 1px solid rgba(37,211,102,0.2);
+  margin: 0 5px;
 }
 
-.big-number {
-  font-size: 42px;
+.wa-number {
+  font-size: 36px;
   font-weight: 700;
   color: #25D366;
-  margin-bottom: 10px;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 600;
   margin-bottom: 8px;
 }
 
-.insight-card p {
-  font-size: 14px;
+.wa-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.wa-card p {
+  font-size: 13px;
   color: #666;
   margin: 0;
 }
 
-/* Desktop view */
+/* Tablet */
 @media (min-width: 768px) {
-  .insight-card {
+  .wa-card {
     min-width: 50%;
   }
 }
 
+/* Desktop */
 @media (min-width: 1024px) {
-  .insight-card {
+  .wa-card {
     min-width: 33.33%;
   }
 }
 </style>
 
 <script>
-const track = document.querySelector('.insights-track');
-const cards = document.querySelectorAll('.insight-card');
-let index = 0;
+const waTrack = document.querySelector('.wa-track');
+const waCards = document.querySelectorAll('.wa-card');
+let waIndex = 0;
 
-function slideCarousel() {
-  index++;
-  if (index >= cards.length) {
-    index = 0;
+function waSlide() {
+  waIndex++;
+  if (waIndex >= waCards.length) {
+    waIndex = 0;
   }
-  track.style.transform = `translateX(-${index * 100}%)`;
+  waTrack.style.transform = `translateX(-${waIndex * 100}%)`;
 }
 
-setInterval(slideCarousel, 4000);
+setInterval(waSlide, 4000);
+
+/* Swipe Support */
+let startX = 0;
+let currentX = 0;
+
+waTrack.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+waTrack.addEventListener("touchmove", e => {
+  currentX = e.touches[0].clientX;
+});
+
+waTrack.addEventListener("touchend", () => {
+  if (startX - currentX > 50) {
+    waIndex = (waIndex + 1) % waCards.length;
+  } else if (currentX - startX > 50) {
+    waIndex = (waIndex - 1 + waCards.length) % waCards.length;
+  }
+  waTrack.style.transform = `translateX(-${waIndex * 100}%)`;
+});
 </script>
 <!-- ===== End Insights Section ===== -->
