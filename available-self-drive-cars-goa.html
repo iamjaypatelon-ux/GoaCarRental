@@ -489,14 +489,14 @@ let message =
 `*Delivery* - ${formatDateTime(pickup)}, ${pickupLoc}
 *Return* - ${formatDateTime(drop)}, ${dropLoc}
 *Car Model* - ${name}
-──────────
+───────────
 *Total Rent* - ₹${rent}
 *Refundable Deposit* - ₹${deposit}
-──────────
+───────────
 *Total Amount* - ₹${payable}
 *Advance* - ₹${advance}
 *Payable at Delivery* - ₹${balance}
-──────────
+───────────
 I want to book ${name}.`;
 
 let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
