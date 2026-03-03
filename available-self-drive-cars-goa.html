@@ -444,7 +444,7 @@ document.getElementById("bookingSummary").innerHTML = `
         Total Payable: ₹${payable}
       </div>
       <p>Advance: ₹${car.advance}</p>
-      <p><strong>Payable at Delivery: ₹${balance}</strong></p>
+      <p><strong>To Pay During Delivery: ₹${balance}</strong></p>
       <button class="btn"
         onclick="book('${car.name}',${rent},${car.deposit},${payable},${car.advance},${balance})">
         Book Now
