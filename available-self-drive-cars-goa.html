@@ -489,16 +489,15 @@ let message =
 `*Delivery* - ${formatDateTime(pickup)}, ${pickupLoc}
 *Return* - ${formatDateTime(drop)}, ${dropLoc}
 *Car Model* - ${name}
-_________________________
+__________
 *Total Rent* - ₹${rent}
 *Refundable Deposit* - ₹${deposit}
-_________________________
+__________
 *Total Amount* - ₹${payable}
 *Advance* - ₹${advance}
 *Payable at Delivery* - ₹${balance}
-_________________________
+__________
 I want to book ${name}.
-Please share your QR for advance payment.`;
 
 let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
 window.open(url,"_blank");
