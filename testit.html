@@ -482,25 +482,38 @@ function goBackToEdit(){
   window.location.href = url;
 }
   
-// WhatsApp function
+// Rezorpay function
 function book(name,rent,deposit,payable,advance,balance){
 
-let message =
-`*Delivery* - ${formatDateTime(pickup)}, ${pickupLoc}
-*Return* - ${formatDateTime(drop)}, ${dropLoc}
-*Car Model* - ${name}
-───────────
-*Total Rent* - ₹${rent}
-*Refundable Deposit* - ₹${deposit}
-───────────
-*Total Amount* - ₹${payable}
-*Advance* - ₹${advance}
-*Payable at Delivery* - ₹${balance}
-───────────
-I want to book ${name}.`;
+ fetch("https://goa-car-rental.vercel.app/api/createOrder")
+  .then(res => res.json())
+  .then(data => {
 
-let url="https://wa.me/917984509196?text="+encodeURIComponent(message);
-window.open(url,"_blank");
+    var options = {
+      key: data.key,
+      amount: data.amount,
+      currency: "INR",
+      order_id: data.order_id,
+      handler: function (response) {
+
+        fetch("verify-payment.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(response)
+        }).then(() => {
+          window.location.href = "success.html";
+        });
+
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.open();
+
+  });
+
 }</script>
 
 </body>
