@@ -541,12 +541,13 @@ alert("Payment successful. Booking confirmed.");
 window.location.href="success.html";
 }
 
+};
 
 var rzp=new Razorpay(options);
 rzp.open();
 
 })
-.catch(error=>{
+  .catch(error=>{
 console.log(error);
 alert("Payment error");
 });
