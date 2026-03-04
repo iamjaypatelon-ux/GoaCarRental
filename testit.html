@@ -525,18 +525,9 @@ currency:"INR",
 order_id:data.order_id,
 
 name:"RentalCarGoa",
-description:"Car Booking Advance",
-
-notes:{
-car:name,
-delivery:formatDateTime(pickup)+", "+pickupLoc,
-return:formatDateTime(drop)+", "+dropLoc,
-rent:rent,
-deposit:deposit,
-balance:balance
-}
+description:"Car Booking Advance"
 };
-
+  
 var rzp=new Razorpay(options);
 rzp.open();
 
