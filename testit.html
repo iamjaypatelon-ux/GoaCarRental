@@ -506,13 +506,13 @@ headers:{
 "Content-Type":"application/json"
 },
 body: JSON.stringify({
-advance: advanceAmount,
-car: carName,
-rent: rentAmount,
-delivery: deliveryDetails,
-returnDate: returnDetails,
-deposit: depositAmount,
-balance: balanceAmount
+advance: advance,
+car: name,
+rent: rent,
+delivery: formatDateTime(pickup) + ", " + pickupLoc,
+returnDate: formatDateTime(drop) + ", " + dropLoc,
+deposit: deposit,
+balance: balance
 })
 })
 .then(res=>res.json())
