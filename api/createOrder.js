@@ -7,13 +7,11 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
-const options = {
-  amount: 1000, // ₹10 test
+const order = await razorpay.orders.create({
+  amount: 1000,
   currency: "INR",
-  receipt: "car_booking"
-};
-
-const order = await razorpay.orders.create(options);
+  receipt: "booking_receipt"
+});
 
 res.status(200).json({
   order_id: order.id,
