@@ -1,0 +1,6 @@
+{
+  "name": "goa-car-rental",
+  "dependencies": {
+    "razorpay": "^2.9.2"
+  }
+}
