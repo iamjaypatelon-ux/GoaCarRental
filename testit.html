@@ -528,18 +528,13 @@ name:"RentalCarGoa",
 description:"Car Booking Advance",
 
 notes:{
-details:
-"<b>car:</b> " + name + "<br><br>" +
-"<b>delivery:</b> " + formatDateTime(pickup)+", "+pickupLoc + "<br><br>" +
-"<b>return:</b> " + formatDateTime(drop)+", "+dropLoc + "<br><br>" +
-"<b>rent:</b> " + rent + "<br><br>" +
-"<b>deposit:</b> " + deposit + "<br><br>" +
-"<b>balance:</b> " + balance
-},handler:function(response){
-alert("Payment successful. Booking confirmed.");
-window.location.href="success.html";
+car:name,
+delivery:formatDateTime(pickup)+", "+pickupLoc,
+return:formatDateTime(drop)+", "+dropLoc,
+rent:rent,
+deposit:deposit,
+balance:balance
 }
-
 };
 
 var rzp=new Razorpay(options);
