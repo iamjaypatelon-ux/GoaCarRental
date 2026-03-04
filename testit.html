@@ -192,9 +192,10 @@ body {
 
 .section-grid{
   margin-top:15px;
-  display:none;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
 }
-
 .section-grid.active{
   display:grid;
   grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
