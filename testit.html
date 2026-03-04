@@ -505,15 +505,14 @@ method:"POST",
 headers:{
 "Content-Type":"application/json"
 },
-body:JSON.stringify({
-car:name,
-delivery:formatDateTime(pickup)+", "+pickupLoc,
-returnDate:formatDateTime(drop)+", "+dropLoc,
-rent:rent,
-deposit:deposit,
-payable:payable,
-advance:advance,
-balance:balance
+body: JSON.stringify({
+advance: advanceAmount,
+car: carName,
+rent: rentAmount,
+delivery: deliveryDetails,
+returnDate: returnDetails,
+deposit: depositAmount,
+balance: balanceAmount
 })
 })
 .then(res=>res.json())
