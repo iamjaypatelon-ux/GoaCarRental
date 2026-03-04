@@ -496,9 +496,9 @@ alert("Link copied");
 }
 }  
 // Rezorpay function
+// Razorpay function
 function book(name,rent,deposit,payable,advance,balance){
-alert("Book button working for "+name);
-}
+
 fetch("https://goa-car-rental-backend.vercel.app/api/createOrder",{
 method:"POST",
 headers:{
@@ -524,12 +524,12 @@ amount:data.amount,
 currency:"INR",
 order_id:data.order_id,
 
+name:"RentalCarGoa",
+description:name,
+
 handler:function(response){
-
 alert("Payment successful. Booking confirmed.");
-
 window.location.href="success.html";
-
 }
 
 };
@@ -537,6 +537,10 @@ window.location.href="success.html";
 var rzp=new Razorpay(options);
 rzp.open();
 
+})
+.catch(err=>{
+console.log(err);
+alert("Payment system error");
 });
 
 }</script>
