@@ -526,6 +526,10 @@ order_id:data.order_id,
 
 name:"RentalCarGoa",
 description:"Car Booking Advance"
+
+handler:function(response){
+window.location.href="success.html?payment_id="+response.razorpay_payment_id;
+}
 };
   
 var rzp=new Razorpay(options);
