@@ -484,9 +484,22 @@ function goBackToEdit(){
   window.location.href = url;
 }
   
+function sharePage(){
+if(navigator.share){
+navigator.share({
+title:"RentalCarGoa",
+url:window.location.href
+});
+}else{
+navigator.clipboard.writeText(window.location.href);
+alert("Link copied");
+}
+}
+  
 // Rezorpay function
 function book(name,rent,deposit,payable,advance,balance){
-
+alert("Book button working for "+name);
+}
 fetch("https://goa-car-rental-backend.vercel.app/api/createOrder",{
 method:"POST",
 headers:{
