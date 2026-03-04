@@ -525,17 +525,17 @@ currency:"INR",
 order_id:data.order_id,
 
 name:"RentalCarGoa",
-description:name,
+description:"Car Booking Advance",
 
 notes:{
-car:name,
-delivery:formatDateTime(pickup)+", "+pickupLoc,
-return:formatDateTime(drop)+", "+dropLoc,
-rent:rent,
-deposit:deposit,
-balance:balance
+details:
+"*car:* " + name +
+"\n\n*delivery:* " + formatDateTime(pickup)+", "+pickupLoc +
+"\n\n*return:* " + formatDateTime(drop)+", "+dropLoc +
+"\n\n*rent:* " + rent +
+"\n\n*deposit:* " + deposit +
+"\n\n*balance:* " + balance
 },
-
 handler:function(response){
 alert("Payment successful. Booking confirmed.");
 window.location.href="success.html";
