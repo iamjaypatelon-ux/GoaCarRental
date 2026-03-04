@@ -527,6 +527,21 @@ order_id:data.order_id,
 name:"RentalCarGoa",
 description:name,
 
+notes:{
+car:name,
+delivery:formatDateTime(pickup)+", "+pickupLoc,
+return:formatDateTime(drop)+", "+dropLoc,
+rent:rent,
+deposit:deposit,
+balance:balance
+},
+
+handler:function(response){
+alert("Payment successful. Booking confirmed.");
+window.location.href="success.html";
+}
+
+};
 handler:function(response){
 alert("Payment successful. Booking confirmed.");
 window.location.href="success.html";
