@@ -6,7 +6,29 @@
 <title>Booking Confirmed | RentalCarGoa</title>
 
 <style>
+.brand{
+text-align:center;
+margin-bottom:12px;
+}
 
+.brand h2{
+margin:0;
+font-size:20px;
+color:#075E54;
+}
+
+.brand p{
+margin:2px 0;
+font-size:12px;
+color:#555;
+}
+
+.support{
+margin-top:12px;
+font-size:13px;
+text-align:center;
+color:#444;
+}
 body{
 font-family:sans-serif;
 background:#f5f7f6;
@@ -82,8 +104,13 @@ background:#075E54;
 
 <div id="receipt" class="card">
 
-<h3>Booking Receipt</h3>
+<div class="brand">
+<h2>RentalCarGoa</h2>
+<p>Self Drive Car Rental in Goa</p>
+<p>www.rentalcargoa.in</p>
+</div>
 
+<h3>Booking Receipt</h3>
 <div class="row"><span>Payment ID</span><span id="payment"></span></div>
 <div class="row"><span>Order ID</span><span id="order"></span></div>
 
@@ -103,7 +130,13 @@ background:#075E54;
 
 <div class="row"><span>Advance Paid</span><span id="advance"></span></div>
 <div class="row"><strong>Balance</strong><strong id="balance"></strong></div>
+<div class="line"></div>
 
+<div class="support">
+<p><strong>Support</strong></p>
+<p>WhatsApp: +91 78610 15148</p>
+<p>Email: support@rentalcargoa.in</p>
+</div>
 </div>
 
 
