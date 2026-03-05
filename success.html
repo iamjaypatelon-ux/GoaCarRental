@@ -6,6 +6,16 @@
 <title>Booking Confirmed | RentalCarGoa</title>
 
 <style>
+
+  .amount-section{
+page-break-inside: avoid;
+}
+
+#receipt{
+page-break-inside: avoid;
+break-inside: avoid;
+}
+  
 .brand{
 text-align:center;
 margin-bottom:12px;
@@ -128,8 +138,11 @@ background:#075E54;
 
 <div class="line"></div>
 
+<div class="amount-section">
+
 <div class="row"><span>Advance Paid</span><span id="advance"></span></div>
 <div class="row"><strong>Balance</strong><strong id="balance"></strong></div>
+
 <div class="line"></div>
 
 <div class="support">
@@ -137,8 +150,8 @@ background:#075E54;
 <p>WhatsApp: +91 78610 15148</p>
 <p>Email: support@rentalcargoa.in</p>
 </div>
-</div>
 
+</div>
 
 <button class="btn" onclick="downloadReceipt()">Download Receipt</button>
 
@@ -180,13 +193,14 @@ function shareReceipt(){
 const element = document.getElementById("receipt");
 
 const opt = {
-margin: 0.3,
+margin: 10,
 filename: 'RentalCarGoa-Receipt.pdf',
 image: { type: 'jpeg', quality: 0.98 },
-html2canvas: { scale: 2 },
-jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+html2canvas: { scale: 2, useCORS: true },
+jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+pagebreak: { mode: ['avoid-all','css','legacy'] }
 };
-
+  
 html2pdf().set(opt).from(element).outputPdf('blob').then(function (pdfBlob) {
 
 const file = new File([pdfBlob], "RentalCarGoa-Receipt.pdf", {type: "application/pdf"});
