@@ -289,9 +289,8 @@ const params = new URLSearchParams(window.location.search);
 
 if(!params.get("pickup")){
   document.getElementById("carGrid").innerHTML = "<h3>Please go back and select dates.</h3>";
-  throw new Error("Missing booking details");
+  return;
 }
-
 const pickup = new Date(params.get("pickup"));
 const drop = new Date(params.get("drop"));
 const pickupLoc = params.get("pickupLoc");
@@ -368,7 +367,7 @@ if(days <= 2){
       ">Modify Dates</button>
     </div>
   `;
-  throw new Error("Minimum booking rule triggered");
+  return;
 }
   
 function isNight(hour){
