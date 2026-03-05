@@ -6,7 +6,23 @@
 <title>Booking Confirmed | RentalCarGoa</title>
 
 <style>
+.actions{
+display:flex;
+gap:10px;
+margin-top:10px;
+}
 
+.actions .btn{
+flex:1;
+margin-top:0;
+}
+
+.btn.full{
+width:100%;
+margin-top:12px;
+}
+
+  
 #receipt{
 overflow:visible;
 height:auto;
@@ -164,12 +180,15 @@ background:#075E54;
 
 </div>
 
+<div class="actions">
+
 <button class="btn" onclick="downloadReceipt()">Download Receipt</button>
 
 <button class="btn secondary" onclick="shareReceipt()">Share Receipt</button>
 
-<a href="/" class="btn">Back to Home</a>
+</div>
 
+<a href="/" class="btn full">Back to Home</a>
 </div>
 
 
