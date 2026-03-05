@@ -528,7 +528,22 @@ name:"RentalCarGoa",
 description:"Car Booking Advance"
 
 handler:function(response){
-window.location.href="success.html?payment_id="+response.razorpay_payment_id;
+
+const params = new URLSearchParams({
+payment_id: response.razorpay_payment_id,
+order_id: response.razorpay_order_id,
+car: name,
+delivery: formatDateTime(pickup)+", "+pickupLoc,
+return: formatDateTime(drop)+", "+dropLoc,
+rent: rent,
+deposit: deposit,
+total: payable,
+advance: advance,
+balance: balance
+});
+
+window.location.href = "success.html?" + params.toString();
+
 }
 };
   
