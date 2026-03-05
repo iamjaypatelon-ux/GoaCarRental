@@ -289,9 +289,8 @@ const params = new URLSearchParams(window.location.search);
 
 if(!params.get("pickup")){
   document.getElementById("carGrid").innerHTML = "<h3>Please go back and select dates.</h3>";
-  return;
-}
-const pickup = new Date(params.get("pickup"));
+}else{
+  const pickup = new Date(params.get("pickup"));
 const drop = new Date(params.get("drop"));
 const pickupLoc = params.get("pickupLoc");
 const dropLoc = params.get("dropLoc");
@@ -367,9 +366,7 @@ if(days <= 2){
       ">Modify Dates</button>
     </div>
   `;
-  return;
-}
-  
+}else{  
 function isNight(hour){
   return (hour < 9 || hour >= 21);
 }
