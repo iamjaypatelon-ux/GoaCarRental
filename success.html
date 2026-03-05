@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Confirmed | RentalCarGoa</title>
+
+<style>
+
+body{
+font-family:sans-serif;
+background:#f5f7f6;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:520px;
+margin:auto;
+}
+
+.card{
+background:#fff;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+margin-bottom:20px;
+}
+
+.success{
+text-align:center;
+}
+
+.success h2{
+color:#25D366;
+margin-bottom:5px;
+}
+
+.row{
+display:flex;
+justify-content:space-between;
+margin:8px 0;
+font-size:14px;
+}
+
+.line{
+border-top:1px dashed #ccc;
+margin:12px 0;
+}
+
+.btn{
+display:block;
+text-align:center;
+background:#25D366;
+color:#fff;
+padding:12px;
+border-radius:8px;
+text-decoration:none;
+margin-top:10px;
+cursor:pointer;
+}
+
+.btn.secondary{
+background:#075E54;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card success">
+
+<h2>✔ Booking Confirmed</h2>
+<p>Your advance payment was successful</p>
+
+</div>
+
+
+<div id="receipt" class="card">
+
+<h3>Booking Receipt</h3>
+
+<div class="row"><span>Payment ID</span><span id="payment"></span></div>
+<div class="row"><span>Order ID</span><span id="order"></span></div>
+
+<div class="line"></div>
+
+<div class="row"><span>Car</span><span id="car"></span></div>
+<div class="row"><span>Delivery</span><span id="delivery"></span></div>
+<div class="row"><span>Return</span><span id="return"></span></div>
+
+<div class="line"></div>
+
+<div class="row"><span>Rent</span><span id="rent"></span></div>
+<div class="row"><span>Security Deposit</span><span id="deposit"></span></div>
+<div class="row"><span>Total Amount</span><span id="total"></span></div>
+
+<div class="line"></div>
+
+<div class="row"><span>Advance Paid</span><span id="advance"></span></div>
+<div class="row"><strong>Balance</strong><strong id="balance"></strong></div>
+
+</div>
+
+
+<button class="btn" onclick="downloadReceipt()">Download Receipt</button>
+
+<button class="btn secondary" onclick="shareReceipt()">Share Receipt</button>
+
+<a href="/" class="btn">Back to Home</a>
+
+</div>
+
+
+<script>
+
+const params = new URLSearchParams(window.location.search)
+
+document.getElementById("payment").innerText = params.get("payment_id")
+document.getElementById("order").innerText = params.get("order_id")
+
+document.getElementById("car").innerText = params.get("car")
+document.getElementById("delivery").innerText = params.get("delivery")
+document.getElementById("return").innerText = params.get("return")
+
+document.getElementById("rent").innerText = "₹"+params.get("rent")
+document.getElementById("deposit").innerText = "₹"+params.get("deposit")
+document.getElementById("total").innerText = "₹"+params.get("total")
+
+document.getElementById("advance").innerText = "₹"+params.get("advance")
+document.getElementById("balance").innerText = "₹"+params.get("balance")
+
+
+function downloadReceipt(){
+
+window.print()
+
+}
+
+
+function shareReceipt(){
+
+const text = `
+Booking Confirmed
+
+Car: ${params.get("car")}
+
+Delivery:
+${params.get("delivery")}
+
+Return:
+${params.get("return")}
+
+Advance Paid: ₹${params.get("advance")}
+Balance: ₹${params.get("balance")}
+
+Payment ID: ${params.get("payment_id")}
+`
+
+if(navigator.share){
+
+navigator.share({
+title:"RentalCarGoa Booking",
+text:text
+})
+
+}else{
+
+navigator.clipboard.writeText(text)
+alert("Receipt copied")
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
