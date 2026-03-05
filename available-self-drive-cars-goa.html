@@ -243,14 +243,17 @@ body {
 const cars = [
 
   // Compact
-  {name:"Ignis Manual", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Ignis (Manual).png", category:"compact"},
-  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Swift (Manual).png", category:"compact"},
-  {name:"Baleno Manual", rate:1000, deposit:3000, advance:1000, fixed:1500, image:"Baleno (Manual).png", category:"compact"},
-  {name:"i20 Manual", rate:1100, deposit:3000, advance:1000, fixed:2000, image:"i20 (Manual).png", category:"compact"},
-  {name:"Swift Automatic", rate:1200, deposit:3000, advance:1000, fixed:1200, image:"Swift (Auto).png", category:"compact"},
-  {name:"Baleno Automatic", rate:1300, deposit:3000, advance:1000, fixed:1500, image:"Baleno (Automatic).png", category:"compact"},
-  {name:"i20 Automatic", rate:1500, deposit:3000, advance:1000, fixed:2000, image:"i20 (Automatic).png", category:"compact"},
-  {name:"Fronx Automatic", rate:1500, deposit:3000, advance:1000, fixed:2000, image:"Fronx (Automatic).png", category:"compact"},
+  {name:"Old Swift (Manual)", rate:1000, deposit:3000, advance:1000, fixed:500, image:"old Swift (Manual).png", category:"compact"},  
+  {name:"Old Baleno (Manual)", rate:1000, deposit:3000, advance:1000, fixed:700, image:"Old Baleno (Manual).png", category:"compact"},
+  {name:"Ignis (Manual)", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Ignis (Manual).png", category:"compact"},
+  {name:"Swift (Manual)", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Swift (Manual).png", category:"compact"},
+  {name:"Baleno (Manual)", rate:1000, deposit:3000, advance:1000, fixed:1200, image:"Baleno (Manual).png", category:"compact"},
+  {name:"Old i20 (Manual)", rate:1100, deposit:3000, advance:1000, fixed:1000, image:"Old i20 (Manual).png", category:"compact"},
+  {name:"i20 (Manual)", rate:1100, deposit:3000, advance:1000, fixed:1500, image:"i20 (Manual).png", category:"compact"},
+  {name:"Swift (Automatic)", rate:1200, deposit:3000, advance:1000, fixed:1000, image:"Swift (Auto).png", category:"compact"},
+  {name:"Baleno (Automatic)", rate:1300, deposit:3000, advance:1000, fixed:1200, image:"Baleno (Automatic).png", category:"compact"},
+  {name:"i20 (Automatic)", rate:1500, deposit:3000, advance:1000, fixed:1500, image:"i20 (Automatic).png", category:"compact"},
+  {name:"Fronx (Automatic)", rate:1500, deposit:3000, advance:1000, fixed:1500, image:"Fronx (Automatic).png", category:"compact"},
   
   // Premium
   {name:"Kia Sonet (Auto + Moonroof)", rate:2300, deposit:3000, advance:2000, fixed:2000, image:"Kia Sonet (Auto + Moonroof).png", category:"premium"},
@@ -258,20 +261,20 @@ const cars = [
   {name:"Kia Seltos (Auto + Sunroof)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Kia Seltos (Auto + Sunroof).png", category:"premium"},
 
   // Adventure
-  {name:"Thar 4x4 (Manual)", rate:2500, deposit:5000, advance:2000, fixed:1500, image:"Thar 4x4 (Manual).png", category:"adventure"},
-  {name:"Hardtop Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1500, image:"Hardtop Thar (Automatic).png", category:"adventure"},
-  {name:"Convertible Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Convertible New Thar (Automatic).png", category:"adventure"},
+  {name:"Thar 4x4 (Manual)", rate:2500, deposit:5000, advance:2000, fixed:1200, image:"Thar 4x4 (Manual).png", category:"adventure"},
+  {name:"Hardtop Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1200, image:"Hardtop Thar (Automatic).png", category:"adventure"},
+  {name:"Convertible Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1500, image:"Convertible New Thar (Automatic).png", category:"adventure"},
   {name:"Thar ROXX (Automatic)", rate:5000, deposit:5000, advance:2000, fixed:2000, image:"Thar ROXX (Automatic).png", category:"adventure"},
 
   // Family
-  {name:"Old Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:1000, image:"Old Ertiga (Manual).png", category:"family"},
-  {name:"Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:1500, image:"Ertiga (Manual).png", category:"family"},
-  {name:"Kia Carens (Manual)", rate:2000, deposit:3000, advance:1000, fixed:2000, image:"Kia Carens (Manual).png", category:"family"},
-  {name:"Ertiga (Automatic)", rate:2200, deposit:3000, advance:1000, fixed:1500, image:"Ertiga (Automatic).png", category:"family"},
+  {name:"Old Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:500, image:"Old Ertiga (Manual).png", category:"family"},
+  {name:"Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:1000, image:"Ertiga (Manual).png", category:"family"},
+  {name:"Kia Carens (Manual)", rate:2000, deposit:3000, advance:1000, fixed:1500, image:"Kia Carens (Manual).png", category:"family"},
+  {name:"Ertiga (Automatic)", rate:2200, deposit:3000, advance:1000, fixed:1200, image:"Ertiga (Automatic).png", category:"family"},
   {name:"Innova Crysta (Manual)", rate:2500, deposit:5000, advance:2000, fixed:2000, image:"Toyota Innova Crysta Manual.png", category:"family"},
-  {name:"Innova Hycross (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1700, image:"Toyota Innova Hycross.png", category:"family"},
+  {name:"Innova Hycross (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1200, image:"Toyota Innova Hycross.png", category:"family"},
   {name:"Innova Crysta (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Toyota Innova Crysta Auto.png", category:"family"},
-  {name:"Alcazar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Hyundai Alcazar.png", category:"family"},
+  {name:"Alcazar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1500, image:"Hyundai Alcazar.png", category:"family"},
   {name:"Fortuner (Old Shape Automatic)", rate:3500, deposit:5000, advance:2000, fixed:2500, image:"Fortuner (Old Shape Automatic).png", category:"family"},
   {name:"Fortuner (New Shape Automatic)", rate:5500, deposit:5000, advance:2000, fixed:2500, image:"Fortuner (New Shape Automatic).png", category:"family"},
   {name:"Fortuner Legender (Automatic)", rate:8000, deposit:5000, advance:2000, fixed:2500, image:"Toyota Fortuner Legender_1.png", category:"family"},
