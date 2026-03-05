@@ -144,40 +144,38 @@ window.print()
 
 function shareReceipt(){
 
-const text = `
-Booking Confirmed
+const element = document.getElementById("receipt");
 
-Car: ${params.get("car")}
+const opt = {
+margin: 0.3,
+filename: 'RentalCarGoa-Receipt.pdf',
+image: { type: 'jpeg', quality: 0.98 },
+html2canvas: { scale: 2 },
+jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+};
 
-Delivery:
-${params.get("delivery")}
+html2pdf().set(opt).from(element).outputPdf('blob').then(function (pdfBlob) {
 
-Return:
-${params.get("return")}
+const file = new File([pdfBlob], "RentalCarGoa-Receipt.pdf", {type: "application/pdf"});
 
-Advance Paid: ₹${params.get("advance")}
-Balance: ₹${params.get("balance")}
-
-Payment ID: ${params.get("payment_id")}
-`
-
-if(navigator.share){
+if (navigator.share && navigator.canShare({ files: [file] })) {
 
 navigator.share({
-title:"RentalCarGoa Booking",
-text:text
-})
+title: "RentalCarGoa Booking Receipt",
+files: [file]
+});
 
-}else{
+} else {
 
-navigator.clipboard.writeText(text)
-alert("Receipt copied")
-
-}
+const url = URL.createObjectURL(pdfBlob);
+window.open(url);
 
 }
 
+});
+
+}
 </script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
