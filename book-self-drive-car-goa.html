@@ -297,6 +297,35 @@ button:hover{
 
 <script>
 
+ /* LIMIT BOOKING TO 90 DAYS */
+
+const today = new Date();
+const maxDate = new Date();
+maxDate.setDate(today.getDate() + 90);
+
+function formatDateTimeLocal(date){
+  const pad = n => n.toString().padStart(2,'0');
+
+  return date.getFullYear() + "-" +
+         pad(date.getMonth()+1) + "-" +
+         pad(date.getDate()) + "T" +
+         pad(date.getHours()) + ":" +
+         pad(date.getMinutes());
+}
+
+const minDate = formatDateTimeLocal(today);
+const maxLimit = formatDateTimeLocal(maxDate);
+
+document.getElementById("pickup").min = minDate;
+document.getElementById("pickup").max = maxLimit;
+
+document.getElementById("drop").min = minDate;
+document.getElementById("drop").max = maxLimit;
+
+document.getElementById("pickup").addEventListener("change", function(){
+  document.getElementById("drop").min = this.value;
+});
+ 
 function goToCars(e){
   e.preventDefault();
 
