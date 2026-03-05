@@ -7,6 +7,17 @@
 
 <style>
 
+#receipt{
+overflow:visible;
+height:auto;
+}
+
+.support{
+margin-top:15px;
+font-size:13px;
+text-align:center;
+}
+  
   .amount-section{
 page-break-inside: avoid;
 }
@@ -195,12 +206,17 @@ const element = document.getElementById("receipt");
 const opt = {
 margin: 10,
 filename: 'RentalCarGoa-Receipt.pdf',
-image: { type: 'jpeg', quality: 0.98 },
-html2canvas: { scale: 2, useCORS: true },
-jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-pagebreak: { mode: ['avoid-all','css','legacy'] }
-};
-  
+image: { type: 'jpeg', quality: 1 },
+html2canvas: {
+scale: 2,
+scrollY: 0
+},
+jsPDF: {
+unit: 'mm',
+format: 'a4',
+orientation: 'portrait'
+}
+};  
 html2pdf().set(opt).from(element).outputPdf('blob').then(function (pdfBlob) {
 
 const file = new File([pdfBlob], "RentalCarGoa-Receipt.pdf", {type: "application/pdf"});
