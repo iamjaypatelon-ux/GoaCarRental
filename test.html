@@ -1,3 +1,564 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Self Drive Car Rental in Goa | Best Prices & Instant Booking</title>
+
+<meta name="description" content="Browse available self drive cars in Goa at best prices. Instant WhatsApp booking, refundable deposit and 24x7 support across airport, railway station and beaches.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://rentalcargoa.in/self-drive-car-rental-goa">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "ItemList",
+ "name": "Self Drive Cars Available in Goa",
+ "itemListElement": [
+   {
+     "@type": "Product",
+     "name": "Swift Manual Self Drive Car in Goa",
+     "url": "https://rentalcargoa.in/cars/swift-manual-self-drive-goa"
+   },
+   {
+     "@type": "Product",
+     "name": "Thar Automatic Self Drive Car in Goa",
+     "url": "https://rentalcargoa.in/cars/thar-automatic-self-drive-goa"
+   }
+ ]
+}
+</script>
+  <style>
+.site-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 14px;
+  background:#ffffff;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+.brand-name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #111111;
+  text-transform: none;
+  text-decoration: none;
+}
+    
+@media(max-width:480px){
+  .brand-name{
+    font-size:20px;
+    letter-spacing:1px;
+  }
+}
+    
+.brand-name:visited,
+.brand-name:hover,
+.brand-name:active {
+  text-decoration: none;
+  color: #111111;
+}
+/* RIGHT SIDE */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.icon-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-btn:hover {
+  background: #e8e8e8;
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+  * { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+  .summary-box{
+  background:#ffffff;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom:20px;
+  border-left:4px solid #25D366;
+}
+
+.summary-box p{
+  margin:6px 0;
+  font-size:14px;
+}
+
+  .edit-btn{
+  margin-top:10px;
+  background:#075E54;
+  color:white;
+  border:none;
+  padding:8px 12px;
+  border-radius:6px;
+  font-size:13px;
+  cursor:pointer;
+}
+.edit-btn:hover{
+  background:#064c43;
+}
+  
+body {
+  font-family:sans-serif;
+  background:#f5f7f6;
+  margin:0;
+  padding:0;
+}
+    .grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+.card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:10px;
+}
+.btn{
+  background:#25D366;
+  color:#fff;
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  width:100%;
+  margin-top:10px;
+}
+.highlight{
+  background:#e6f7f1;
+  padding:6px;
+  border-radius:6px;
+  margin:6px 0;
+  font-weight:600;
+}
+.section-header{
+  background:#ffffff;
+  padding:14px;
+  border-radius:10px;
+  margin-top:20px;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  font-weight:600;
+  color:#075E54;
+}
+
+.section-header span{
+  font-size:18px;
+  transition:0.3s;
+}
+
+.section-grid{
+  margin-top:15px;
+  display:none;
+}
+
+.section-grid.active{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
+}
+  
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+
+ <a href="/" class="brand-name">
+  rentalcargoa
+</a>
+
+  <div class="header-actions">
+
+    <a href="tel:+917861015148" class="icon-btn" title="Call">
+      <img src="call.png" alt="Call">
+    </a>
+
+    <button class="icon-btn" onclick="sharePage()" title="Share">
+      <img src="share.png" alt="Share">
+    </button>
+
+  </div>
+
+</header>
+
+<h2>Available Cars</h2>
+<div id="bookingSummary" class="summary-box"></div>
+<div id="carGrid"></div>
+<script>
+
+// Correct cars array
+const cars = [
+
+  // Compact
+  {name:"Ignis Manual", rate:1000, deposit:3000, advance:1, fixed:1000, image:"Ignis (Manual).png", category:"compact"},
+  {name:"Swift Manual", rate:1000, deposit:3000, advance:1000, fixed:1000, image:"Swift (Manual).png", category:"compact"},
+  {name:"Baleno Manual", rate:1000, deposit:3000, advance:1000, fixed:1500, image:"Baleno (Manual).png", category:"compact"},
+  {name:"i20 Manual", rate:1100, deposit:3000, advance:1000, fixed:2000, image:"i20 (Manual).png", category:"compact"},
+  {name:"Swift Automatic", rate:1200, deposit:3000, advance:1000, fixed:1200, image:"Swift (Auto).png", category:"compact"},
+  {name:"Baleno Automatic", rate:1300, deposit:3000, advance:1000, fixed:1500, image:"Baleno (Automatic).png", category:"compact"},
+  {name:"i20 Automatic", rate:1500, deposit:3000, advance:1000, fixed:2000, image:"i20 (Automatic).png", category:"compact"},
+  {name:"Fronx Automatic", rate:1500, deposit:3000, advance:1000, fixed:2000, image:"Fronx (Automatic).png", category:"compact"},
+  
+  // Premium
+  {name:"Kia Sonet (Auto + Moonroof)", rate:2300, deposit:3000, advance:2000, fixed:2000, image:"Kia Sonet (Auto + Moonroof).png", category:"premium"},
+  {name:"Creta (Auto + Panoramic Sunroof)", rate:3000, deposit:5000, advance:2000, fixed:1500, image:"Creta (Auto + Panoramic Sunroof).png", category:"premium"},
+  {name:"Kia Seltos (Auto + Sunroof)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Kia Seltos (Auto + Sunroof).png", category:"premium"},
+
+  // Adventure
+  {name:"Thar 4x4 (Manual)", rate:2500, deposit:5000, advance:2000, fixed:1500, image:"Thar 4x4 (Manual).png", category:"adventure"},
+  {name:"Hardtop Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1500, image:"Hardtop Thar (Automatic).png", category:"adventure"},
+  {name:"Convertible Thar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Convertible New Thar (Automatic).png", category:"adventure"},
+  {name:"Thar ROXX (Automatic)", rate:5000, deposit:5000, advance:2000, fixed:2000, image:"Thar ROXX (Automatic).png", category:"adventure"},
+
+  // Family
+  {name:"Old Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:1000, image:"Old Ertiga (Manual).png", category:"family"},
+  {name:"Ertiga (Manual)", rate:1800, deposit:3000, advance:1000, fixed:1500, image:"Ertiga (Manual).png", category:"family"},
+  {name:"Kia Carens (Manual)", rate:2000, deposit:3000, advance:1000, fixed:2000, image:"Kia Carens (Manual).png", category:"family"},
+  {name:"Ertiga (Automatic)", rate:2200, deposit:3000, advance:1000, fixed:1500, image:"Ertiga (Automatic).png", category:"family"},
+  {name:"Innova Crysta (Manual)", rate:2500, deposit:5000, advance:2000, fixed:2000, image:"Toyota Innova Crysta Manual.png", category:"family"},
+  {name:"Innova Hycross (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:1700, image:"Toyota Innova Hycross.png", category:"family"},
+  {name:"Innova Crysta (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Toyota Innova Crysta Auto.png", category:"family"},
+  {name:"Alcazar (Automatic)", rate:3000, deposit:5000, advance:2000, fixed:2000, image:"Hyundai Alcazar.png", category:"family"},
+  {name:"Fortuner (Old Shape Automatic)", rate:3500, deposit:5000, advance:2000, fixed:2500, image:"Fortuner (Old Shape Automatic).png", category:"family"},
+  {name:"Fortuner (New Shape Automatic)", rate:5500, deposit:5000, advance:2000, fixed:2500, image:"Fortuner (New Shape Automatic).png", category:"family"},
+  {name:"Fortuner Legender (Automatic)", rate:8000, deposit:5000, advance:2000, fixed:2500, image:"Toyota Fortuner Legender_1.png", category:"family"},
+
+// Luxury
+{name:"BMW M5 (Automatic)", rate:15000, deposit:30000, advance:5000, fixed:3000, image:"BMW5_1.png", category:"luxury"},
+{name:"Convertible Mini Cooper (Automatic)", rate:15000, deposit:30000, advance:5000, fixed:3000, image:"Mini Cooper_1.png", category:"luxury"},
+{name:"Audi Q3 (Automatic)", rate:15000, deposit:30000, advance:5000, fixed:3000, image:"Audi Q3_1.png", category:"luxury"},
+{name:"Convertible Audi A3 (Automatic)", rate:21000, deposit:20000, advance:5000, fixed:3000, image:"Audi A3 Cabriolet_1.png", category:"luxury"},
+{name:"Mustang (Automatic)", rate:35000, deposit:40000, advance:10000, fixed:5000, image:"MUSTANG_1.png", category:"luxury"}
+];
+
+  
+const categories = {
+  compact: "Compact & Mid-Size Cars (5-Seaters)",
+  premium: "Premium (5-Seaters)",
+  adventure: "Adventure Rides – Thar Collection",
+  family: "Family & Group Rides (7-Seaters & SUVs)",
+  luxury: "Exclusive Luxury Cars"
+};
+
+// URL params
+const params = new URLSearchParams(window.location.search);
+
+if(!params.get("pickup")){
+  document.getElementById("carGrid").innerHTML = "<h3>Please go back and select dates.</h3>";
+}else{
+  const pickup = new Date(params.get("pickup"));
+const drop = new Date(params.get("drop"));
+const pickupLoc = params.get("pickupLoc");
+const dropLoc = params.get("dropLoc");
+
+function formatDateTime(date){
+
+  const options = {
+    day:'numeric',
+    month:'long',
+    year:'numeric',
+    hour:'numeric',
+    minute:'2-digit',
+    hour12:true
+  };
+
+  return date.toLocaleString('en-IN', options);
+}  
+  
+// Billing logic
+function billingPickup(d){
+  let x = new Date(d);
+
+  // Before 4AM → previous day
+  if(x.getHours() < 4){
+    x.setDate(x.getDate() - 1);
+  }
+
+  x.setHours(9,0,0,0);
+  return x;
+}
+
+function billingDrop(d){
+  let x = new Date(d);
+
+  // After 9:30AM → next day
+  if(
+    x.getHours() > 9 ||
+    (x.getHours() === 9 && x.getMinutes() > 30)
+  ){
+    x.setDate(x.getDate() + 1);
+  }
+
+  x.setHours(9,0,0,0);
+  return x;
+}
+  
+let days = Math.ceil(
+  (billingDrop(drop)-billingPickup(pickup))/(1000*60*60*24)
+);
+if(days<1) days=1;
+
+  // Minimum 3 days rule
+if(days <= 2){
+  document.getElementById("carGrid").innerHTML = `
+    <div style="
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.05);
+      text-align:center;
+      margin-top:20px;
+    ">
+      <h3 style="color:#075E54;">No Cars Available</h3>
+      <p>Minimum booking duration is 3 days.</p>
+      <button onclick="goBackToEdit()" style="
+        margin-top:15px;
+        padding:10px 15px;
+        background:#075E54;
+        color:#fff;
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+      ">Modify Dates</button>
+    </div>
+  `;
+}else{  
+function isNight(hour){
+  return (hour < 9 || hour >= 21);
+}
+
+let pickupHour = pickup.getHours();
+let dropHour = drop.getHours();
+
+let nightCondition =
+  isNight(pickupHour) || isNight(dropHour);
+
+let specialLocations = [
+  "Karmali Station",
+  "Madgaon",
+  "Madgaon Railway Station",
+  "Madgaon Bus Stand",
+  "Majorda",
+  "Morjim"
+];
+
+let isSpecial =
+  specialLocations.includes(pickupLoc) ||
+  specialLocations.includes(dropLoc);
+
+let deliveryCharge;
+
+if(isSpecial){
+  // Special locations pricing
+  deliveryCharge = nightCondition ? 1000 : 800;
+}else{
+  // Normal locations pricing
+  deliveryCharge = nightCondition ? 800 : 500;
+}
+
+let grid = document.getElementById("carGrid");
+// Show booking summary
+document.getElementById("bookingSummary").innerHTML = `
+  <p><strong>Car Delivery :</strong> ${formatDateTime(pickup)}, ${pickupLoc}</p>
+  <p><strong>Car Return :</strong> ${formatDateTime(drop)}, ${dropLoc}</p>
+  <button class="edit-btn" onclick="goBackToEdit()">Edit Details</button>
+`;
+  
+  Object.keys(categories).forEach(catKey => {
+
+  let filteredCars = cars.filter(car => car.category === catKey);
+  
+  // Section Header
+  let header = document.createElement("div");
+  header.className = "section-header";
+  header.innerHTML = `
+    ${categories[catKey]}
+    <span>+</span>
+  `;
+  grid.appendChild(header);
+
+  // Section Grid
+  let sectionGrid = document.createElement("div");
+  sectionGrid.className = "section-grid";
+  grid.appendChild(sectionGrid);
+
+  filteredCars.forEach(car => {
+
+    let rent = (car.rate * days) + deliveryCharge + car.fixed;
+    let payable = rent + car.deposit;
+    let balance = payable - car.advance;
+
+    let card = `
+    <div class="card">
+      <img src="${car.image}">
+      <h4>${car.name}</h4>
+      <p>Total Rent: ₹${rent}</p>
+      <p>Refundable Deposit: ₹${car.deposit}</p>
+      <div class="highlight">
+        Total Payable: ₹${payable}
+      </div>
+      <p>Advance: ₹${car.advance}</p>
+      <p><strong>Payable at Delivery: ₹${balance}</strong></p>
+      <button class="btn"
+        onclick="book('${car.name}',${rent},${car.deposit},${payable},${car.advance},${balance})">
+        Book Now
+      </button>
+    </div>
+    `;
+
+    sectionGrid.innerHTML += card;
+  });
+
+  // Toggle open / close
+  header.addEventListener("click", function(){
+
+    sectionGrid.classList.toggle("active");
+
+    let icon = header.querySelector("span");
+
+    if(sectionGrid.classList.contains("active")){
+      icon.innerText = "−";
+    }else{
+      icon.innerText = "+";
+    }
+
+  });
+
+});
+
+function goBackToEdit(){
+
+  let url = "book-self-drive-car-goa.html?pickup=" + encodeURIComponent(params.get("pickup")) +
+            "&drop=" + encodeURIComponent(params.get("drop")) +
+            "&pickupLoc=" + encodeURIComponent(pickupLoc) +
+            "&dropLoc=" + encodeURIComponent(dropLoc);
+
+  window.location.href = url;
+}
+  
+function sharePage(){
+if(navigator.share){
+navigator.share({
+title:"RentalCarGoa",
+url:window.location.href
+});
+}else{
+navigator.clipboard.writeText(window.location.href);
+alert("Link copied");
+}
+}  
+// Rezorpay function
+// Razorpay function
+function book(name,rent,deposit,payable,advance,balance){
+
+fetch("https://goa-car-rental-backend.vercel.app/api/createOrder",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify({
+advance: advance,
+car: name,
+rent: rent,
+delivery: formatDateTime(pickup) + ", " + pickupLoc,
+returnDate: formatDateTime(drop) + ", " + dropLoc,
+deposit: deposit,
+balance: balance
+})
+})
+.then(res=>res.json())
+.then(data=>{
+
+var options={
+key:data.key,
+amount:data.amount,
+currency:"INR",
+order_id:data.order_id,
+
+name:"RentalCarGoa",
+description:"Car Booking Advance",
+
+handler:function(response){
+
+const params = new URLSearchParams({
+payment_id: response.razorpay_payment_id,
+order_id: response.razorpay_order_id,
+car: name,
+delivery: formatDateTime(pickup)+", "+pickupLoc,
+return: formatDateTime(drop)+", "+dropLoc,
+rent: rent,
+deposit: deposit,
+total: payable,
+advance: advance,
+balance: balance
+});
+
+window.location.href = "success.html?" + params.toString();
+
+}
+};
+  
+var rzp=new Razorpay(options);
+rzp.open();
+
+})
+  .catch(error=>{
+console.log(error);
+alert("Payment error");
+});
+}  
+}
+}
+</script>
+
+
+
+
+
 <!-- ===== TRUST INSIGHTS SECTION ===== -->
 <section class="trust-section">
   <h2>Real Numbers. Real Customers.</h2>
@@ -193,3 +754,5 @@ const observer = new IntersectionObserver(entries=>{
 observer.observe(document.querySelector(".trust-section"));
 </script>
 <!-- ===== END TRUST SECTION ===== -->
+</body>
+</html>
