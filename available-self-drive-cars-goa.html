@@ -411,8 +411,7 @@ document.getElementById("bookingSummary").innerHTML = `
   Object.keys(categories).forEach(catKey => {
 
   let filteredCars = cars.filter(car => car.category === catKey);
-  if(filteredCars.length === 0) return;
-
+  
   // Section Header
   let header = document.createElement("div");
   header.className = "section-header";
