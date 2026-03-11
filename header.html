@@ -1,0 +1,33 @@
+<header class="site-header">
+
+<a href="/" class="brand-name">
+rentalcargoa
+</a>
+
+<div class="header-actions">
+
+<a href="tel:+917861015148" class="icon-btn" title="Call">
+<img src="/call.png" alt="Call">
+</a>
+
+<button class="icon-btn" onclick="sharePage()" title="Share">
+<img src="/share.png" alt="Share">
+</button>
+
+</div>
+
+</header>
+
+<script>
+function sharePage(){
+if(navigator.share){
+navigator.share({
+title: document.title,
+url: window.location.href
+});
+}else{
+navigator.clipboard.writeText(window.location.href);
+alert("Link copied");
+}
+}
+</script>
