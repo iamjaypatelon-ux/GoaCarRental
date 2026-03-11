@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self Drive Cars in Goa</title>
+
+<style>
+
+.site-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 14px;
+background:#ffffff;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+body{
+font-family:Segoe UI;
+margin:0;
+background:#f5f7f6;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:15px;
+}
+
+/* category title */
+
+.category{
+margin-top:30px;
+}
+
+.category h2{
+font-size:20px;
+margin-bottom:15px;
+}
+
+/* car card */
+
+.car-card{
+display:flex;
+gap:15px;
+background:#fff;
+border-radius:10px;
+padding:12px;
+margin-bottom:12px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
+align-items:center;
+}
+
+.car-card img{
+width:120px;
+height:80px;
+object-fit:cover;
+border-radius:8px;
+}
+
+.car-info{
+flex:1;
+}
+
+.car-name{
+font-weight:600;
+font-size:16px;
+}
+
+.car-price{
+color:#075E54;
+font-weight:700;
+margin-top:4px;
+}
+
+.car-tag{
+font-size:13px;
+color:#666;
+margin-top:4px;
+}
+
+/* navigation */
+
+.top-nav{
+position:sticky;
+top:0;
+background:#fff;
+padding:10px;
+display:flex;
+gap:10px;
+overflow-x:auto;
+border-bottom:1px solid #eee;
+}
+
+.top-nav a{
+text-decoration:none;
+background:#075E54;
+color:white;
+padding:6px 10px;
+border-radius:20px;
+font-size:13px;
+white-space:nowrap;
+}
+
+</style>
+</head>
+
+<body>
+<div id="header"></div>
+
+<div class="top-nav">
+<a href="#compact">Compact Cars</a>
+<a href="#premium">Premium</a>
+<a href="#thar">Thar</a>
+<a href="#family">Family</a>
+<a href="#luxury">Luxury</a>
+</div>
+
+<div class="container">
+
+<!-- COMPACT -->
+
+<div class="category" id="compact">
+
+<h2>Compact & Mid-Size Cars (5-Seaters)</h2>
+
+<div class="car-card">
+<img src="images/xcent.jpg">
+<div class="car-info">
+<div class="car-name">Hyundai Xcent (Manual)</div>
+<div class="car-price">₹1000 / day</div>
+<div class="car-tag">Affordable and reliable for small trips</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/swift.jpg">
+<div class="car-info">
+<div class="car-name">Swift (Manual)</div>
+<div class="car-price">₹1200 / day</div>
+<div class="car-tag">Perfect for everyday driving</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/baleno.jpg">
+<div class="car-info">
+<div class="car-name">Baleno (Automatic)</div>
+<div class="car-price">₹1700 / day</div>
+<div class="car-tag">Comfortable automatic drive</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- PREMIUM -->
+
+<div class="category" id="premium">
+
+<h2>Premium 5-Seaters</h2>
+
+<div class="car-card">
+<img src="images/creta.jpg">
+<div class="car-info">
+<div class="car-name">Creta (Manual)</div>
+<div class="car-price">₹2500 / day</div>
+<div class="car-tag">Comfortable premium SUV</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/seltos.jpg">
+<div class="car-info">
+<div class="car-name">Kia Seltos (Automatic)</div>
+<div class="car-price">₹3600 / day</div>
+<div class="car-tag">Stylish and feature rich</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- THAR -->
+
+<div class="category" id="thar">
+
+<h2>Adventure Rides – Thar Collection</h2>
+
+<div class="car-card">
+<img src="images/thar.jpg">
+<div class="car-info">
+<div class="car-name">Thar 4x4 (Manual)</div>
+<div class="car-price">₹3000 / day</div>
+<div class="car-tag">Rugged off-road adventure</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/thar-auto.jpg">
+<div class="car-info">
+<div class="car-name">Hardtop Thar (Automatic)</div>
+<div class="car-price">₹3500 / day</div>
+<div class="car-tag">Hassle free adventure</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- FAMILY -->
+
+<div class="category" id="family">
+
+<h2>Family & Group Rides (7-Seaters)</h2>
+
+<div class="car-card">
+<img src="images/ertiga.jpg">
+<div class="car-info">
+<div class="car-name">Ertiga (Manual)</div>
+<div class="car-price">₹2200 / day</div>
+<div class="car-tag">Perfect family trip vehicle</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/innova.jpg">
+<div class="car-info">
+<div class="car-name">Innova Crysta (Automatic)</div>
+<div class="car-price">₹3500 / day</div>
+<div class="car-tag">Comfortable long journeys</div>
+</div>
+</div>
+
+</div>
+
+
+<!-- LUXURY -->
+
+<div class="category" id="luxury">
+
+<h2>Luxury Cars</h2>
+
+<div class="car-card">
+<img src="images/bmw.jpg">
+<div class="car-info">
+<div class="car-name">BMW M5</div>
+<div class="car-price">₹17000 / day</div>
+<div class="car-tag">Luxury and performance</div>
+</div>
+</div>
+
+<div class="car-card">
+<img src="images/mustang.jpg">
+<div class="car-info">
+<div class="car-name">Mustang</div>
+<div class="car-price">₹40000 / day</div>
+<div class="car-tag">Iconic muscle power</div>
+</div>
+</div>
+
+</div>
+
+</div>
+<script>
+fetch("/header.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("header").innerHTML = data;
+});
+</script>
+
+</body>
+</html>
