@@ -520,7 +520,12 @@ experience.</div>
 
 </div>
 <script>
-<script>
+fetch("/header.html")
+.then(res => res.text())
+.then(data => {
+document.getElementById("header").innerHTML = data;
+});
+
 function sharePage(){
 if(navigator.share){
 navigator.share({
@@ -532,7 +537,6 @@ navigator.clipboard.writeText(window.location.href);
 alert("Link copied");
 }
 }
-</script></script>
-
+</script>
 </body>
 </html>
